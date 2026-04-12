@@ -426,6 +426,197 @@
       opacity: 0.8;
     }
     
+    /* Website Inspiration Section */
+    .website-ref-container {
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      background-color: var(--color-background);
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .website-ref-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .website-url-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .website-url-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    .website-url-input {
+      flex: 1;
+    }
+    
+    .website-feature-checkbox {
+      margin-left: 0.5rem;
+    }
+    
+    .add-url-btn {
+      height: var(--touch-target);
+      width: var(--touch-target);
+      min-width: var(--touch-target);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+    }
+    
+    .remove-url-btn {
+      height: var(--touch-target);
+      width: var(--touch-target);
+      min-width: var(--touch-target);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+      color: #666;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+    }
+    
+    .feature-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.8rem;
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+    
+    .feature-tag.selected {
+      background-color: var(--color-primary);
+      color: var(--color-text-light);
+    }
+    
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    .feature-dropdown {
+      position: absolute;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      width: 200px;
+      display: none;
+      padding: 0.5rem;
+    }
+    
+    .feature-dropdown-item {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      border-radius: var(--border-radius);
+      font-size: var(--font-size-base);
+    }
+    
+    .feature-dropdown-item:hover {
+      background-color: var(--color-background);
+    }
+    
+    .website-notes {
+      margin-top: 1rem;
+    }
+    
+    .website-preview-container {
+      margin-top: 1rem;
+      border: 1px dashed #ddd;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .website-preview-container:hover {
+      background-color: var(--color-background-alt);
+    }
+    
+    .website-preview-placeholder {
+      color: #999;
+      font-style: italic;
+    }
+    
+    .website-preview-image {
+      max-width: 100%;
+      max-height: 200px;
+      margin-top: 1rem;
+      border-radius: var(--border-radius);
+      display: none;
+    }
+    
+    .file-input {
+      display: none;
+    }
+    
+    .screenshot-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .screenshot-item {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+    
+    .screenshot-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .remove-screenshot {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -535,6 +726,18 @@
       /* Add extra space between sections */
       .form-group {
         margin-bottom: 2rem;
+      }
+      
+      /* Website reference mobile adjustments */
+      .website-url-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      .add-url-btn,
+      .remove-url-btn {
+        align-self: flex-end;
       }
     }
     
@@ -721,10 +924,34 @@
             <input type="hidden" name="colorFeel" id="color-feel">
           </div>
 
-          <div class="form-group">
-            <label for="inspiration-urls">Any websites you love? (URLs)</label>
-            <textarea id="inspiration-urls" name="inspirationUrls" rows="2" placeholder="e.g. www.example.com, www.another-site.com"></textarea>
-            <p class="field-note">Share websites that have elements you like - could be the layout, color scheme, or overall feel</p>
+          <!-- Enhanced Website Inspiration Section -->
+          <div class="website-ref-container">
+            <h3 class="website-ref-title">Website Inspiration</h3>
+            <p class="field-note">Share websites that inspire you or have elements you like</p>
+            
+            <div id="website-url-container" class="website-url-container">
+              <div class="website-url-row">
+                <input type="text" class="website-url-input" placeholder="e.g. www.example.com" data-index="0">
+                <div class="tags-container" data-index="0"></div>
+                <button type="button" class="add-feature-btn" data-index="0" title="Add what you like about this site">+</button>
+                <button type="button" class="add-url-btn" title="Add another website">+</button>
+              </div>
+            </div>
+            
+            <div class="website-notes">
+              <label for="website-notes">What specific elements do you like about these sites?</label>
+              <textarea id="website-notes" name="websiteNotes" rows="2" placeholder="e.g. I like the menu on the first site, and the color scheme on the second"></textarea>
+            </div>
+            
+            <!-- Screenshot Upload Area -->
+            <div class="website-preview-container" id="screenshot-upload-area">
+              <p class="website-preview-placeholder">Tap to upload screenshots of websites you like</p>
+              <div class="screenshot-container" id="screenshot-container"></div>
+              <input type="file" class="file-input" id="screenshot-input" accept="image/*" multiple>
+            </div>
+            
+            <input type="hidden" name="websiteUrls" id="website-urls-data">
+            <input type="hidden" name="websiteFeatures" id="website-features-data">
           </div>
 
           <div class="form-group">
@@ -921,6 +1148,16 @@
     &copy; <span id="year"></span> Forever Still Studio. All rights reserved.
   </footer>
 
+  <!-- Feature Tag Selection Dropdown -->
+  <div class="feature-dropdown" id="feature-dropdown">
+    <div class="feature-dropdown-item" data-value="layout">Layout/Structure</div>
+    <div class="feature-dropdown-item" data-value="colors">Colors/Theme</div>
+    <div class="feature-dropdown-item" data-value="fonts">Typography/Fonts</div>
+    <div class="feature-dropdown-item" data-value="images">Images/Photos</div>
+    <div class="feature-dropdown-item" data-value="navigation">Navigation/Menu</div>
+    <div class="feature-dropdown-item" data-value="overall">Overall Look</div>
+  </div>
+
   <!-- Loading Overlay -->
   <div class="loading-overlay" id="loading-overlay">
     <div class="loading-spinner"></div>
@@ -970,6 +1207,156 @@
         });
       });
       
+      // Website URL handling
+      const websiteUrlContainer = document.getElementById('website-url-container');
+      const urlsData = document.getElementById('website-urls-data');
+      const featuresData = document.getElementById('website-features-data');
+      let urlCount = 1;
+      
+      // Add URL handler
+      document.addEventListener('click', function(e) {
+        // Add new URL row
+        if (e.target.classList.contains('add-url-btn')) {
+          urlCount++;
+          const newRow = document.createElement('div');
+          newRow.className = 'website-url-row';
+          newRow.innerHTML = `
+            <input type="text" class="website-url-input" placeholder="e.g. www.example.com" data-index="${urlCount - 1}">
+            <div class="tags-container" data-index="${urlCount - 1}"></div>
+            <button type="button" class="add-feature-btn" data-index="${urlCount - 1}" title="Add what you like about this site">+</button>
+            <button type="button" class="remove-url-btn" title="Remove this website">-</button>
+          `;
+          websiteUrlContainer.appendChild(newRow);
+        }
+        
+        // Remove URL row
+        if (e.target.classList.contains('remove-url-btn')) {
+          const row = e.target.closest('.website-url-row');
+          row.remove();
+          updateWebsiteData();
+        }
+        
+        // Handle feature button click
+        if (e.target.classList.contains('add-feature-btn')) {
+          const dropdown = document.getElementById('feature-dropdown');
+          const index = e.target.dataset.index;
+          
+          // Position the dropdown next to the button
+          dropdown.style.top = `${e.target.offsetTop + e.target.offsetHeight}px`;
+          dropdown.style.left = `${e.target.offsetLeft}px`;
+          dropdown.style.display = 'block';
+          dropdown.dataset.index = index;
+          
+          // Close dropdown if clicking elsewhere
+          document.addEventListener('click', closeDropdownOnClickOutside);
+        }
+        
+        // Handle feature dropdown item click
+        if (e.target.classList.contains('feature-dropdown-item')) {
+          const dropdown = document.getElementById('feature-dropdown');
+          const index = dropdown.dataset.index;
+          const value = e.target.dataset.value;
+          const text = e.target.textContent;
+          const tagsContainer = document.querySelector(`.tags-container[data-index="${index}"]`);
+          
+          // Create tag if it doesn't exist
+          if (!tagsContainer.querySelector(`[data-value="${value}"]`)) {
+            const tag = document.createElement('span');
+            tag.className = 'feature-tag';
+            tag.dataset.value = value;
+            tag.textContent = text;
+            tagsContainer.appendChild(tag);
+          }
+          
+          dropdown.style.display = 'none';
+          updateWebsiteData();
+        }
+        
+        // Handle tag click (remove tag)
+        if (e.target.classList.contains('feature-tag')) {
+          e.target.remove();
+          updateWebsiteData();
+        }
+      });
+      
+      // Close dropdown when clicking outside
+      function closeDropdownOnClickOutside(e) {
+        const dropdown = document.getElementById('feature-dropdown');
+        if (!dropdown.contains(e.target) && !e.target.classList.contains('add-feature-btn')) {
+          dropdown.style.display = 'none';
+          document.removeEventListener('click', closeDropdownOnClickOutside);
+        }
+      }
+      
+      // Update hidden fields with website data
+      function updateWebsiteData() {
+        const urls = [];
+        const features = {};
+        
+        document.querySelectorAll('.website-url-input').forEach(input => {
+          if (input.value.trim()) {
+            urls.push(input.value.trim());
+            
+            const index = input.dataset.index;
+            const tagsContainer = document.querySelector(`.tags-container[data-index="${index}"]`);
+            const tags = tagsContainer.querySelectorAll('.feature-tag');
+            
+            features[input.value.trim()] = Array.from(tags).map(tag => tag.textContent);
+          }
+        });
+        
+        urlsData.value = JSON.stringify(urls);
+        featuresData.value = JSON.stringify(features);
+      }
+      
+      // Screenshot upload handling
+      const screenshotUploadArea = document.getElementById('screenshot-upload-area');
+      const screenshotInput = document.getElementById('screenshot-input');
+      const screenshotContainer = document.getElementById('screenshot-container');
+      
+      screenshotUploadArea.addEventListener('click', () => {
+        screenshotInput.click();
+      });
+      
+      screenshotInput.addEventListener('change', () => {
+        if (screenshotInput.files && screenshotInput.files.length > 0) {
+          for (let i = 0; i < screenshotInput.files.length; i++) {
+            const file = screenshotInput.files[i];
+            
+            // Only process images
+            if (!file.type.match('image.*')) continue;
+            
+            const reader = new FileReader();
+            reader.onload = (function(theFile) {
+              return function(e) {
+                // Create screenshot item
+                const div = document.createElement('div');
+                div.className = 'screenshot-item';
+                div.innerHTML = `
+                  <img src="${e.target.result}" alt="Website Screenshot">
+                  <div class="remove-screenshot">×</div>
+                `;
+                
+                // Add remove functionality
+                div.querySelector('.remove-screenshot').addEventListener('click', function(e) {
+                  e.stopPropagation(); // Prevent triggering upload area click
+                  div.remove();
+                  
+                  if (screenshotContainer.children.length === 0) {
+                    document.querySelector('.website-preview-placeholder').style.display = 'block';
+                  }
+                });
+                
+                screenshotContainer.appendChild(div);
+                document.querySelector('.website-preview-placeholder').style.display = 'none';
+              };
+            })(file);
+            
+            reader.readAsDataURL(file);
+          }
+        }
+      });
+      
       // Next button functionality
       nextButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -991,6 +1378,11 @@
           if (!isValid) {
             alert('Please fill in all required fields before proceeding.');
             return;
+          }
+          
+          // Update website data if on step 3
+          if (currentStepNum === 3) {
+            updateWebsiteData();
           }
           
           // If valid, move to next step
@@ -1060,6 +1452,9 @@
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         
+        // Final update of website data
+        updateWebsiteData();
+        
         // Gather checkbox data before submitting
         const featureCheckboxes = document.querySelectorAll('input[name="features"]:checked');
         const selectedFeatures = Array.from(featureCheckboxes).map(cb => cb.value);
@@ -1074,6 +1469,14 @@
         formData.forEach((value, key) => {
             data[key] = value;
         });
+        
+        // Get screenshot data as base64 if any
+        const screenshots = [];
+        document.querySelectorAll('.screenshot-item img').forEach(img => {
+          screenshots.push(img.src);
+        });
+        
+        data.screenshots = screenshots;
         
         // Send form data to server
         fetch('https://subsector-botanist-karate.ngrok-free.dev/gates/push', {
