@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: Page title -->
+  <title>Forever Still Beauty — Beauty That Speaks Before You Do</title>
+
+  <!-- SEO: Meta description -->
+  <meta name="description" content="Forever Still Beauty — luxurious skincare, colour, and beauty rituals for the woman who knows softness and strength are the same thing. Thoughtfully made. Radically real.">
+
+  <!-- SEO: Open Graph -->
+  <meta property="og:title" content="Forever Still Beauty">
+  <meta property="og:description" content="Beauty rituals for the woman who knows softness and strength are the same thing.">
+  <meta property="og:type" content="website">
+  <!-- REPLACE: og:image with your brand hero image URL -->
+  <!-- <meta property="og:image" content="images/og-image.jpg"> -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- =============================================
+       NAVIGATION
+  ============================================= -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+
+      <!-- REPLACE: Update href if your homepage has a different filename -->
+      <a href="index.html" class="nav__logo" aria-label="Forever Still Beauty — Home">
+        Forever Still <span>Beauty</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <button class="nav__bag" aria-label="Shopping bag, 0 items">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        Bag (0)
+      </button>
+
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay menu -->
+  <div class="nav__mobile" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- =============================================
+         HERO
+    ============================================= -->
+    <section class="hero" aria-labelledby="hero-headline">
+      <!-- REPLACE: To add a background image, add class="hero" and set a CSS background-image here or via inline style -->
+
+      <div class="hero__content">
+        <p class="eyebrow hero__eyebrow">Forever Still Beauty</p>
+
+        <!-- REPLACE: Edit the headline to match your brand voice exactly -->
+        <h1 class="hero__headline" id="hero-headline">
+          Beauty that speaks<br>
+          <em>before you do.</em>
+        </h1>
+
+        <!-- REPLACE: Update tagline as needed -->
+        <p class="hero__sub">
+          Rituals for the woman who knows softness and strength are the same thing.
+        </p>
+
+        <div class="hero__actions">
+          <a href="shop.html" class="btn btn--primary">Explore the Collection</a>
+          <a href="about.html" class="btn btn--ghost">Our Story</a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         BRAND STRIP
+    ============================================= -->
+    <!-- REPLACE: Edit these values to reflect your real brand pillars -->
+    <div class="brand-strip" aria-hidden="true">
+      <div class="brand-strip__inner">
+        <span class="brand-strip__item">Cruelty-Free</span>
+        <span class="brand-strip__item">Clean Formulas</span>
+        <span class="brand-strip__item">Inclusive Beauty</span>
+        <span class="brand-strip__item">Thoughtfully Made</span>
+        <span class="brand-strip__item">Radically Real</span>
+      </div>
+    </div>
+
+    <!-- =============================================
+         FEATURED COLLECTIONS
+    ============================================= -->
+    <section class="section" aria-labelledby="collections-heading">
+      <div class="container">
+
+        <header class="section__header reveal">
+          <p class="eyebrow">Shop by Collection</p>
+          <h2 id="collections-heading">Curated for every<br><em>version of you</em></h2>
+          <div class="divider"></div>
+          <p>Each collection is built around a mood, a moment, a ritual. Choose the one that feels like coming home.</p>
+        </header>
+
+        <div class="collections-grid">
+
+          <!-- Collection 1: The Glow Collection -->
+          <article class="collection-card reveal reveal-delay-1">
+            <div class="collection-card__img collection-card__img--glow">
+              <!-- REPLACE: <img src="images/collection-glow.jpg" alt="The Glow Collection — luminous skincare"> -->
+              <div class="collection-card__placeholder" role="img" aria-label="The Glow Collection — placeholder"></div>
+            </div>
+            <div class="collection-card__body">
+              <p class="collection-card__tag">Skincare</p>
+              <h3 class="collection-card__title">The Glow Collection</h3>
+              <p class="collection-card__desc">Luminous, healthy skin with every ritual. Serums, oils, and essentials for your natural radiance.</p>
+              <a href="shop.html" class="collection-card__link">Shop Collection</a>
+            </div>
+          </article>
+
+          <!-- Collection 2: Soft Focus Lips -->
+          <article class="collection-card reveal reveal-delay-2">
+            <div class="collection-card__img collection-card__img--lip">
+              <!-- REPLACE: <img src="images/collection-lip.jpg" alt="Soft Focus Lips — muted wearable shades"> -->
+              <div class="collection-card__placeholder" role="img" aria-label="Soft Focus Lips — placeholder"></div>
+            </div>
+            <div class="collection-card__body">
+              <p class="collection-card__tag">Colour</p>
+              <h3 class="collection-card__title">Soft Focus Lips</h3>
+              <p class="collection-card__desc">Muted. Wearable. Quietly stunning. Shades that feel as beautiful as they look on every skin tone.</p>
+              <a href="shop.html" class="collection-card__link">Shop Collection</a>
+            </div>
+          </article>
+
+          <!-- Collection 3: Rose Gold Essentials -->
+          <article class="collection-card reveal reveal-delay-3">
+            <div class="collection-card__img collection-card__img--essentials">
+              <!-- REPLACE: <img src="images/collection-essentials.jpg" alt="Rose Gold Essentials — everyday beauty kit"> -->
+              <div class="collection-card__placeholder" role="img" aria-label="Rose Gold Essentials — placeholder"></div>
+            </div>
+            <div class="collection-card__body">
+              <p class="collection-card__tag">Essentials</p>
+              <h3 class="collection-card__title">Rose Gold Essentials</h3>
+              <p class="collection-card__desc">The foundation of a beautiful routine. Everything you need, nothing you don't.</p>
+              <a href="shop.html" class="collection-card__link">Shop Collection</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         BRAND STORY (Short version)
+    ============================================= -->
+    <section class="section section--blush" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="story-split">
+
+          <!-- Image side -->
+          <!-- REPLACE: Replace the placeholder div with a real <img> tag -->
+          <!-- Example: <img src="images/brand-story.jpg" alt="Forever Still Beauty — brand story" style="width:100%;height:100%;object-fit:cover;"> -->
+          <div class="story-split__img-wrap reveal">
+            <div class="story-split__img" role="img" aria-label="Forever Still Beauty — brand image placeholder"></div>
+            <div class="story-split__img-label">Est. 2024</div>
+          </div>
+
+          <!-- Content side -->
+          <div class="story-split__content reveal reveal-delay-2">
+            <p class="eyebrow">The Story</p>
+            <h2 id="story-heading">Beauty built on<br><em>something real</em></h2>
+            <div class="divider divider--left"></div>
+
+            <!-- REPLACE: Edit these paragraphs with your real brand story -->
+            <p>
+              Forever Still Beauty was born from a simple truth: real beauty isn't about covering up. It's about stepping into yourself — slowly, deliberately, and without apology. It's the ritual. The pause. The quiet intention.
+            </p>
+            <p>
+              We create products and rituals for women who see beauty as more than surface. As self-expression. As healing. As becoming. Our philosophy is soft but unwavering: you are enough, and beauty is just one language you use to say so.
+            </p>
+            <p>
+              Every formula, every shade, every guide is made with care for the woman who is both soft and strong — who is still becoming. Who is forever still.
+            </p>
+
+            <a href="about.html" class="btn btn--dark mt-md">Read Our Full Story</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         TRANSFORMATION QUOTE
+    ============================================= -->
+    <section class="transform-section" aria-label="Brand philosophy">
+      <div class="container--narrow">
+        <div class="reveal text-center">
+          <div class="divider"></div>
+          <!-- REPLACE: Update this quote to reflect your brand voice -->
+          <blockquote class="transform-section__quote">
+            "Beauty is not what they tell you to be.<br>
+            It is <em>who you already are</em>,<br>
+            made visible."
+          </blockquote>
+          <p class="transform-section__attr">— Forever Still Beauty</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SHOP PREVIEW (4 Products)
+    ============================================= -->
+    <section class="section section--cream" aria-labelledby="shop-preview-heading">
+      <div class="container">
+
+        <header class="section__header reveal">
+          <p class="eyebrow">New &amp; Beloved</p>
+          <h2 id="shop-preview-heading">Start your ritual</h2>
+          <div class="divider"></div>
+          <p>Every product is designed to feel like a ritual, not a routine. Small acts of beauty that add up to something meaningful.</p>
+        </header>
+
+        <div class="products-grid">
+
+          <!-- Product 1: The Glow Ritual Set -->
+          <article class="product-card pc-glow reveal reveal-delay-1" data-cat="skincare">
+            <div class="product-card__img">
+              <!-- REPLACE: <img src="images/product-glow-ritual-set.jpg" alt="The Glow Ritual Set — curated skincare for luminous skin"> -->
+              <div class="product-card__img-fill" role="img" aria-label="The Glow Ritual Set product image placeholder"></div>
+              <span class="product-card__badge">Bestseller</span>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__cat">Skincare</p>
+              <h3 class="product-card__name">The Glow Ritual Set</h3>
+              <p class="product-card__desc">A curated ritual for luminous, healthy skin. Morning and evening essentials beautifully together.</p>
+              <div class="product-card__footer">
+                <!-- REPLACE: Update price -->
+                <span class="product-card__price">$68</span>
+                <!-- REPLACE: Link to your store / product page -->
+                <button class="product-card__btn" aria-label="Add The Glow Ritual Set to bag">Add to Bag</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2: Soft Focus Lip Collection -->
+          <article class="product-card pc-lip reveal reveal-delay-2" data-cat="colour">
+            <div class="product-card__img">
+              <!-- REPLACE: <img src="images/product-soft-focus-lip.jpg" alt="Soft Focus Lip Collection — five wearable muted shades"> -->
+              <div class="product-card__img-fill" role="img" aria-label="Soft Focus Lip Collection product image placeholder"></div>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__cat">Colour</p>
+              <h3 class="product-card__name">Soft Focus Lip Collection</h3>
+              <p class="product-card__desc">Five muted, wearable shades for every mood. From barely-there to quietly bold.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">$42</span>
+                <button class="product-card__btn" aria-label="Add Soft Focus Lip Collection to bag">Add to Bag</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3: Rose Veil Facial Mist -->
+          <article class="product-card pc-mist reveal reveal-delay-3" data-cat="skincare">
+            <div class="product-card__img">
+              <!-- REPLACE: <img src="images/product-rose-veil-mist.jpg" alt="Rose Veil Facial Mist — rosewater mist for skin"> -->
+              <div class="product-card__img-fill" role="img" aria-label="Rose Veil Facial Mist product image placeholder"></div>
+              <span class="product-card__badge product-card__badge--new">New</span>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__cat">Skincare</p>
+              <h3 class="product-card__name">Rose Veil Facial Mist</h3>
+              <p class="product-card__desc">A weightless mist that softens, refreshes, and sets. Rosewater meets thoughtful skin science.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">$34</span>
+                <button class="product-card__btn" aria-label="Add Rose Veil Facial Mist to bag">Add to Bag</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4: Golden Hour Face Oil -->
+          <article class="product-card pc-oil reveal reveal-delay-4" data-cat="skincare">
+            <div class="product-card__img">
+              <!-- REPLACE: <img src="images/product-golden-hour-oil.jpg" alt="Golden Hour Face Oil — lightweight glow-giving face oil"> -->
+              <div class="product-card__img-fill" role="img" aria-label="Golden Hour Face Oil product image placeholder"></div>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__cat">Skincare</p>
+              <h3 class="product-card__name">Golden Hour Face Oil</h3>
+              <p class="product-card__desc">A lightweight oil that catches the light and nourishes deeply. Your natural glow, amplified.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">$58</span>
+                <button class="product-card__btn" aria-label="Add Golden Hour Face Oil to bag">Add to Bag</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="text-center mt-lg reveal">
+          <a href="shop.html" class="btn btn--ghost">View the Full Collection</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         VALUES / BRAND BELIEFS
+    ============================================= -->
+    <section class="section section--blush" aria-labelledby="values-heading">
+      <div class="container">
+
+        <header class="section__header reveal">
+          <p class="eyebrow">What We Believe</p>
+          <h2 id="values-heading">Beauty as a practice,<br><em>not a performance</em></h2>
+          <div class="divider"></div>
+        </header>
+
+        <div class="values-grid">
+
+          <!-- REPLACE: Update these with your real brand values -->
+          <div class="value-card reveal reveal-delay-1">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M22 4C11 4 5 14 5 24c0 8 4 13 9 15"/>
+                <path d="M22 4c11 0 17 10 17 20 0 8-4 13-9 15"/>
+                <line x1="22" y1="40" x2="22" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="value-card__title">Clean &amp; Considered</h3>
+            <p class="value-card__text">Every ingredient is chosen with intention. Clean, effective formulas that respect your skin and the world you live in.</p>
+          </div>
+
+          <div class="value-card reveal reveal-delay-2">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M22 37S5 26 5 15a9 9 0 0117-4 9 9 0 0117 4c0 11-17 22-17 22z"/>
+              </svg>
+            </div>
+            <h3 class="value-card__title">Radically Inclusive</h3>
+            <p class="value-card__text">Beauty belongs to every woman. Our products and our philosophy are built for all skin tones, all textures, all stories.</p>
+          </div>
+
+          <div class="value-card reveal reveal-delay-3">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4">
+                <line x1="22" y1="4" x2="22" y2="40"/>
+                <line x1="4"  y1="22" x2="40" y2="22"/>
+                <line x1="9"  y1="9"  x2="35" y2="35"/>
+                <line x1="35" y1="9"  x2="9"  y2="35"/>
+              </svg>
+            </div>
+            <h3 class="value-card__title">Intentionally Made</h3>
+            <p class="value-card__text">Nothing here is accidental. From formula to finish to the words we choose — every detail of Forever Still Beauty is deliberate.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         NEWSLETTER SIGNUP
+    ============================================= -->
+    <section class="newsletter" id="newsletter" aria-labelledby="newsletter-heading">
+      <div class="container">
+        <p class="eyebrow newsletter__eyebrow reveal">Join the Ritual</p>
+        <h2 class="newsletter__title reveal" id="newsletter-heading">
+          Beauty notes, rituals &amp; early access.
+        </h2>
+        <!-- REPLACE: Update this sub copy if needed -->
+        <p class="newsletter__sub reveal">
+          Quiet beauty wisdom, delivered softly to your inbox. No noise. No spam. Only what matters.
+        </p>
+
+        <div class="reveal">
+          <!-- REPLACE: action="" with your Mailchimp / Klaviyo / Formspree endpoint -->
+          <form class="newsletter__form" novalidate>
+            <input
+              type="email"
+              class="newsletter__input"
+              placeholder="Your email address"
+              aria-label="Email address for newsletter"
+              required
+            >
+            <button type="submit" class="newsletter__submit">Subscribe</button>
+          </form>
+          <p class="newsletter__success">Thank you — you're part of the ritual now.</p>
+          <p class="newsletter__note">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Column 1: Brand -->
+        <div>
+          <p class="footer__brand-name">Forever Still Beauty</p>
+          <!-- REPLACE: Update tagline -->
+          <p class="footer__brand-tagline">Where softness becomes strength.</p>
+          <p class="footer__brand-desc">
+            Beauty products and rituals for the woman who knows that real confidence is quiet. Thoughtfully made. Honestly told.
+          </p>
+          <div class="footer__socials">
+            <!-- REPLACE: Add your real social media profile URLs -->
+            <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="footer__social-link" aria-label="TikTok">TK</a>
+            <a href="#" class="footer__social-link" aria-label="Pinterest">PI</a>
+            <a href="#" class="footer__social-link" aria-label="Facebook">FB</a>
+          </div>
+        </div>
+
+        <!-- Column 2: Shop links -->
+        <div>
+          <p class="footer__col-title">Shop</p>
+          <ul class="footer__links" role="list">
+            <li><a href="shop.html">All Products</a></li>
+            <li><a href="shop.html">Skincare</a></li>
+            <li><a href="shop.html">Colour</a></li>
+            <li><a href="shop.html">Collections</a></li>
+            <li><a href="shop.html">Digital Guides</a></li>
+            <li><a href="shop.html">Gift Sets</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Company links -->
+        <div>
+          <p class="footer__col-title">Company</p>
+          <ul class="footer__links" role="list">
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <!-- REPLACE: Link to real pages when they exist -->
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Stockists</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Footer newsletter -->
+        <div>
+          <p class="footer__col-title">Stay Connected</p>
+          <p style="font-size:0.8rem;color:rgba(255,255,255,0.3);margin-bottom:1.3rem;line-height:1.7;">
+            Rituals, beauty notes, and exclusive offers — quiet and beautiful, right to your inbox.
+          </p>
+          <!-- REPLACE: Connect to your email platform -->
+          <div class="footer__mini-form">
+            <input type="email" placeholder="Your email address" aria-label="Email for footer newsletter">
+            <button type="button">Subscribe</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <!-- REPLACE: Update the copyright year -->
+        <p class="footer__copy">&copy; 2024 Forever Still Beauty. All rights reserved.</p>
+        <nav class="footer__legal" aria-label="Legal links">
+          <!-- REPLACE: Link to real policy pages -->
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
