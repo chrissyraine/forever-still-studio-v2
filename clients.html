@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Intake Form | Forever Still Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1a2639;
+      --color-secondary: #d4a373;
+      --color-accent: #9c6644;
+      --color-text: #333333;
+      --color-text-light: #ffffff;
+      --color-background: #f5f5f5;
+      --color-background-alt: #e9e9e9;
+      --font-heading: 'Cinzel', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --border-radius: 4px;
+      --transition: all 0.3s ease;
+      --padding-container: 1.5rem;
+      --padding-element: 1rem;
+      --font-size-base: 16px;
+      --font-size-heading: 24px;
+      --touch-target: 48px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      font-size: var(--font-size-base);
+    }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      line-height: 1.6;
+      background-color: var(--color-background);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-size: var(--font-size-base);
+    }
+    
+    header {
+      background-color: var(--color-primary);
+      color: var(--color-text-light);
+      padding: 1.5rem var(--padding-container);
+      text-align: center;
+    }
+    
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .tagline {
+      font-size: 1rem;
+      opacity: 0.9;
+      font-style: italic;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem var(--padding-container);
+      flex: 1;
+      width: 100%;
+    }
+    
+    .form-container {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .progress-container {
+      padding: var(--padding-element);
+      background-color: var(--color-primary);
+    }
+    
+    .progress-bar {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+    
+    .progress-bar::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    
+    .progress-step {
+      position: relative;
+      z-index: 2;
+      width: var(--touch-target);
+      height: var(--touch-target);
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+    
+    .progress-step.active {
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+      border-color: var(--color-secondary);
+    }
+    
+    .progress-step.completed {
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+    }
+    
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0.5rem auto 0;
+    }
+    
+    .progress-label {
+      text-align: center;
+      width: 60px;
+      margin-left: -15px;
+      margin-right: -15px;
+      font-size: 0.7rem;
+    }
+    
+    .form-step {
+      display: none;
+      padding: 2rem var(--padding-element);
+    }
+    
+    .form-step.active {
+      display: block;
+    }
+    
+    .step-title {
+      font-family: var(--font-heading);
+      font-size: var(--font-size-heading);
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+      text-align: center;
+    }
+    
+    .step-subtitle {
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--color-accent);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      font-size: var(--font-size-base);
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 0.9rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-family: var(--font-body);
+      font-size: var(--font-size-base);
+      transition: var(--transition);
+      -webkit-appearance: none; /* Prevents iOS styling */
+      appearance: none;
+    }
+    
+    /* Special styling for select to add dropdown arrow */
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231a2639' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.7rem top 50%;
+      background-size: 1rem auto;
+      padding-right: 2.5rem;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--color-secondary);
+      box-shadow: 0 0 0 2px rgba(212, 163, 115, 0.2);
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-col {
+      flex: 1;
+      min-width: 0; /* Prevents overflow in flex items */
+    }
+    
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+      gap: 1rem;
+    }
+    
+    .btn {
+      min-height: var(--touch-target);
+      padding: 0.9rem 1.5rem;
+      border: none;
+      border-radius: var(--border-radius);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: var(--font-size-base);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-width: 120px; /* Ensuring touch target width */
+    }
+    
+    .btn-prev {
+      background-color: var(--color-background-alt);
+      color: var(--color-text);
+    }
+    
+    .btn-prev:hover {
+      background-color: #ddd;
+    }
+    
+    .btn-next, .btn-submit {
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+    }
+    
+    .btn-next:hover, .btn-submit:hover {
+      background-color: #c09664;
+    }
+    
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .style-card {
+      border: 2px solid #ddd;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+      min-height: 140px; /* Ensure adequate touch size */
+    }
+    
+    .style-card.selected {
+      border-color: var(--color-secondary);
+      box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+    }
+    
+    .style-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+    
+    .style-card-title {
+      padding: 0.75rem;
+      text-align: center;
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      background-color: var(--color-background);
+    }
+    
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .color-card {
+      height: var(--touch-target);
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .color-card.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .color-warm { background: linear-gradient(135deg, #ff7e5f, #feb47b); }
+    .color-cool { background: linear-gradient(135deg, #5ee7df, #b490ca); }
+    .color-earthy { background: linear-gradient(135deg, #799f0c, #acbb78); }
+    .color-bold { background: linear-gradient(135deg, #11998e, #38ef7d); }
+    .color-muted { background: linear-gradient(135deg, #8e9eab, #eef2f3); }
+    .color-dark { background: linear-gradient(135deg, #232526, #414345); }
+    
+    .field-note {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      color: #666;
+      font-style: italic;
+    }
+    
+    .checkbox-group {
+      margin-top: 0.75rem;
+    }
+    
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      min-height: var(--touch-target);
+    }
+    
+    .checkbox-item input[type="checkbox"],
+    .checkbox-item input[type="radio"] {
+      width: 24px;
+      height: 24px;
+      margin-right: 0.75rem;
+      cursor: pointer;
+    }
+    
+    .checkbox-item label {
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+    
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    
+    .success-icon {
+      font-size: 5rem;
+      color: var(--color-secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .success-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+    }
+    
+    .success-message {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .btn-return {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      min-height: var(--touch-target);
+      padding: 0.9rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      background-color: var(--color-primary);
+      color: var(--color-text-light);
+      transition: var(--transition);
+      font-size: var(--font-size-base);
+    }
+    
+    .btn-return:hover {
+      background-color: var(--color-accent);
+    }
+    
+    footer {
+      background-color: var(--color-primary);
+      color: var(--color-text-light);
+      padding: 1rem var(--padding-container);
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-step.active {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+    
+    /* Loading indicator */
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(26, 38, 57, 0.8);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--color-secondary);
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    .loading-text {
+      color: white;
+      margin-top: 1rem;
+      font-family: var(--font-heading);
+      font-size: var(--font-size-base);
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Enhanced Mobile Responsiveness */
+    @media (max-width: 600px) {
+      :root {
+        --padding-container: 1rem;
+        --padding-element: 1rem;
+      }
+      
+      .container {
+        padding: 1.5rem var(--padding-container);
+      }
+      
+      .form-step {
+        padding: 1.5rem var(--padding-element);
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .progress-labels {
+        display: none;
+      }
+      
+      .step-title {
+        font-size: 1.5rem;
+      }
+      
+      .btn-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      /* Ensure cards are big enough to tap easily */
+      .card-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .style-card {
+        min-height: 150px;
+      }
+      
+      /* Make color selection more tappable */
+      .color-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      
+      .color-card {
+        height: 60px;
+      }
+      
+      /* Make checkboxes easier to tap */
+      .checkbox-item {
+        margin-bottom: 1.25rem;
+      }
+      
+      /* Add extra space between sections */
+      .form-group {
+        margin-bottom: 2rem;
+      }
+    }
+    
+    /* Fix iOS zoom on focus */
+    @media screen and (-webkit-min-device-pixel-ratio: 0) { 
+      select,
+      textarea,
+      input {
+        font-size: 16px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">FOREVER STILL STUDIO</div>
+    <div class="tagline">Client Intake Form</div>
+  </header>
+
+  <div class="container">
+    <div class="form-container">
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-step active" data-step="1">1</div>
+          <div class="progress-step" data-step="2">2</div>
+          <div class="progress-step" data-step="3">3</div>
+          <div class="progress-step" data-step="4">4</div>
+          <div class="progress-step" data-step="5">5</div>
+        </div>
+        <div class="progress-labels">
+          <span class="progress-label">Business Info</span>
+          <span class="progress-label">Goals</span>
+          <span class="progress-label">Design</span>
+          <span class="progress-label">Assets</span>
+          <span class="progress-label">Going Forward</span>
+        </div>
+      </div>
+
+      <form id="client-intake-form">
+        <!-- Step 1: Business Info -->
+        <div class="form-step active" data-step="1">
+          <h2 class="step-title">Business Information</h2>
+          <p class="step-subtitle">Tell me about your business</p>
+
+          <div class="form-group">
+            <label for="business-name">Business Name*</label>
+            <input type="text" id="business-name" name="businessName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="owner-name">Owner Name*</label>
+            <input type="text" id="owner-name" name="ownerName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number*</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address*</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="industry">Industry/Business Type*</label>
+            <input type="text" id="industry" name="industry" placeholder="e.g. Restaurant, Law Firm, Retail" required>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Business Address</label>
+            <textarea id="address" name="address" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="referral">How did you hear about Forever Still Studio?</label>
+            <select id="referral" name="referral">
+              <option value="">-- Select one --</option>
+              <option value="Google">Google Search</option>
+              <option value="Referral">Referral from a friend/client</option>
+              <option value="Social">Social Media</option>
+              <option value="Event">Local Event</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="btn-container">
+            <div></div> <!-- Empty div to maintain flexbox spacing on desktop -->
+            <button type="button" class="btn btn-next" data-next="2">Next Step</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Goals -->
+        <div class="form-step" data-step="2">
+          <h2 class="step-title">Your Website Goals</h2>
+          <p class="step-subtitle">Let me understand what you need</p>
+
+          <div class="form-group">
+            <label for="biggest-problem">What's the biggest problem with your current online presence?*</label>
+            <textarea id="biggest-problem" name="biggestProblem" rows="3" placeholder="e.g. Outdated design, not mobile friendly, hard to find online" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="website-goal">What do you hope this website will accomplish for your business?*</label>
+            <textarea id="website-goal" name="websiteGoal" rows="3" placeholder="e.g. Generate more leads, showcase products, educate customers" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="">-- Select one --</option>
+              <option value="Under $1500">Under $1,500</option>
+              <option value="$1500-$3000">$1,500 - $3,000</option>
+              <option value="$3000-$5000">$3,000 - $5,000</option>
+              <option value="$5000+">$5,000+</option>
+              <option value="Not Sure">Not sure yet</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="timeline">Desired Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="">-- Select one --</option>
+              <option value="ASAP">As soon as possible</option>
+              <option value="1-2 months">Within 1-2 months</option>
+              <option value="3-6 months">Within 3-6 months</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+          </div>
+
+          <div class="btn-container">
+            <button type="button" class="btn btn-prev" data-prev="1">Previous</button>
+            <button type="button" class="btn btn-next" data-next="3">Next Step</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Design -->
+        <div class="form-step" data-step="3">
+          <h2 class="step-title">Design Preferences</h2>
+          <p class="step-subtitle">Help me understand your aesthetic</p>
+
+          <div class="form-group">
+            <label>What vibe are you going for? (Tap to select)</label>
+            <div class="card-container">
+              <div class="style-card" data-value="Professional">
+                <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Professional">
+                <div class="style-card-title">Professional</div>
+              </div>
+              <div class="style-card" data-value="Modern">
+                <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Modern">
+                <div class="style-card-title">Modern</div>
+              </div>
+              <div class="style-card" data-value="Traditional">
+                <img src="https://images.unsplash.com/photo-1546942113-a6c43b63104a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Traditional">
+                <div class="style-card-title">Traditional</div>
+              </div>
+              <div class="style-card" data-value="Playful">
+                <img src="https://images.unsplash.com/photo-1496889508475-dd0039e0737d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Playful">
+                <div class="style-card-title">Playful</div>
+              </div>
+              <div class="style-card" data-value="Luxury">
+                <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Luxury">
+                <div class="style-card-title">Luxury</div>
+              </div>
+              <div class="style-card" data-value="Minimalist">
+                <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Minimalist">
+                <div class="style-card-title">Minimalist</div>
+              </div>
+            </div>
+            <input type="hidden" name="designVibe" id="design-vibe">
+          </div>
+
+          <div class="form-group">
+            <label>What color feel do you prefer? (Tap to select, up to 2)</label>
+            <div class="color-grid">
+              <div class="color-card color-warm" data-value="Warm"></div>
+              <div class="color-card color-cool" data-value="Cool"></div>
+              <div class="color-card color-earthy" data-value="Earthy"></div>
+              <div class="color-card color-bold" data-value="Bold"></div>
+              <div class="color-card color-muted" data-value="Muted"></div>
+              <div class="color-card color-dark" data-value="Dark"></div>
+            </div>
+            <input type="hidden" name="colorFeel" id="color-feel">
+          </div>
+
+          <div class="form-group">
+            <label for="inspiration-urls">Any websites you love? (URLs)</label>
+            <textarea id="inspiration-urls" name="inspirationUrls" rows="2" placeholder="e.g. www.example.com, www.another-site.com"></textarea>
+            <p class="field-note">Share websites that have elements you like - could be the layout, color scheme, or overall feel</p>
+          </div>
+
+          <div class="form-group">
+            <label for="avoid">Anything you want to avoid?</label>
+            <textarea id="avoid" name="avoid" rows="2" placeholder="e.g. Certain colors, styles, or elements you dislike"></textarea>
+          </div>
+
+          <div class="btn-container">
+            <button type="button" class="btn btn-prev" data-prev="2">Previous</button>
+            <button type="button" class="btn btn-next" data-next="4">Next Step</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Assets -->
+        <div class="form-step" data-step="4">
+          <h2 class="step-title">Your Assets</h2>
+          <p class="step-subtitle">Let me know what you already have</p>
+
+          <div class="form-group">
+            <label>Do you have professional photos of your business?</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="radio" id="photos-yes" name="hasPhotos" value="Yes">
+                <label for="photos-yes">Yes</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="radio" id="photos-no" name="hasPhotos" value="No">
+                <label for="photos-no">No</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="radio" id="photos-some" name="hasPhotos" value="Some">
+                <label for="photos-some">Some, but might need more</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Do you have a logo?</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="radio" id="logo-yes" name="hasLogo" value="Yes">
+                <label for="logo-yes">Yes, and I have high-quality files</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="radio" id="logo-low" name="hasLogo" value="Low quality">
+                <label for="logo-low">Yes, but only low-quality files</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="radio" id="logo-no" name="hasLogo" value="No">
+                <label for="logo-no">No logo yet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="drive-link">Google Drive or Dropbox link to your assets (optional)</label>
+            <input type="text" id="drive-link" name="driveLink" placeholder="e.g. https://drive.google.com/...">
+            <p class="field-note">If you have photos, logos, or other materials ready, share a link where I can view them</p>
+          </div>
+
+          <div class="form-group">
+            <label for="services-list">Do you have a list of services/products ready?</label>
+            <select id="services-list" name="servicesList">
+              <option value="">-- Select one --</option>
+              <option value="Yes">Yes, ready to provide</option>
+              <option value="No">No, need help organizing this</option>
+              <option value="Partial">Partially complete</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="testimonials">Do you have client testimonials?</label>
+            <select id="testimonials" name="testimonials">
+              <option value="">-- Select one --</option>
+              <option value="Yes">Yes, ready to provide</option>
+              <option value="No">No</option>
+              <option value="Need to collect">Need to collect them</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="content-ready">Is your website content (text) ready?</label>
+            <select id="content-ready" name="contentReady">
+              <option value="">-- Select one --</option>
+              <option value="Yes">Yes, ready to provide</option>
+              <option value="No">No, need copywriting help</option>
+              <option value="Partial">Partially complete</option>
+            </select>
+          </div>
+
+          <div class="btn-container">
+            <button type="button" class="btn btn-prev" data-prev="3">Previous</button>
+            <button type="button" class="btn btn-next" data-next="5">Next Step</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Going Forward -->
+        <div class="form-step" data-step="5">
+          <h2 class="step-title">Going Forward</h2>
+          <p class="step-subtitle">Let's talk about site maintenance</p>
+
+          <div class="form-group">
+            <label>Who will be updating the website after launch?</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="radio" id="update-self" name="updatePerson" value="Self">
+                <label for="update-self">I'll update it myself</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="radio" id="update-staff" name="updatePerson" value="Staff">
+                <label for="update-staff">Someone on my staff</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="radio" id="update-you" name="updatePerson" value="You">
+                <label for="update-you">I'd like you to handle updates</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="radio" id="update-unsure" name="updatePerson" value="Unsure">
+                <label for="update-unsure">Not sure yet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Are you interested in a monthly maintenance plan?</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="radio" id="maintenance-yes" name="maintenancePlan" value="Yes">
+                <label for="maintenance-yes">Yes, I'd like to know more</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="radio" id="maintenance-no" name="maintenancePlan" value="No">
+                <label for="maintenance-no">No, not at this time</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="radio" id="maintenance-unsure" name="maintenancePlan" value="Unsure">
+                <label for="maintenance-unsure">Need more information</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Do you need any of these features? (Select all that apply)</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="feature-booking" name="features" value="Booking/Scheduling">
+                <label for="feature-booking">Online booking/scheduling</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="feature-ecommerce" name="features" value="E-commerce">
+                <label for="feature-ecommerce">E-commerce/online store</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="feature-blog" name="features" value="Blog">
+                <label for="feature-blog">Blog</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="feature-members" name="features" value="Members Area">
+                <label for="feature-members">Member login/private area</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="feature-forms" name="features" value="Advanced Forms">
+                <label for="feature-forms">Advanced forms (beyond contact forms)</label>
+              </div>
+            </div>
+            <input type="hidden" name="selectedFeatures" id="selected-features">
+          </div>
+
+          <div class="form-group">
+            <label for="additional-notes">Anything else you'd like me to know?</label>
+            <textarea id="additional-notes" name="additionalNotes" rows="3" placeholder="Any additional information, questions, or special requirements"></textarea>
+          </div>
+
+          <div class="btn-container">
+            <button type="button" class="btn btn-prev" data-prev="4">Previous</button>
+            <button type="submit" class="btn btn-submit">Submit</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Success Screen -->
+      <div class="success-screen" id="success-screen">
+        <div class="success-icon">✓</div>
+        <h2 class="success-title">Thank You!</h2>
+        <p class="success-message">
+          Your information has been submitted successfully. I'll review the details and get back to you within 1-2 business days to discuss next steps for your project.
+        </p>
+        <a href="index.html" class="btn-return">Return to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; <span id="year"></span> Forever Still Studio. All rights reserved.
+  </footer>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Submitting your information...</div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Navigation between steps
+      const form = document.getElementById('client-intake-form');
+      const steps = document.querySelectorAll('.form-step');
+      const progressSteps = document.querySelectorAll('.progress-step');
+      const nextButtons = document.querySelectorAll('.btn-next');
+      const prevButtons = document.querySelectorAll('.btn-prev');
+      
+      // Style card selection
+      const styleCards = document.querySelectorAll('.style-card');
+      styleCards.forEach(card => {
+        card.addEventListener('click', function() {
+          this.classList.toggle('selected');
+          
+          // Update hidden input with selected values
+          const selectedCards = document.querySelectorAll('.style-card.selected');
+          const selectedValues = Array.from(selectedCards).map(card => card.dataset.value);
+          document.getElementById('design-vibe').value = selectedValues.join(', ');
+        });
+      });
+      
+      // Color card selection (limit to 2)
+      const colorCards = document.querySelectorAll('.color-card');
+      colorCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const selectedCards = document.querySelectorAll('.color-card.selected');
+          
+          if (this.classList.contains('selected')) {
+            this.classList.remove('selected');
+          } else if (selectedCards.length < 2) {
+            this.classList.add('selected');
+          }
+          
+          // Update hidden input
+          const selectedValues = Array.from(document.querySelectorAll('.color-card.selected')).map(card => card.dataset.value);
+          document.getElementById('color-feel').value = selectedValues.join(', ');
+        });
+      });
+      
+      // Next button functionality
+      nextButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Basic validation for required fields before proceeding
+          const currentStep = this.closest('.form-step');
+          const currentStepNum = parseInt(currentStep.dataset.step);
+          const requiredFields = currentStep.querySelectorAll('[required]');
+          let isValid = true;
+          
+          requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+              field.classList.add('invalid');
+              isValid = false;
+            } else {
+              field.classList.remove('invalid');
+            }
+          });
+          
+          if (!isValid) {
+            alert('Please fill in all required fields before proceeding.');
+            return;
+          }
+          
+          // If valid, move to next step
+          const nextStepNum = parseInt(this.dataset.next);
+          
+          // Update progress bar
+          progressSteps.forEach(step => {
+            if (parseInt(step.dataset.step) < nextStepNum) {
+              step.classList.add('completed');
+            }
+            if (parseInt(step.dataset.step) === nextStepNum) {
+              step.classList.add('active');
+            } else {
+              step.classList.remove('active');
+            }
+          });
+          
+          // Show next step
+          steps.forEach(step => {
+            if (parseInt(step.dataset.step) === nextStepNum) {
+              step.classList.add('active');
+            } else {
+              step.classList.remove('active');
+            }
+          });
+          
+          // Scroll to top of form
+          window.scrollTo({
+            top: document.querySelector('.form-container').offsetTop - 20,
+            behavior: 'smooth'
+          });
+        });
+      });
+      
+      // Previous button functionality
+      prevButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const prevStepNum = parseInt(this.dataset.prev);
+          
+          // Update progress bar
+          progressSteps.forEach(step => {
+            if (parseInt(step.dataset.step) === prevStepNum) {
+              step.classList.add('active');
+            } else {
+              step.classList.remove('active');
+            }
+          });
+          
+          // Show previous step
+          steps.forEach(step => {
+            if (parseInt(step.dataset.step) === prevStepNum) {
+              step.classList.add('active');
+            } else {
+              step.classList.remove('active');
+            }
+          });
+          
+          // Scroll to top of form
+          window.scrollTo({
+            top: document.querySelector('.form-container').offsetTop - 20,
+            behavior: 'smooth'
+          });
+        });
+      });
+      
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Gather checkbox data before submitting
+        const featureCheckboxes = document.querySelectorAll('input[name="features"]:checked');
+        const selectedFeatures = Array.from(featureCheckboxes).map(cb => cb.value);
+        document.getElementById('selected-features').value = selectedFeatures.join(', ');
+        
+        // Show loading overlay
+        document.getElementById('loading-overlay').style.display = 'flex';
+        
+        // Create form data object
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        
+        // Send form data to server
+        fetch('https://subsector-botanist-karate.ngrok-free.dev/gates/push', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Fortress-Token': 'fss-forever-still-xK9mQpRt2026'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Network response was not ok');
+        })
+        .then(data => {
+          // Hide form and show success screen
+          form.style.display = 'none';
+          document.getElementById('success-screen').style.display = 'block';
+          
+          // Hide progress steps
+          document.querySelector('.progress-container').style.display = 'none';
+          
+          // Hide loading overlay
+          document.getElementById('loading-overlay').style.display = 'none';
+        })
+        .catch(error => {
+          console.error('Error submitting form:', error);
+          alert('There was a problem submitting your form. Please try again or contact me directly.');
+          document.getElementById('loading-overlay').style.display = 'none';
+        });
+      });
+      
+      // Make radio buttons and checkboxes more tappable
+      const checkboxLabels = document.querySelectorAll('.checkbox-item label');
+      checkboxLabels.forEach(label => {
+        label.addEventListener('click', function() {
+          const input = document.getElementById(this.getAttribute('for'));
+          if (input.type === 'checkbox') {
+            input.checked = !input.checked;
+          } else if (input.type === 'radio') {
+            input.checked = true;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
