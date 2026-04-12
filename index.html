@@ -116,7 +116,6 @@
     
     .container--narrow {
       max-width: 800px;
-      margin: 0 auto;
     }
     
     .section {
@@ -181,6 +180,14 @@
       margin: 0 auto;
     }
     
+    .nav__logo-text {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: white;
+      text-decoration: none;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    
     .nav__links {
       display: flex;
       list-style: none;
@@ -192,10 +199,11 @@
     .nav__links a {
       font-family: var(--font-sans);
       font-size: 0.9rem;
-      color: var(--color-dark);
+      color: white;
       text-decoration: none;
       font-weight: 400;
       transition: color 0.3s ease;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
     
     .nav__links a:hover,
@@ -214,7 +222,7 @@
       display: block;
       width: 24px;
       height: 2px;
-      background-color: var(--color-dark);
+      background-color: white;
       margin: 4px 0;
     }
     
@@ -272,13 +280,13 @@
     
     .btn--ghost {
       background-color: transparent;
-      color: var(--color-dark);
-      border: 1px solid var(--color-dark);
+      color: white;
+      border: 1px solid white;
     }
     
     .btn--ghost:hover {
-      background-color: var(--color-dark);
-      color: var(--color-cream);
+      background-color: white;
+      color: var(--color-dark);
     }
     
     .btn--ghost-gold {
@@ -315,10 +323,11 @@
       background-image: url('images/hero.jpg');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       overflow: hidden;
       text-align: center;
     }
-    
+
     .hero:before {
       content: '';
       position: absolute;
@@ -326,7 +335,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(250,247,244,0.7);
+      background-color: rgba(0,0,0,0.4);
       z-index: 1;
     }
     
@@ -338,14 +347,17 @@
       text-align: center;
       position: relative;
       z-index: 2;
+      color: white;
     }
     
     .hero__eyebrow {
       margin-bottom: var(--spacing-sm);
+      color: var(--color-gold);
     }
     
     .hero__headline {
       margin-bottom: var(--spacing-md);
+      color: white;
     }
     
     .hero__sub {
@@ -354,6 +366,7 @@
       max-width: 600px;
       margin: 0 auto var(--spacing-lg);
       text-align: center;
+      color: rgba(255,255,255,0.9);
     }
     
     .hero__actions {
@@ -370,7 +383,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: var(--color-text-light);
+      color: white;
       font-size: 0.8rem;
       z-index: 2;
     }
@@ -378,7 +391,7 @@
     .hero__scroll-line {
       width: 1px;
       height: 60px;
-      background-color: var(--color-text-light);
+      background-color: white;
       margin-top: var(--spacing-xs);
     }
     
@@ -431,7 +444,6 @@
       height: 0;
       padding-bottom: 125%;
       overflow: hidden;
-      background-color: var(--color-sage-light);
     }
     
     .story-split__img img {
@@ -451,7 +463,6 @@
       font-family: var(--font-serif);
       font-style: italic;
       padding: var(--spacing-xs) var(--spacing-sm);
-      z-index: 2;
     }
     
     .story-split__content {
@@ -462,6 +473,52 @@
     
     .story-split__content h2 {
       margin-bottom: var(--spacing-sm);
+    }
+    
+    /* Community Section */
+    .community-section {
+      position: relative;
+      padding: var(--spacing-xxl) 0;
+      background-color: var(--color-cream);
+      overflow: hidden;
+    }
+    
+    .community-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+    
+    .community-section__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .community-section__content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+    
+    .community-section__eyebrow {
+      color: var(--color-gold);
+    }
+    
+    .community-section h2 {
+      color: white;
     }
     
     /* Services Grid */
@@ -547,21 +604,24 @@
       border-radius: var(--radius-md);
       height: 0;
       padding-bottom: 75%;
+      background-color: var(--color-sage-light);
     }
-    
-    .portfolio-item__bg {
+
+    .portfolio-placeholder {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: var(--color-sage);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-cream);
+      background: linear-gradient(45deg, var(--color-sage-light), var(--color-sage));
+      color: var(--color-dark);
       font-family: var(--font-serif);
-      font-size: 1.5rem;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: var(--spacing-md);
     }
     
     .portfolio-item__overlay {
@@ -575,7 +635,6 @@
       opacity: 0;
       transition: opacity 0.3s ease;
       text-align: center;
-      z-index: 2;
     }
     
     .portfolio-item:hover .portfolio-item__overlay {
@@ -885,20 +944,8 @@
     .footer__legal a:hover {
       color: var(--color-gold);
     }
-    
-    /* Logo Placeholder */
-    .logo-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100px;
-      width: 200px;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1.2rem;
-    }
 
-    /* Reveal Animations - Would be controlled by JS */
+    /* Reveal Animations */
     .reveal {
       opacity: 1;
       transition: opacity 1s ease, transform 1s ease;
@@ -954,7 +1001,8 @@
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Forever Still Studio — Home">
-        <div class="logo-placeholder">Forever Still Studio</div>
+        <!-- Text logo instead of image -->
+        <span class="nav__logo-text">Forever Still Studio</span>
       </a>
     </div>
     <ul class="nav__links" role="list">
@@ -982,7 +1030,7 @@
   </div>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero Section with background image -->
     <section class="hero" aria-labelledby="hero-headline">
       <div class="hero__content">
         <p class="eyebrow hero__eyebrow">Forever Still Studio</p>
@@ -1021,7 +1069,7 @@
         <div class="story-split">
           <div class="story-split__img-wrap reveal">
             <div class="story-split__img">
-              <img src="images/founder.jpg" alt="Forever Still Studio - Founder">
+              <img src="images/founder.jpg" alt="Chrissy Schroer - Founder of Forever Still Studio">
               <div class="story-split__img-label">Est. 2026</div>
             </div>
           </div>
@@ -1042,6 +1090,22 @@
             <a href="about.html" class="btn btn--dark mt-md">About Me</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Community Section with founder-family image -->
+    <section class="community-section" aria-labelledby="community-heading">
+      <img src="images/founder-family.jpg" alt="Rooted in the community" class="community-section__bg">
+      <div class="community-section__content">
+        <p class="eyebrow community-section__eyebrow">Rooted in Community</p>
+        <h2 id="community-heading">Creating websites that<br><em>serve real people</em></h2>
+        <div class="divider"></div>
+        <p>
+          As a proud resident of rural Pennsylvania, I understand the unique needs of small businesses in our communities. My work isn't just about beautiful design — it's about creating digital tools that strengthen the connections between local businesses and the people they serve.
+        </p>
+        <p>
+          I believe that thoughtful, authentic design can help small businesses thrive, even in a digital landscape that often feels built for bigger players. Your business deserves a website that feels as genuine and hardworking as you are.
+        </p>
       </div>
     </section>
 
@@ -1162,7 +1226,7 @@
         
         <div class="portfolio-grid">
           <div class="portfolio-item reveal reveal-delay-1">
-            <div class="portfolio-item__bg">Titusville Bakery</div>
+            <div class="portfolio-placeholder">Titusville Bakery</div>
             <div class="portfolio-item__overlay">
               <h3 class="portfolio-item__title">Titusville Bakery</h3>
               <p class="portfolio-item__category">Website Design</p>
@@ -1170,7 +1234,7 @@
           </div>
           
           <div class="portfolio-item reveal reveal-delay-2">
-            <div class="portfolio-item__bg">Northwestern Auto</div>
+            <div class="portfolio-placeholder">Northwestern Auto</div>
             <div class="portfolio-item__overlay">
               <h3 class="portfolio-item__title">Northwestern Auto</h3>
               <p class="portfolio-item__category">Brand Identity</p>
@@ -1178,7 +1242,7 @@
           </div>
           
           <div class="portfolio-item reveal reveal-delay-3">
-            <div class="portfolio-item__bg">Rural Roots Farm</div>
+            <div class="portfolio-placeholder">Rural Roots Farm</div>
             <div class="portfolio-item__overlay">
               <h3 class="portfolio-item__title">Rural Roots Farm</h3>
               <p class="portfolio-item__category">Website & Strategy</p>
