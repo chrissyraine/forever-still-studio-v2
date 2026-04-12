@@ -57,6 +57,7 @@
       line-height: 1.7;
       color: var(--color-text);
       background-color: var(--color-cream);
+      text-align: center;
     }
     
     img {
@@ -70,6 +71,7 @@
       font-weight: 500;
       line-height: 1.2;
       margin-bottom: var(--spacing-sm);
+      text-align: center;
     }
     
     h1 {
@@ -86,6 +88,7 @@
     
     p {
       margin-bottom: var(--spacing-md);
+      text-align: center;
     }
     
     em {
@@ -100,6 +103,7 @@
       text-transform: uppercase;
       color: var(--color-gold);
       margin-bottom: var(--spacing-sm);
+      text-align: center;
     }
     
     /* Layout */
@@ -112,9 +116,7 @@
     
     .container--narrow {
       max-width: 800px;
-      width: 90%;
       margin: 0 auto;
-      padding: 0 var(--spacing-md);
     }
     
     .section {
@@ -144,7 +146,8 @@
     }
     
     .divider--left {
-      margin-left: 0;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .text-center {
@@ -163,27 +166,27 @@
       left: 0;
       right: 0;
       z-index: 100;
+      text-align: center;
     }
     
     .nav__inner {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 0 var(--spacing-md);
-      max-width: 1200px;
-      margin: 0 auto;
     }
     
-    .nav__logo img {
-      height: 100px;
-      width: auto;
+    .nav__logo {
       display: block;
+      margin: 0 auto;
     }
     
     .nav__links {
       display: flex;
       list-style: none;
       gap: var(--spacing-md);
+      justify-content: center;
+      margin-top: var(--spacing-md);
     }
     
     .nav__links a {
@@ -217,24 +220,28 @@
     
     .nav__mobile {
       display: none;
+      flex-direction: column;
+      align-items: center;
+      background-color: var(--color-cream);
+      padding: var(--spacing-lg) var(--spacing-md);
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      background-color: var(--color-cream);
-      padding: var(--spacing-xl) var(--spacing-md);
-      flex-direction: column;
-      align-items: center;
-      gap: var(--spacing-md);
       z-index: 99;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     
     .nav__mobile a {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 1.2rem;
       color: var(--color-dark);
       text-decoration: none;
+      padding: var(--spacing-sm) 0;
+      transition: color 0.3s ease;
+    }
+    
+    .nav__mobile a:hover {
+      color: var(--color-gold);
     }
     
     /* Buttons */
@@ -251,6 +258,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: all 0.3s ease;
+      margin: 0 auto;
     }
     
     .btn--primary {
@@ -287,6 +295,9 @@
     .btn--dark {
       background-color: var(--color-dark);
       color: var(--color-cream);
+      margin: 0 auto;
+      display: block;
+      max-width: 200px;
     }
     
     .btn--dark:hover {
@@ -301,9 +312,22 @@
       display: flex;
       align-items: center;
       position: relative;
-      background-color: var(--color-cream);
+      background-image: url('images/hero.jpg');
+      background-size: cover;
+      background-position: center;
       overflow: hidden;
       text-align: center;
+    }
+    
+    .hero:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(250,247,244,0.7);
+      z-index: 1;
     }
     
     .hero__content {
@@ -312,6 +336,8 @@
       margin: 0 auto;
       padding: 0 var(--spacing-md);
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
     
     .hero__eyebrow {
@@ -327,6 +353,7 @@
       font-size: clamp(1.2rem, 2vw, 1.5rem);
       max-width: 600px;
       margin: 0 auto var(--spacing-lg);
+      text-align: center;
     }
     
     .hero__actions {
@@ -345,6 +372,7 @@
       align-items: center;
       color: var(--color-text-light);
       font-size: 0.8rem;
+      z-index: 2;
     }
     
     .hero__scroll-line {
@@ -364,9 +392,11 @@
     
     .brand-strip__inner {
       display: flex;
-      justify-content: space-around;
-      white-space: nowrap;
+      justify-content: center;
       flex-wrap: wrap;
+      gap: var(--spacing-md);
+      white-space: nowrap;
+      padding: 0 var(--spacing-md);
     }
     
     .brand-strip__item {
@@ -376,19 +406,24 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--color-text-light);
-      padding: var(--spacing-xs) var(--spacing-md);
+      padding: 0 var(--spacing-sm);
     }
     
     /* Story Split */
     .story-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: var(--spacing-xl);
       align-items: center;
+      margin: 0 auto;
+      max-width: 900px;
     }
     
     .story-split__img-wrap {
       position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
     }
     
     .story-split__img {
@@ -396,7 +431,7 @@
       height: 0;
       padding-bottom: 125%;
       overflow: hidden;
-      background-color: var(--color-sage);
+      background-color: var(--color-sage-light);
     }
     
     .story-split__img img {
@@ -416,6 +451,13 @@
       font-family: var(--font-serif);
       font-style: italic;
       padding: var(--spacing-xs) var(--spacing-sm);
+      z-index: 2;
+    }
+    
+    .story-split__content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
     }
     
     .story-split__content h2 {
@@ -435,7 +477,8 @@
       padding: var(--spacing-md);
       border-radius: var(--radius-md);
       transition: transform 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     }
     
     .service-card:hover {
@@ -448,7 +491,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: var(--spacing-md);
+      margin: 0 auto var(--spacing-md);
       color: var(--color-gold);
     }
     
@@ -456,12 +499,14 @@
       font-family: var(--font-serif);
       font-size: 1.5rem;
       margin-bottom: var(--spacing-sm);
+      text-align: center;
     }
     
     .service-card__text {
       color: var(--color-text-light);
       font-size: 0.9rem;
       margin-bottom: 0;
+      text-align: center;
     }
     
     /* Quote Section */
@@ -502,21 +547,21 @@
       border-radius: var(--radius-md);
       height: 0;
       padding-bottom: 75%;
-      background-color: var(--color-sage);
     }
     
-    .portfolio-item img {
+    .portfolio-item__bg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .portfolio-item:hover img {
-      transform: scale(1.05);
+      background-color: var(--color-sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-cream);
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
     }
     
     .portfolio-item__overlay {
@@ -529,6 +574,8 @@
       color: white;
       opacity: 0;
       transition: opacity 0.3s ease;
+      text-align: center;
+      z-index: 2;
     }
     
     .portfolio-item:hover .portfolio-item__overlay {
@@ -539,6 +586,7 @@
       font-family: var(--font-serif);
       font-size: 1.5rem;
       margin-bottom: var(--spacing-xs);
+      text-align: center;
     }
     
     .portfolio-item__category {
@@ -546,6 +594,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      text-align: center;
     }
     
     /* Contact Form */
@@ -561,6 +610,7 @@
       display: flex;
       flex-direction: column;
       gap: var(--spacing-xs);
+      text-align: left;
     }
     
     .form-group label {
@@ -571,16 +621,16 @@
     .form-group textarea {
       padding: var(--spacing-sm);
       border: 1px solid rgba(255,255,255,0.2);
-      background-color: rgba(255,255,255,0.1);
-      color: var(--color-cream);
       border-radius: var(--radius-sm);
       font-family: inherit;
       font-size: inherit;
+      background-color: rgba(255,255,255,0.05);
+      color: var(--color-cream);
     }
     
     .form-group input::placeholder,
     .form-group textarea::placeholder {
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.3);
     }
     
     .form-status {
@@ -613,9 +663,13 @@
     }
     
     .process-step {
-      display: grid;
-      grid-template-columns: 80px 1fr;
+      display: flex;
+      flex-direction: column;
       gap: var(--spacing-md);
+      align-items: center;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
     }
     
     .process-step__number {
@@ -628,6 +682,11 @@
     
     .process-step__content h3 {
       margin-bottom: var(--spacing-sm);
+      text-align: center;
+    }
+    
+    .process-step__content p {
+      text-align: center;
     }
     
     /* Also from Forever Still */
@@ -679,7 +738,7 @@
       background-color: var(--color-dark);
       color: var(--color-cream);
       padding: var(--spacing-xl) 0 var(--spacing-md);
-      text-align: left;
+      text-align: center;
     }
     
     .footer__grid {
@@ -687,12 +746,14 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: var(--spacing-lg);
       margin-bottom: var(--spacing-xl);
+      text-align: center;
     }
     
     .footer__brand-name {
       font-family: var(--font-serif);
       font-size: 1.5rem;
       margin-bottom: var(--spacing-xs);
+      text-align: center;
     }
     
     .footer__brand-tagline {
@@ -700,17 +761,20 @@
       font-size: 1rem;
       font-style: italic;
       margin-bottom: var(--spacing-sm);
+      text-align: center;
     }
     
     .footer__brand-desc {
       font-size: 0.85rem;
       color: rgba(255, 255, 255, 0.7);
       margin-bottom: var(--spacing-md);
+      text-align: center;
     }
     
     .footer__socials {
       display: flex;
       gap: var(--spacing-sm);
+      justify-content: center;
     }
     
     .footer__social-link {
@@ -737,10 +801,12 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: var(--spacing-md);
+      text-align: center;
     }
     
     .footer__links {
       list-style: none;
+      text-align: center;
     }
     
     .footer__links li {
@@ -762,6 +828,8 @@
       display: flex;
       overflow: hidden;
       border-radius: var(--radius-sm);
+      max-width: 300px;
+      margin: 0 auto;
     }
     
     .footer__mini-form input {
@@ -790,13 +858,13 @@
     
     .footer__bottom {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding-top: var(--spacing-md);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       font-size: 0.8rem;
       flex-wrap: wrap;
-      gap: var(--spacing-sm);
+      gap: var(--spacing-md);
     }
     
     .footer__copy {
@@ -817,25 +885,22 @@
     .footer__legal a:hover {
       color: var(--color-gold);
     }
-
-    /* Placeholder Images */
-    .placeholder {
-      background: linear-gradient(45deg, var(--color-sage-light), var(--color-sage));
+    
+    /* Logo Placeholder */
+    .logo-placeholder {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-dark);
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      text-align: center;
-      padding: var(--spacing-md);
+      height: 100px;
+      width: 200px;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.2rem;
     }
 
     /* Reveal Animations - Would be controlled by JS */
     .reveal {
-      opacity: 1; /* Changed from 0 to make all content visible by default */
-      transform: translateY(0); /* Changed from translateY(20px) */
+      opacity: 1;
       transition: opacity 1s ease, transform 1s ease;
     }
     
@@ -858,31 +923,12 @@
     
     /* Responsive */
     @media (max-width: 900px) {
-      .nav__links,
-      .nav .btn--ghost-gold {
+      .nav__links {
         display: none;
       }
       
       .nav__hamburger {
         display: block;
-      }
-      
-      .story-split {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-      }
-      
-      .process-step {
-        grid-template-columns: 60px 1fr;
-      }
-
-      .section__header,
-      .story-split__content {
-        text-align: center;
-      }
-
-      .story-split__content .divider--left {
-        margin: var(--spacing-md) auto;
       }
     }
     
@@ -899,30 +945,6 @@
       
       .hero__actions .btn {
         width: 100%;
-        max-width: 220px;
-      }
-      
-      .process-step {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .process-step__number {
-        margin-bottom: var(--spacing-sm);
-      }
-      
-      .footer__bottom {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .footer__grid > div {
-        text-align: center;
-      }
-
-      .footer__socials {
-        justify-content: center;
       }
     }
   </style>
@@ -932,23 +954,22 @@
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Forever Still Studio — Home">
-        <!-- Placeholder for logo image -->
-        <div class="placeholder" style="height:100px;width:160px;display:block;">
-          Studio Logo
-        </div>
+        <div class="logo-placeholder">Forever Still Studio</div>
       </a>
-      <ul class="nav__links" role="list">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="contact.html" class="btn btn--ghost-gold" style="font-size:0.62rem;padding:0.6rem 1.4rem;">Get in Touch</a>
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div style="text-align:center;margin-top:var(--spacing-sm);">
+      <a href="contact.html" class="btn btn--ghost-gold" style="font-size:0.62rem;padding:0.6rem 1.4rem;">Get in Touch</a>
+    </div>
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- Mobile Navigation -->
@@ -973,8 +994,8 @@
           Websites for small businesses who know authenticity and professionalism are the same thing.
         </p>
         <div class="hero__actions">
-          <a href="services.html" class="btn btn--primary">Our Services</a>
-          <a href="work.html" class="btn btn--ghost">View Our Work</a>
+          <a href="services.html" class="btn btn--primary">My Services</a>
+          <a href="work.html" class="btn btn--ghost">View My Work</a>
         </div>
       </div>
       <div class="hero__scroll" aria-hidden="true">
@@ -1000,28 +1021,25 @@
         <div class="story-split">
           <div class="story-split__img-wrap reveal">
             <div class="story-split__img">
-              <!-- Placeholder for studio image -->
-              <div class="placeholder" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                Studio Photo
-              </div>
+              <img src="images/founder.jpg" alt="Forever Still Studio - Founder">
+              <div class="story-split__img-label">Est. 2026</div>
             </div>
-            <div class="story-split__img-label">Est. 2026</div>
           </div>
 
           <div class="story-split__content reveal reveal-delay-2">
             <p class="eyebrow">The Studio</p>
             <h2 id="story-heading">Digital design built on<br><em>something real</em></h2>
-            <div class="divider divider--left"></div>
+            <div class="divider"></div>
             <p>
               Forever Still Studio was born from a simple truth: small businesses need websites that feel as authentic as they are. Not corporate templates. Not flashy gimmicks. Something real.
             </p>
             <p>
-              We create digital spaces for small businesses throughout rural Pennsylvania — spaces that tell your story with clarity and purpose. Our approach is thoughtful but practical: your website should work as hard as you do.
+              I create digital spaces for small businesses throughout rural Pennsylvania — spaces that tell your story with clarity and purpose. My approach is thoughtful but practical: your website should work as hard as you do.
             </p>
             <p>
               Every design, every line of code, every word is crafted with care for the business owner who knows their work matters. Who is still becoming. Who is forever still.
             </p>
-            <a href="about.html" class="btn btn--dark mt-md">About Us</a>
+            <a href="about.html" class="btn btn--dark mt-md">About Me</a>
           </div>
         </div>
       </div>
@@ -1031,7 +1049,7 @@
     <section class="section" aria-labelledby="services-heading">
       <div class="container">
         <header class="section__header reveal">
-          <p class="eyebrow">What We Offer</p>
+          <p class="eyebrow">What I Offer</p>
           <h2 id="services-heading">Services designed for<br><em>small businesses</em></h2>
           <div class="divider"></div>
         </header>
@@ -1100,7 +1118,7 @@
     <section class="section section--sage" aria-labelledby="process-heading">
       <div class="container--narrow">
         <header class="section__header reveal">
-          <p class="eyebrow">How We Work</p>
+          <p class="eyebrow">How I Work</p>
           <h2 id="process-heading">A thoughtful approach to<br><em>digital design</em></h2>
           <div class="divider"></div>
         </header>
@@ -1110,7 +1128,7 @@
             <div class="process-step__number">01</div>
             <div class="process-step__content">
               <h3>Listen & Understand</h3>
-              <p>We begin with conversation. Understanding your business, your customers, your goals, and your challenges. This isn't just about websites — it's about what your business needs to grow.</p>
+              <p>I begin with conversation. Understanding your business, your customers, your goals, and your challenges. This isn't just about websites — it's about what your business needs to grow.</p>
             </div>
           </div>
           
@@ -1118,7 +1136,7 @@
             <div class="process-step__number">02</div>
             <div class="process-step__content">
               <h3>Design & Develop</h3>
-              <p>With a clear understanding of your needs, we craft a digital presence that speaks to your customers. Clean code, thoughtful design, and content that connects — all working together.</p>
+              <p>With a clear understanding of your needs, I craft a digital presence that speaks to your customers. Clean code, thoughtful design, and content that connects — all working together.</p>
             </div>
           </div>
           
@@ -1126,7 +1144,7 @@
             <div class="process-step__number">03</div>
             <div class="process-step__content">
               <h3>Launch & Support</h3>
-              <p>Your website goes live, but our relationship doesn't end there. We provide training, support, and guidance to help you manage and grow your digital presence with confidence.</p>
+              <p>Your website goes live, but our relationship doesn't end there. I provide training, support, and guidance to help you manage and grow your digital presence with confidence.</p>
             </div>
           </div>
         </div>
@@ -1137,17 +1155,14 @@
     <section class="section" aria-labelledby="work-heading">
       <div class="container">
         <header class="section__header reveal">
-          <p class="eyebrow">Our Work</p>
+          <p class="eyebrow">My Work</p>
           <h2 id="work-heading">Recent projects for<br><em>local businesses</em></h2>
           <div class="divider"></div>
         </header>
         
         <div class="portfolio-grid">
           <div class="portfolio-item reveal reveal-delay-1">
-            <!-- Placeholder for portfolio image -->
-            <div class="placeholder" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-              Portfolio Item 1
-            </div>
+            <div class="portfolio-item__bg">Titusville Bakery</div>
             <div class="portfolio-item__overlay">
               <h3 class="portfolio-item__title">Titusville Bakery</h3>
               <p class="portfolio-item__category">Website Design</p>
@@ -1155,10 +1170,7 @@
           </div>
           
           <div class="portfolio-item reveal reveal-delay-2">
-            <!-- Placeholder for portfolio image -->
-            <div class="placeholder" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-              Portfolio Item 2
-            </div>
+            <div class="portfolio-item__bg">Northwestern Auto</div>
             <div class="portfolio-item__overlay">
               <h3 class="portfolio-item__title">Northwestern Auto</h3>
               <p class="portfolio-item__category">Brand Identity</p>
@@ -1166,10 +1178,7 @@
           </div>
           
           <div class="portfolio-item reveal reveal-delay-3">
-            <!-- Placeholder for portfolio image -->
-            <div class="placeholder" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-              Portfolio Item 3
-            </div>
+            <div class="portfolio-item__bg">Rural Roots Farm</div>
             <div class="portfolio-item__overlay">
               <h3 class="portfolio-item__title">Rural Roots Farm</h3>
               <p class="portfolio-item__category">Website & Strategy</p>
@@ -1190,7 +1199,7 @@
           <p class="eyebrow">Get In Touch</p>
           <h2 id="contact-heading">Let's build something<br><em>authentic together</em></h2>
           <div class="divider"></div>
-          <p>Ready to discuss your project? Have questions about our services? We'd love to hear from you.</p>
+          <p>Ready to discuss your project? Have questions about my services? I'd love to hear from you.</p>
         </header>
         
         <form id="contactForm" class="contact-form reveal">
@@ -1251,9 +1260,9 @@
         <div>
           <p class="footer__col-title">Explore</p>
           <ul class="footer__links" role="list">
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html">About Me</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="work.html">Our Work</a></li>
+            <li><a href="work.html">My Work</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -1310,17 +1319,42 @@
         contactForm.addEventListener('submit', async (e) => {
           e.preventDefault();
           
-          // Show success message (for demo purposes)
-          formStatus.textContent = "Thank you! Your message has been sent successfully.";
-          formStatus.className = "form-status success";
+          // Collect form data
+          const formData = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            message: document.getElementById('message').value.trim()
+          };
           
-          // Reset form
-          contactForm.reset();
-          
-          // Hide success message after 5 seconds
-          setTimeout(() => {
-            formStatus.style.opacity = "0";
-          }, 5000);
+          try {
+            // Here you would normally send the form data to your server
+            // For now, we'll just simulate a successful submission
+            
+            // Show success message
+            formStatus.textContent = "Thank you! Your message has been sent successfully.";
+            formStatus.className = "form-status success";
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              formStatus.style.opacity = "0";
+            }, 5000);
+            
+          } catch (error) {
+            console.error('Error submitting form:', error);
+            
+            // Show error message
+            formStatus.textContent = "Something went wrong. Please try again later.";
+            formStatus.className = "form-status error";
+            
+            // Hide error message after 5 seconds
+            setTimeout(() => {
+              formStatus.style.opacity = "0";
+            }, 5000);
+          }
         });
       }
     });
