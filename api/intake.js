@@ -54,6 +54,7 @@ module.exports = async function handler(req, res) {
   if (d.maintenancePlan)               props['Maintenance Plan'] = { select: { name: d.maintenancePlan === 'yes' ? 'Yes' : 'No' } };
 
   try {
+    // ── Save to Notion ──────────────────────────────────────────
     const notionRes = await fetch('https://api.notion.com/v1/pages', {
       method: 'POST',
       headers: {
@@ -72,6 +73,48 @@ module.exports = async function handler(req, res) {
       console.error('Notion error:', err);
       return res.status(500).json({ error: 'Failed to save to Notion', detail: err });
     }
+
+    // ── Send email notification via Resend ──────────────────────
+    const budgetLabel    = budgetMap[d.budget] || d.budget || 'Not specified';
+    const timelineLabel  = timelineMap[d.timeline] || d.timeline || 'Not specified';
+
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Forever Still Studio <onboarding@resend.dev>',
+        to: 'chrissy@foreverstillstudio.com',
+        subject: `New Client Intake: ${d.businessName || 'New Lead'}`,
+        html: `
+          <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:32px;background:#1a1a1a;color:#f0ebe4;">
+            <h2 style="color:#C8A96A;margin-bottom:4px;">New Client Intake</h2>
+            <p style="color:#9c8c82;margin-top:0;font-size:13px;">Submitted via foreverstillstudio.com</p>
+            <hr style="border:none;border-top:1px solid rgba(200,169,106,0.2);margin:24px 0;">
+
+            <table style="width:100%;border-collapse:collapse;font-size:14px;">
+              <tr><td style="padding:8px 0;color:#9c8c82;width:40%;">Business Name</td><td style="padding:8px 0;color:#f0ebe4;">${d.businessName || '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Owner Name</td><td style="padding:8px 0;color:#f0ebe4;">${d.ownerName || '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Email</td><td style="padding:8px 0;color:#C8A96A;"><a href="mailto:${d.email}" style="color:#C8A96A;">${d.email || '—'}</a></td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Phone</td><td style="padding:8px 0;color:#f0ebe4;">${d.phone || '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Industry</td><td style="padding:8px 0;color:#f0ebe4;">${d.industry || '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Location</td><td style="padding:8px 0;color:#f0ebe4;">${d.address || '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Budget</td><td style="padding:8px 0;color:#f0ebe4;">${budgetLabel}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Timeline</td><td style="padding:8px 0;color:#f0ebe4;">${timelineLabel}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Services</td><td style="padding:8px 0;color:#f0ebe4;">${Array.isArray(d.services) ? d.services.join(', ') : (d.services || '—')}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Biggest Problem</td><td style="padding:8px 0;color:#f0ebe4;">${d.biggestProblem || '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Goal</td><td style="padding:8px 0;color:#f0ebe4;">${d.goal || '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Referral</td><td style="padding:8px 0;color:#f0ebe4;">${d.referral || '—'}</td></tr>
+            </table>
+
+            <hr style="border:none;border-top:1px solid rgba(200,169,106,0.2);margin:24px 0;">
+            <p style="font-size:12px;color:#9c8c82;text-align:center;">View full intake in <a href="https://notion.so" style="color:#C8A96A;">Notion</a></p>
+          </div>
+        `,
+      }),
+    });
 
     return res.status(200).json({ success: true });
   } catch (err) {
