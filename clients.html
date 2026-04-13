@@ -1706,7 +1706,8 @@
           document.getElementById('success-screen').classList.add('active');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
-          alert('Something went wrong. Please try again or email us directly.');
+          const errData = await res.json().catch(() => ({}));
+          alert('Something went wrong: ' + (errData.detail || errData.error || res.status));
         }
       } catch (err) {
         overlay.classList.remove('active');

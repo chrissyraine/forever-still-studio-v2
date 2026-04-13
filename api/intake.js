@@ -29,8 +29,6 @@ export default async function handler(req, res) {
   const props = {
     'Business Name':     { title: [{ text: { content: d.businessName || 'Unnamed' } }] },
     'Owner Name':        { rich_text: [{ text: { content: d.ownerName || '' } }] },
-    'Email':             { email: d.email || null },
-    'Phone':             { phone_number: d.phone || null },
     'Industry':          { rich_text: [{ text: { content: d.industry || '' } }] },
     'Location':          { rich_text: [{ text: { content: d.address || '' } }] },
     'Referral':          { rich_text: [{ text: { content: d.referral || '' } }] },
@@ -41,9 +39,13 @@ export default async function handler(req, res) {
     'Avoid Notes':       { rich_text: [{ text: { content: d.avoidNotes || '' } }] },
     'Services Requested':{ rich_text: [{ text: { content: Array.isArray(d.services) ? d.services.join(', ') : (d.services || '') } }] },
     'Testimonials':      { rich_text: [{ text: { content: d.testimonials || '' } }] },
-    'Drive Link':        { url: d.driveLink || null },
     'Status':            { select: { name: 'New' } },
   };
+
+  // Only add typed fields if they have values (Notion rejects empty typed fields)
+  if (d.email)     props['Email']      = { email: d.email };
+  if (d.phone)     props['Phone']      = { phone_number: d.phone };
+  if (d.driveLink) props['Drive Link'] = { url: d.driveLink };
 
   if (budgetMap[d.budget])               props['Budget']           = { select: { name: budgetMap[d.budget] } };
   if (timelineMap[d.timeline])           props['Timeline']         = { select: { name: timelineMap[d.timeline] } };
@@ -70,7 +72,7 @@ export default async function handler(req, res) {
     if (!notionRes.ok) {
       const err = await notionRes.text();
       console.error('Notion error:', err);
-      return res.status(500).json({ error: 'Failed to save to Notion' });
+      return res.status(500).json({ error: 'Failed to save to Notion', detail: err });
     }
 
     return res.status(200).json({ success: true });
