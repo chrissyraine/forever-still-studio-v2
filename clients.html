@@ -1,1528 +1,1718 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Client Intake Form | Forever Still Studio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Intake — Forever Still Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --color-primary: #1a2639;
-      --color-secondary: #d4a373;
-      --color-accent: #9c6644;
-      --color-text: #333333;
-      --color-text-light: #ffffff;
-      --color-background: #f5f5f5;
-      --color-background-alt: #e9e9e9;
-      --font-heading: 'Cinzel', serif;
-      --font-body: 'Montserrat', sans-serif;
-      --border-radius: 4px;
-      --transition: all 0.3s ease;
-      --padding-container: 1.5rem;
-      --padding-element: 1rem;
-      --font-size-base: 16px;
-      --font-size-heading: 24px;
-      --touch-target: 48px;
+      --bg:       #0d0b0b;
+      --card:     #141210;
+      --elevated: #1a1714;
+      --gold:     #C8A96A;
+      --text:     #f0ebe4;
+      --muted:    rgba(240,235,228,0.45);
+      --border:   rgba(200,169,106,0.18);
+      --border-focus: #C8A96A;
     }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html {
-      font-size: var(--font-size-base);
-    }
-    
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: var(--font-body);
-      color: var(--color-text);
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
       line-height: 1.6;
-      background-color: var(--color-background);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      font-size: var(--font-size-base);
     }
-    
-    header {
-      background-color: var(--color-primary);
-      color: var(--color-text-light);
-      padding: 1.5rem var(--padding-container);
+
+    /* ── NAV ─────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,11,11,0.97);
+      border-bottom: 1px solid rgba(200,169,106,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 72px;
+    }
+    .site-nav img.logo {
+      height: 80px;
+      width: auto;
+      object-fit: contain;
+    }
+    .nav-portal-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(200,169,106,0.55);
+    }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
       text-align: center;
+      padding: 64px 24px 48px;
     }
-    
-    .logo {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+    .eyebrow {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
     }
-    
-    .tagline {
-      font-size: 1rem;
-      opacity: 0.9;
-      font-style: italic;
-    }
-    
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem var(--padding-container);
-      flex: 1;
-      width: 100%;
-    }
-    
-    .form-container {
-      background-color: white;
-      border-radius: var(--border-radius);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      position: relative;
-    }
-    
-    .progress-container {
-      padding: var(--padding-element);
-      background-color: var(--color-primary);
-    }
-    
-    .progress-bar {
+    .divider {
       display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 auto 24px;
+      max-width: 320px;
+    }
+    .divider hr {
+      flex: 1;
+      border: none;
+      border-top: 1px solid rgba(200,169,106,0.35);
+    }
+    .divider-diamond {
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+    .hero-script {
+      font-family: 'Allura', cursive;
+      font-size: 64px;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      font-weight: 300;
+      color: rgba(240,235,228,0.7);
+      margin-bottom: 10px;
+    }
+    .hero-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    /* ── PROGRESS ────────────────────────────────────── */
+    .progress-wrap {
+      background: var(--card);
+      padding: 32px 24px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .progress-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
       justify-content: space-between;
       position: relative;
-      margin: 0 auto;
-      max-width: 600px;
     }
-    
-    .progress-bar::before {
+    .progress-line {
+      position: absolute;
+      top: 19px;
+      left: 20px;
+      right: 20px;
+      height: 1px;
+      background: rgba(200,169,106,0.2);
+      z-index: 0;
+    }
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 1;
+      cursor: default;
+    }
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 0;
+      background: var(--elevated);
+      border: 1px solid rgba(200,169,106,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+    .progress-step.active .step-circle {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #0d0b0b;
+      font-weight: 600;
+    }
+    .progress-step.completed .step-circle {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #0d0b0b;
+    }
+    .step-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+      transition: color 0.25s;
+    }
+    .progress-step.active .step-label,
+    .progress-step.completed .step-label {
+      color: var(--gold);
+    }
+
+    /* ── MAIN WRAPPER ────────────────────────────────── */
+    .form-outer {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* ── STEP PANEL ──────────────────────────────────── */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    .step-header { margin-bottom: 36px; }
+    .step-eyebrow {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .step-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ── FORM ELEMENTS ───────────────────────────────── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 24px;
+    }
+    .form-grid .span-2 { grid-column: span 2; }
+
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(200,169,106,0.7);
+    }
+    .field input,
+    .field textarea,
+    .field select {
+      background: var(--card);
+      border: 1px solid rgba(200,169,106,0.2);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 12px 14px;
+      outline: none;
+      width: 100%;
+      border-radius: 0;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--gold);
+    }
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(240,235,228,0.2);
+    }
+    .field textarea { resize: vertical; min-height: 100px; }
+
+    .select-wrap { position: relative; }
+    .select-wrap select { padding-right: 36px; cursor: pointer; }
+    .select-wrap::after {
       content: '';
       position: absolute;
+      right: 14px;
       top: 50%;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background-color: rgba(255, 255, 255, 0.2);
       transform: translateY(-50%);
-      z-index: 1;
+      pointer-events: none;
+      width: 12px;
+      height: 8px;
+      background: var(--gold);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
     }
-    
-    .progress-step {
-      position: relative;
-      z-index: 2;
-      width: var(--touch-target);
-      height: var(--touch-target);
-      border-radius: 50%;
-      background-color: var(--color-primary);
-      border: 2px solid rgba(255, 255, 255, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-text-light);
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: var(--transition);
-    }
-    
-    .progress-step.active {
-      background-color: var(--color-secondary);
-      color: var(--color-primary);
-      border-color: var(--color-secondary);
-    }
-    
-    .progress-step.completed {
-      background-color: var(--color-secondary);
-      color: var(--color-primary);
-    }
-    
-    .progress-labels {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
-      color: var(--color-text-light);
-      max-width: 600px;
-      margin: 0.5rem auto 0;
-    }
-    
-    .progress-label {
-      text-align: center;
-      width: 60px;
-      margin-left: -15px;
-      margin-right: -15px;
-      font-size: 0.7rem;
-    }
-    
-    .form-step {
-      display: none;
-      padding: 2rem var(--padding-element);
-    }
-    
-    .form-step.active {
-      display: block;
-    }
-    
-    .step-title {
-      font-family: var(--font-heading);
-      font-size: var(--font-size-heading);
-      margin-bottom: 1rem;
-      color: var(--color-primary);
-      text-align: center;
-    }
-    
-    .step-subtitle {
-      font-size: 1rem;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: var(--color-accent);
-    }
-    
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    label {
-      display: block;
-      margin-bottom: 0.75rem;
+    .select-wrap select option { background: #1a1714; color: var(--text); }
+
+    /* ── STYLE CARDS ─────────────────────────────────── */
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
       font-weight: 500;
-      color: var(--color-primary);
-      font-size: var(--font-size-base);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(200,169,106,0.7);
+      margin-bottom: 14px;
+      margin-top: 32px;
     }
-    
-    input, select, textarea {
-      width: 100%;
-      padding: 0.9rem;
-      border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      font-family: var(--font-body);
-      font-size: var(--font-size-base);
-      transition: var(--transition);
-      -webkit-appearance: none; /* Prevents iOS styling */
-      appearance: none;
-    }
-    
-    /* Special styling for select to add dropdown arrow */
-    select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231a2639' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.7rem top 50%;
-      background-size: 1rem auto;
-      padding-right: 2.5rem;
-    }
-    
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--color-secondary);
-      box-shadow: 0 0 0 2px rgba(212, 163, 115, 0.2);
-    }
-    
-    .form-row {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .form-col {
-      flex: 1;
-      min-width: 0; /* Prevents overflow in flex items */
-    }
-    
-    .btn-container {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 2rem;
-      gap: 1rem;
-    }
-    
-    .btn {
-      min-height: var(--touch-target);
-      padding: 0.9rem 1.5rem;
-      border: none;
-      border-radius: var(--border-radius);
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: var(--font-size-base);
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      min-width: 120px; /* Ensuring touch target width */
-    }
-    
-    .btn-prev {
-      background-color: var(--color-background-alt);
-      color: var(--color-text);
-    }
-    
-    .btn-prev:hover {
-      background-color: #ddd;
-    }
-    
-    .btn-next, .btn-submit {
-      background-color: var(--color-secondary);
-      color: var(--color-primary);
-    }
-    
-    .btn-next:hover, .btn-submit:hover {
-      background-color: #c09664;
-    }
-    
-    .card-container {
+    .style-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-    
     .style-card {
-      border: 2px solid #ddd;
-      border-radius: var(--border-radius);
-      overflow: hidden;
+      background: var(--card);
+      border: 1px solid rgba(200,169,106,0.12);
       cursor: pointer;
-      transition: var(--transition);
-      min-height: 140px; /* Ensure adequate touch size */
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
     }
-    
+    .style-card:hover { border-color: rgba(200,169,106,0.4); }
     .style-card.selected {
-      border-color: var(--color-secondary);
-      box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+      border: 2px solid var(--gold);
+      background: rgba(200,169,106,0.04);
     }
-    
     .style-card img {
       width: 100%;
-      height: 100px;
+      aspect-ratio: 4/3;
       object-fit: cover;
+      display: block;
     }
-    
-    .style-card-title {
-      padding: 0.75rem;
-      text-align: center;
-      font-size: var(--font-size-base);
-      font-weight: 600;
-      background-color: var(--color-background);
+    .style-card-label {
+      background: var(--elevated);
+      padding: 10px 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.04em;
     }
-    
+    .style-check {
+      display: none;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 22px;
+      height: 22px;
+      background: var(--gold);
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #0d0b0b;
+      font-weight: 700;
+    }
+    .style-card.selected .style-check { display: flex; }
+
+    /* ── COLOR SWATCHES ──────────────────────────────── */
     .color-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
     }
-    
-    .color-card {
-      height: var(--touch-target);
-      border-radius: var(--border-radius);
+    .color-swatch {
       cursor: pointer;
-      transition: var(--transition);
+      border: 1px solid rgba(200,169,106,0.15);
       position: relative;
-      overflow: hidden;
+      transition: border-color 0.2s;
+      border-radius: 0;
     }
-    
-    .color-card.selected::after {
-      content: '✓';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1.5rem;
-      color: white;
-      text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    .color-swatch:hover { border-color: rgba(200,169,106,0.4); }
+    .color-swatch.selected { border: 2px solid var(--gold); }
+    .swatch-grad {
+      height: 56px;
+      display: block;
     }
-    
-    .color-warm { background: linear-gradient(135deg, #ff7e5f, #feb47b); }
-    .color-cool { background: linear-gradient(135deg, #5ee7df, #b490ca); }
-    .color-earthy { background: linear-gradient(135deg, #799f0c, #acbb78); }
-    .color-bold { background: linear-gradient(135deg, #11998e, #38ef7d); }
-    .color-muted { background: linear-gradient(135deg, #8e9eab, #eef2f3); }
-    .color-dark { background: linear-gradient(135deg, #232526, #414345); }
-    
-    .field-note {
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-      color: #666;
-      font-style: italic;
-    }
-    
-    .checkbox-group {
-      margin-top: 0.75rem;
-    }
-    
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-      min-height: var(--touch-target);
-    }
-    
-    .checkbox-item input[type="checkbox"],
-    .checkbox-item input[type="radio"] {
-      width: 24px;
-      height: 24px;
-      margin-right: 0.75rem;
-      cursor: pointer;
-    }
-    
-    .checkbox-item label {
-      margin-bottom: 0;
-      cursor: pointer;
-    }
-    
-    .success-screen {
+    .swatch-check {
       display: none;
-      text-align: center;
-      padding: 3rem 2rem;
-    }
-    
-    .success-icon {
-      font-size: 5rem;
-      color: var(--color-secondary);
-      margin-bottom: 1.5rem;
-    }
-    
-    .success-title {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--color-primary);
-    }
-    
-    .success-message {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .btn-return {
-      display: inline-flex;
+      position: absolute;
+      inset: 0;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
-      min-height: var(--touch-target);
-      padding: 0.9rem 1.5rem;
-      border-radius: var(--border-radius);
-      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(0,0,0,0.22);
+    }
+    .color-swatch.selected .swatch-check { display: flex; }
+    .swatch-name {
+      padding: 6px 4px;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--muted);
+      background: var(--card);
+    }
+
+    /* ── WEBSITE INSPIRATION ─────────────────────────── */
+    .inspiration-box {
+      background: var(--card);
+      border: 1px solid rgba(200,169,106,0.18);
+      padding: 24px;
+      margin-top: 8px;
+    }
+    .inspiration-box-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .url-entry { margin-bottom: 20px; }
+    .url-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .url-row input {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid rgba(200,169,106,0.2);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      padding: 10px 12px;
+      outline: none;
+      border-radius: 0;
+      transition: border-color 0.2s;
+    }
+    .url-row input:focus { border-color: var(--gold); }
+    .url-row input::placeholder { color: rgba(240,235,228,0.2); }
+    .btn-remove-url {
+      background: transparent;
+      border: 1px solid rgba(200,169,106,0.3);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .btn-remove-url:hover { background: rgba(200,169,106,0.08); }
+    .feature-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      position: relative;
+    }
+    .feature-tag {
+      background: var(--gold);
+      color: #0d0b0b;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      cursor: pointer;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .feature-tag .tag-x {
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 700;
+    }
+    .btn-add-feature {
+      background: var(--gold);
+      color: #0d0b0b;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
       font-weight: 600;
-      background-color: var(--color-primary);
-      color: var(--color-text-light);
-      transition: var(--transition);
-      font-size: var(--font-size-base);
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0;
+      flex-shrink: 0;
+      position: relative;
     }
-    
-    .btn-return:hover {
-      background-color: var(--color-accent);
+    .feature-dropdown {
+      display: none;
+      position: absolute;
+      top: 32px;
+      left: 0;
+      z-index: 50;
+      background: var(--elevated);
+      border: 1px solid rgba(200,169,106,0.3);
+      min-width: 200px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     }
-    
-    footer {
-      background-color: var(--color-primary);
-      color: var(--color-text-light);
-      padding: 1rem var(--padding-container);
+    .feature-dropdown.open { display: block; }
+    .feature-dropdown-item {
+      padding: 9px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .feature-dropdown-item:hover { background: rgba(200,169,106,0.12); color: var(--gold); }
+
+    .btn-add-url {
+      background: var(--gold);
+      color: #0d0b0b;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 9px 18px;
+      cursor: pointer;
+      border-radius: 0;
+      margin-top: 6px;
+      transition: opacity 0.2s;
+    }
+    .btn-add-url:hover { opacity: 0.88; }
+
+    /* ── SCREENSHOT UPLOAD ───────────────────────────── */
+    .upload-area {
+      border: 1px dashed rgba(200,169,106,0.25);
+      background: var(--card);
+      padding: 36px 24px;
       text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.8;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      margin-top: 8px;
     }
-    
-    /* Website Inspiration Section */
-    .website-ref-container {
-      border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      padding: 1.5rem;
-      background-color: var(--color-background);
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
+    .upload-area:hover { border-color: rgba(200,169,106,0.5); }
+    .upload-area input[type="file"] { display: none; }
+    .upload-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
     }
-    
-    .website-ref-title {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
-      text-align: center;
+    .upload-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(240,235,228,0.25);
     }
-    
-    .website-url-container {
+    .upload-thumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .upload-thumb {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border: 1px solid rgba(200,169,106,0.2);
+    }
+
+    /* ── RADIO / CHECKBOX ────────────────────────────── */
+    .radio-group,
+    .check-group {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 10px;
     }
-    
-    .website-url-row {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    
-    .website-url-input {
-      flex: 1;
-    }
-    
-    .website-feature-checkbox {
-      margin-left: 0.5rem;
-    }
-    
-    .add-url-btn {
-      height: var(--touch-target);
-      width: var(--touch-target);
-      min-width: var(--touch-target);
-      font-size: 1.5rem;
+    .radio-item,
+    .check-item {
       display: flex;
       align-items: center;
-      justify-content: center;
-      background-color: var(--color-secondary);
-      color: var(--color-primary);
-      border: none;
-      border-radius: var(--border-radius);
+      gap: 12px;
       cursor: pointer;
     }
-    
-    .remove-url-btn {
-      height: var(--touch-target);
-      width: var(--touch-target);
-      min-width: var(--touch-target);
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #f0f0f0;
-      color: #666;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-    }
-    
-    .feature-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.3rem 0.8rem;
-      background-color: var(--color-secondary);
-      color: var(--color-primary);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-right: 0.5rem;
-      margin-top: 0.5rem;
-      cursor: pointer;
-    }
-    
-    .feature-tag.selected {
-      background-color: var(--color-primary);
-      color: var(--color-text-light);
-    }
-    
-    .tags-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    
-    .feature-dropdown {
-      position: absolute;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      width: 200px;
-      display: none;
-      padding: 0.5rem;
-    }
-    
-    .feature-dropdown-item {
-      padding: 0.75rem 1rem;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      border-radius: var(--border-radius);
-      font-size: var(--font-size-base);
-    }
-    
-    .feature-dropdown-item:hover {
-      background-color: var(--color-background);
-    }
-    
-    .website-notes {
-      margin-top: 1rem;
-    }
-    
-    .website-preview-container {
-      margin-top: 1rem;
-      border: 1px dashed #ddd;
-      border-radius: var(--border-radius);
-      padding: 1.5rem;
-      text-align: center;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    
-    .website-preview-container:hover {
-      background-color: var(--color-background-alt);
-    }
-    
-    .website-preview-placeholder {
-      color: #999;
-      font-style: italic;
-    }
-    
-    .website-preview-image {
-      max-width: 100%;
-      max-height: 200px;
-      margin-top: 1rem;
-      border-radius: var(--border-radius);
-      display: none;
-    }
-    
-    .file-input {
-      display: none;
-    }
-    
-    .screenshot-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    
-    .screenshot-item {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-    }
-    
-    .screenshot-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .remove-screenshot {
-      position: absolute;
-      top: 5px;
-      right: 5px;
+    .radio-item input[type="radio"],
+    .check-item input[type="checkbox"] { display: none; }
+
+    .custom-radio,
+    .custom-check {
       width: 20px;
       height: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid rgba(200,169,106,0.45);
+      background: var(--card);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .custom-radio { border-radius: 50%; }
+
+    .radio-item input[type="radio"]:checked + .custom-radio,
+    .check-item input[type="checkbox"]:checked + .custom-check {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .radio-item input[type="radio"]:checked + .custom-radio::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0d0b0b;
+    }
+    .check-item input[type="checkbox"]:checked + .custom-check::after {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 9px;
+      border: 2px solid #0d0b0b;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translateY(-1px);
+    }
+    .radio-text,
+    .check-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text);
+    }
+
+    /* ── SERVICES LIST ───────────────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 24px;
+    }
+
+    /* ── BUTTONS ─────────────────────────────────────── */
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 44px;
+      gap: 16px;
+    }
+    .btn-row.first { justify-content: flex-end; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #0d0b0b;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0 32px;
+      height: 48px;
       cursor: pointer;
+      border-radius: 0;
+      transition: opacity 0.2s;
     }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-prev {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(200,169,106,0.35);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0 28px;
+      height: 48px;
+      cursor: pointer;
+      border-radius: 0;
+      transition: background 0.2s;
     }
-    
-    .form-step.active {
-      animation: fadeIn 0.5s ease-out forwards;
-    }
-    
-    /* Loading indicator */
+    .btn-prev:hover { background: rgba(200,169,106,0.06); }
+
+    /* ── LOADING OVERLAY ─────────────────────────────── */
     .loading-overlay {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(26, 38, 57, 0.8);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
+      inset: 0;
+      background: rgba(13,11,11,0.9);
+      z-index: 200;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
     }
-    
-    .loading-spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid rgba(255, 255, 255, 0.3);
+    .loading-overlay.active { display: flex; }
+    .gold-spinner {
+      width: 44px;
+      height: 44px;
+      border: 2px solid rgba(200,169,106,0.15);
+      border-top-color: var(--gold);
       border-radius: 50%;
-      border-top-color: var(--color-secondary);
-      animation: spin 1s ease-in-out infinite;
+      animation: spin 0.8s linear infinite;
     }
-    
+    @keyframes spin { to { transform: rotate(360deg); } }
     .loading-text {
-      color: white;
-      margin-top: 1rem;
-      font-family: var(--font-heading);
-      font-size: var(--font-size-base);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--gold);
     }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+
+    /* ── SUCCESS SCREEN ──────────────────────────────── */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 80px 24px;
     }
-    
-    /* Enhanced Mobile Responsiveness */
-    @media (max-width: 600px) {
-      :root {
-        --padding-container: 1rem;
-        --padding-element: 1rem;
-      }
-      
-      .container {
-        padding: 1.5rem var(--padding-container);
-      }
-      
-      .form-step {
-        padding: 1.5rem var(--padding-element);
-      }
-      
-      .form-row {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-      
-      .progress-labels {
-        display: none;
-      }
-      
-      .step-title {
-        font-size: 1.5rem;
-      }
-      
-      .btn-container {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .btn {
-        width: 100%;
-      }
-      
-      /* Ensure cards are big enough to tap easily */
-      .card-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .style-card {
-        min-height: 150px;
-      }
-      
-      /* Make color selection more tappable */
-      .color-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-      }
-      
-      .color-card {
-        height: 60px;
-      }
-      
-      /* Make checkboxes easier to tap */
-      .checkbox-item {
-        margin-bottom: 1.25rem;
-      }
-      
-      /* Add extra space between sections */
-      .form-group {
-        margin-bottom: 2rem;
-      }
-      
-      /* Website reference mobile adjustments */
-      .website-url-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-      
-      .add-url-btn,
-      .remove-url-btn {
-        align-self: flex-end;
-      }
+    .success-screen.active { display: block; }
+    .success-eyebrow {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
     }
-    
-    /* Fix iOS zoom on focus */
-    @media screen and (-webkit-min-device-pixel-ratio: 0) { 
-      select,
-      textarea,
-      input {
-        font-size: 16px !important;
-      }
+    .success-script {
+      font-family: 'Allura', cursive;
+      font-size: 60px;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .success-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      font-weight: 300;
+      color: rgba(240,235,228,0.7);
+      margin-bottom: 14px;
+    }
+    .success-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    /* ── UPLOAD AREAS ───────────────────────────────── */
+    .field-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin: 4px 0 10px;
+      font-style: italic;
+    }
+    .upload-area {
+      background: var(--card);
+      border: 1px dashed rgba(200,169,106,0.3);
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      margin-top: 8px;
+    }
+    .upload-area--sm { padding: 18px 20px; }
+    .upload-area:hover { border-color: rgba(200,169,106,0.6); }
+    .upload-placeholder {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+      font-family: 'Inter', sans-serif;
+    }
+    .upload-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .upload-thumb {
+      position: relative;
+      width: 72px;
+      height: 72px;
+    }
+    .upload-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .upload-thumb .remove-thumb {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 16px;
+      height: 16px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .upload-filename {
+      font-size: 11px;
+      color: var(--gold);
+      margin-top: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+    .mt-16 { margin-top: 16px; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(200,169,106,0.1);
+      padding: 24px 40px;
+      text-align: center;
+    }
+    footer p {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    /* ── UTILITY / SPACING ───────────────────────────── */
+    .mt-8  { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mb-8  { margin-bottom: 8px; }
+    .mb-16 { margin-bottom: 16px; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 680px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .span-2 { grid-column: span 1; }
+      .style-grid { grid-template-columns: 1fr 1fr; }
+      .color-grid { grid-template-columns: repeat(3, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .site-nav { padding: 0 20px; }
+      .hero-script { font-size: 48px; }
+      .progress-inner { gap: 0; }
+      .step-label { font-size: 8px; }
+    }
+    @media (max-width: 420px) {
+      .style-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="logo">FOREVER STILL STUDIO</div>
-    <div class="tagline">Client Intake Form</div>
-  </header>
 
-  <div class="container">
-    <div class="form-container">
-      <div class="progress-container">
-        <div class="progress-bar">
-          <div class="progress-step active" data-step="1">1</div>
-          <div class="progress-step" data-step="2">2</div>
-          <div class="progress-step" data-step="3">3</div>
-          <div class="progress-step" data-step="4">4</div>
-          <div class="progress-step" data-step="5">5</div>
-        </div>
-        <div class="progress-labels">
-          <span class="progress-label">Business Info</span>
-          <span class="progress-label">Goals</span>
-          <span class="progress-label">Design</span>
-          <span class="progress-label">Assets</span>
-          <span class="progress-label">Going Forward</span>
-        </div>
+  <!-- NAV -->
+  <nav class="site-nav">
+    <img src="logo.png" alt="Forever Still Studio" class="logo" />
+    <span class="nav-portal-label">Client Portal</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="eyebrow">Forever Still Studio</span>
+    <div class="divider">
+      <hr /><div class="divider-diamond"></div><hr />
+    </div>
+    <h1 class="hero-script">Client Portal</h1>
+    <p class="hero-sub">Let's build something that works.</p>
+    <p class="hero-note">Take your time — there are no wrong answers.</p>
+  </section>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-wrap">
+    <div class="progress-inner">
+      <div class="progress-line"></div>
+      <div class="progress-step active" id="ps-1">
+        <div class="step-circle">1</div>
+        <span class="step-label">Business</span>
       </div>
-
-      <form id="client-intake-form">
-        <!-- Step 1: Business Info -->
-        <div class="form-step active" data-step="1">
-          <h2 class="step-title">Business Information</h2>
-          <p class="step-subtitle">Tell me about your business</p>
-
-          <div class="form-group">
-            <label for="business-name">Business Name*</label>
-            <input type="text" id="business-name" name="businessName" required>
-          </div>
-
-          <div class="form-group">
-            <label for="owner-name">Owner Name*</label>
-            <input type="text" id="owner-name" name="ownerName" required>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone Number*</label>
-            <input type="tel" id="phone" name="phone" required>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address*</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-
-          <div class="form-group">
-            <label for="industry">Industry/Business Type*</label>
-            <input type="text" id="industry" name="industry" placeholder="e.g. Restaurant, Law Firm, Retail" required>
-          </div>
-
-          <div class="form-group">
-            <label for="address">Business Address</label>
-            <textarea id="address" name="address" rows="3"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="referral">How did you hear about Forever Still Studio?</label>
-            <select id="referral" name="referral">
-              <option value="">-- Select one --</option>
-              <option value="Google">Google Search</option>
-              <option value="Referral">Referral from a friend/client</option>
-              <option value="Social">Social Media</option>
-              <option value="Event">Local Event</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <div class="btn-container">
-            <div></div> <!-- Empty div to maintain flexbox spacing on desktop -->
-            <button type="button" class="btn btn-next" data-next="2">Next Step</button>
-          </div>
-        </div>
-
-        <!-- Step 2: Goals -->
-        <div class="form-step" data-step="2">
-          <h2 class="step-title">Your Website Goals</h2>
-          <p class="step-subtitle">Let me understand what you need</p>
-
-          <div class="form-group">
-            <label for="biggest-problem">What's the biggest problem with your current online presence?*</label>
-            <textarea id="biggest-problem" name="biggestProblem" rows="3" placeholder="e.g. Outdated design, not mobile friendly, hard to find online" required></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="website-goal">What do you hope this website will accomplish for your business?*</label>
-            <textarea id="website-goal" name="websiteGoal" rows="3" placeholder="e.g. Generate more leads, showcase products, educate customers" required></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="budget">Budget Range</label>
-            <select id="budget" name="budget">
-              <option value="">-- Select one --</option>
-              <option value="Under $1500">Under $1,500</option>
-              <option value="$1500-$3000">$1,500 - $3,000</option>
-              <option value="$3000-$5000">$3,000 - $5,000</option>
-              <option value="$5000+">$5,000+</option>
-              <option value="Not Sure">Not sure yet</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="timeline">Desired Timeline</label>
-            <select id="timeline" name="timeline">
-              <option value="">-- Select one --</option>
-              <option value="ASAP">As soon as possible</option>
-              <option value="1-2 months">Within 1-2 months</option>
-              <option value="3-6 months">Within 3-6 months</option>
-              <option value="Flexible">Flexible</option>
-            </select>
-          </div>
-
-          <div class="btn-container">
-            <button type="button" class="btn btn-prev" data-prev="1">Previous</button>
-            <button type="button" class="btn btn-next" data-next="3">Next Step</button>
-          </div>
-        </div>
-
-        <!-- Step 3: Design -->
-        <div class="form-step" data-step="3">
-          <h2 class="step-title">Design Preferences</h2>
-          <p class="step-subtitle">Help me understand your aesthetic</p>
-
-          <div class="form-group">
-            <label>What vibe are you going for? (Tap to select)</label>
-            <div class="card-container">
-              <div class="style-card" data-value="Professional">
-                <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Professional">
-                <div class="style-card-title">Professional</div>
-              </div>
-              <div class="style-card" data-value="Modern">
-                <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Modern">
-                <div class="style-card-title">Modern</div>
-              </div>
-              <div class="style-card" data-value="Traditional">
-                <img src="https://images.unsplash.com/photo-1546942113-a6c43b63104a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Traditional">
-                <div class="style-card-title">Traditional</div>
-              </div>
-              <div class="style-card" data-value="Playful">
-                <img src="https://images.unsplash.com/photo-1496889508475-dd0039e0737d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Playful">
-                <div class="style-card-title">Playful</div>
-              </div>
-              <div class="style-card" data-value="Luxury">
-                <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Luxury">
-                <div class="style-card-title">Luxury</div>
-              </div>
-              <div class="style-card" data-value="Minimalist">
-                <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Minimalist">
-                <div class="style-card-title">Minimalist</div>
-              </div>
-            </div>
-            <input type="hidden" name="designVibe" id="design-vibe">
-          </div>
-
-          <div class="form-group">
-            <label>What color feel do you prefer? (Tap to select, up to 2)</label>
-            <div class="color-grid">
-              <div class="color-card color-warm" data-value="Warm"></div>
-              <div class="color-card color-cool" data-value="Cool"></div>
-              <div class="color-card color-earthy" data-value="Earthy"></div>
-              <div class="color-card color-bold" data-value="Bold"></div>
-              <div class="color-card color-muted" data-value="Muted"></div>
-              <div class="color-card color-dark" data-value="Dark"></div>
-            </div>
-            <input type="hidden" name="colorFeel" id="color-feel">
-          </div>
-
-          <!-- Enhanced Website Inspiration Section -->
-          <div class="website-ref-container">
-            <h3 class="website-ref-title">Website Inspiration</h3>
-            <p class="field-note">Share websites that inspire you or have elements you like</p>
-            
-            <div id="website-url-container" class="website-url-container">
-              <div class="website-url-row">
-                <input type="text" class="website-url-input" placeholder="e.g. www.example.com" data-index="0">
-                <div class="tags-container" data-index="0"></div>
-                <button type="button" class="add-feature-btn" data-index="0" title="Add what you like about this site">+</button>
-                <button type="button" class="add-url-btn" title="Add another website">+</button>
-              </div>
-            </div>
-            
-            <div class="website-notes">
-              <label for="website-notes">What specific elements do you like about these sites?</label>
-              <textarea id="website-notes" name="websiteNotes" rows="2" placeholder="e.g. I like the menu on the first site, and the color scheme on the second"></textarea>
-            </div>
-            
-            <!-- Screenshot Upload Area -->
-            <div class="website-preview-container" id="screenshot-upload-area">
-              <p class="website-preview-placeholder">Tap to upload screenshots of websites you like</p>
-              <div class="screenshot-container" id="screenshot-container"></div>
-              <input type="file" class="file-input" id="screenshot-input" accept="image/*" multiple>
-            </div>
-            
-            <input type="hidden" name="websiteUrls" id="website-urls-data">
-            <input type="hidden" name="websiteFeatures" id="website-features-data">
-          </div>
-
-          <div class="form-group">
-            <label for="avoid">Anything you want to avoid?</label>
-            <textarea id="avoid" name="avoid" rows="2" placeholder="e.g. Certain colors, styles, or elements you dislike"></textarea>
-          </div>
-
-          <div class="btn-container">
-            <button type="button" class="btn btn-prev" data-prev="2">Previous</button>
-            <button type="button" class="btn btn-next" data-next="4">Next Step</button>
-          </div>
-        </div>
-
-        <!-- Step 4: Assets -->
-        <div class="form-step" data-step="4">
-          <h2 class="step-title">Your Assets</h2>
-          <p class="step-subtitle">Let me know what you already have</p>
-
-          <div class="form-group">
-            <label>Do you have professional photos of your business?</label>
-            <div class="checkbox-group">
-              <div class="checkbox-item">
-                <input type="radio" id="photos-yes" name="hasPhotos" value="Yes">
-                <label for="photos-yes">Yes</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="radio" id="photos-no" name="hasPhotos" value="No">
-                <label for="photos-no">No</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="radio" id="photos-some" name="hasPhotos" value="Some">
-                <label for="photos-some">Some, but might need more</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Do you have a logo?</label>
-            <div class="checkbox-group">
-              <div class="checkbox-item">
-                <input type="radio" id="logo-yes" name="hasLogo" value="Yes">
-                <label for="logo-yes">Yes, and I have high-quality files</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="radio" id="logo-low" name="hasLogo" value="Low quality">
-                <label for="logo-low">Yes, but only low-quality files</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="radio" id="logo-no" name="hasLogo" value="No">
-                <label for="logo-no">No logo yet</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="drive-link">Google Drive or Dropbox link to your assets (optional)</label>
-            <input type="text" id="drive-link" name="driveLink" placeholder="e.g. https://drive.google.com/...">
-            <p class="field-note">If you have photos, logos, or other materials ready, share a link where I can view them</p>
-          </div>
-
-          <div class="form-group">
-            <label for="services-list">Do you have a list of services/products ready?</label>
-            <select id="services-list" name="servicesList">
-              <option value="">-- Select one --</option>
-              <option value="Yes">Yes, ready to provide</option>
-              <option value="No">No, need help organizing this</option>
-              <option value="Partial">Partially complete</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="testimonials">Do you have client testimonials?</label>
-            <select id="testimonials" name="testimonials">
-              <option value="">-- Select one --</option>
-              <option value="Yes">Yes, ready to provide</option>
-              <option value="No">No</option>
-              <option value="Need to collect">Need to collect them</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="content-ready">Is your website content (text) ready?</label>
-            <select id="content-ready" name="contentReady">
-              <option value="">-- Select one --</option>
-              <option value="Yes">Yes, ready to provide</option>
-              <option value="No">No, need copywriting help</option>
-              <option value="Partial">Partially complete</option>
-            </select>
-          </div>
-
-          <div class="btn-container">
-            <button type="button" class="btn btn-prev" data-prev="3">Previous</button>
-            <button type="button" class="btn btn-next" data-next="5">Next Step</button>
-          </div>
-        </div>
-
-        <!-- Step 5: Going Forward -->
-        <div class="form-step" data-step="5">
-          <h2 class="step-title">Going Forward</h2>
-          <p class="step-subtitle">Let's talk about site maintenance</p>
-
-          <div class="form-group">
-            <label>Who will be updating the website after launch?</label>
-            <div class="checkbox-group">
-              <div class="checkbox-item">
-                <input type="radio" id="update-self" name="updatePerson" value="Self">
-                <label for="update-self">I'll update it myself</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="radio" id="update-staff" name="updatePerson" value="Staff">
-                <label for="update-staff">Someone on my staff</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="radio" id="update-you" name="updatePerson" value="You">
-                <label for="update-you">I'd like you to handle updates</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="radio" id="update-unsure" name="updatePerson" value="Unsure">
-                <label for="update-unsure">Not sure yet</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Are you interested in a monthly maintenance plan?</label>
-            <div class="checkbox-group">
-              <div class="checkbox-item">
-                <input type="radio" id="maintenance-yes" name="maintenancePlan" value="Yes">
-                <label for="maintenance-yes">Yes, I'd like to know more</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="radio" id="maintenance-no" name="maintenancePlan" value="No">
-                <label for="maintenance-no">No, not at this time</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="radio" id="maintenance-unsure" name="maintenancePlan" value="Unsure">
-                <label for="maintenance-unsure">Need more information</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Do you need any of these features? (Select all that apply)</label>
-            <div class="checkbox-group">
-              <div class="checkbox-item">
-                <input type="checkbox" id="feature-booking" name="features" value="Booking/Scheduling">
-                <label for="feature-booking">Online booking/scheduling</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" id="feature-ecommerce" name="features" value="E-commerce">
-                <label for="feature-ecommerce">E-commerce/online store</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" id="feature-blog" name="features" value="Blog">
-                <label for="feature-blog">Blog</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" id="feature-members" name="features" value="Members Area">
-                <label for="feature-members">Member login/private area</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" id="feature-forms" name="features" value="Advanced Forms">
-                <label for="feature-forms">Advanced forms (beyond contact forms)</label>
-              </div>
-            </div>
-            <input type="hidden" name="selectedFeatures" id="selected-features">
-          </div>
-
-          <div class="form-group">
-            <label for="additional-notes">Anything else you'd like me to know?</label>
-            <textarea id="additional-notes" name="additionalNotes" rows="3" placeholder="Any additional information, questions, or special requirements"></textarea>
-          </div>
-
-          <div class="btn-container">
-            <button type="button" class="btn btn-prev" data-prev="4">Previous</button>
-            <button type="submit" class="btn btn-submit">Submit</button>
-          </div>
-        </div>
-      </form>
-
-      <!-- Success Screen -->
-      <div class="success-screen" id="success-screen">
-        <div class="success-icon">✓</div>
-        <h2 class="success-title">Thank You!</h2>
-        <p class="success-message">
-          Your information has been submitted successfully. I'll review the details and get back to you within 1-2 business days to discuss next steps for your project.
-        </p>
-        <a href="index.html" class="btn-return">Return to Home</a>
+      <div class="progress-step" id="ps-2">
+        <div class="step-circle">2</div>
+        <span class="step-label">Goals</span>
+      </div>
+      <div class="progress-step" id="ps-3">
+        <div class="step-circle">3</div>
+        <span class="step-label">Design</span>
+      </div>
+      <div class="progress-step" id="ps-4">
+        <div class="step-circle">4</div>
+        <span class="step-label">Assets</span>
+      </div>
+      <div class="progress-step" id="ps-5">
+        <div class="step-circle">5</div>
+        <span class="step-label">Going Forward</span>
       </div>
     </div>
   </div>
 
+  <!-- FORM OUTER -->
+  <div class="form-outer">
+    <form id="intake-form" novalidate>
+
+      <!-- ── STEP 1: BUSINESS INFO ── -->
+      <div class="step-panel active" id="step-1">
+        <div class="step-header">
+          <span class="step-eyebrow">Step 01 / 05</span>
+          <h2 class="step-title">Business Information</h2>
+          <div class="step-rule"></div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="bizName">Business Name</label>
+            <input type="text" id="bizName" name="businessName" placeholder="Your business name" />
+          </div>
+          <div class="field">
+            <label for="ownerName">Owner / Contact Name</label>
+            <input type="text" id="ownerName" name="ownerName" placeholder="First & last name" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" />
+          </div>
+          <div class="field">
+            <label for="industry">Industry / Niche</label>
+            <input type="text" id="industry" name="industry" placeholder="e.g. Wellness, Real Estate, Beauty" />
+          </div>
+          <div class="field">
+            <label for="address">Business Address (optional)</label>
+            <input type="text" id="address" name="address" placeholder="City, State or full address" />
+          </div>
+          <div class="field span-2">
+            <label for="referral">How Did You Hear About Us?</label>
+            <div class="select-wrap">
+              <select id="referral" name="referral">
+                <option value="" disabled selected>Select one</option>
+                <option value="instagram">Instagram</option>
+                <option value="facebook">Facebook</option>
+                <option value="google">Google Search</option>
+                <option value="referral">Personal Referral</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="tiktok">TikTok</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row first">
+          <button type="button" class="btn-primary" onclick="goToStep(2)">Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: GOALS ── -->
+      <div class="step-panel" id="step-2">
+        <div class="step-header">
+          <span class="step-eyebrow">Step 02 / 05</span>
+          <h2 class="step-title">Your Goals</h2>
+          <div class="step-rule"></div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field span-2">
+            <label for="biggestProblem">What Is Your Biggest Problem Right Now?</label>
+            <textarea id="biggestProblem" name="biggestProblem" placeholder="Describe the challenge you're trying to solve..."></textarea>
+          </div>
+          <div class="field span-2">
+            <label for="goal">What Does Success Look Like for This Project?</label>
+            <textarea id="goal" name="goal" placeholder="More leads, better branding, increased sales — what matters most?"></textarea>
+          </div>
+          <div class="field">
+            <label for="budget">Budget Range</label>
+            <div class="select-wrap">
+              <select id="budget" name="budget">
+                <option value="" disabled selected>Select a range</option>
+                <option value="under-1k">Under $1,000</option>
+                <option value="1k-2.5k">$1,000 – $2,500</option>
+                <option value="2.5k-5k">$2,500 – $5,000</option>
+                <option value="5k-10k">$5,000 – $10,000</option>
+                <option value="10k-plus">$10,000+</option>
+                <option value="unsure">Not Sure Yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="timeline">Ideal Launch Timeline</label>
+            <div class="select-wrap">
+              <select id="timeline" name="timeline">
+                <option value="" disabled selected>Select a timeframe</option>
+                <option value="asap">ASAP (within 2 weeks)</option>
+                <option value="1-month">Within 1 Month</option>
+                <option value="1-3-months">1–3 Months</option>
+                <option value="3-6-months">3–6 Months</option>
+                <option value="flexible">Flexible / No Rush</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-prev" onclick="goToStep(1)">&larr; Previous</button>
+          <button type="button" class="btn-primary" onclick="goToStep(3)">Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: DESIGN PREFERENCES ── -->
+      <div class="step-panel" id="step-3">
+        <div class="step-header">
+          <span class="step-eyebrow">Step 03 / 05</span>
+          <h2 class="step-title">Design Preferences</h2>
+          <div class="step-rule"></div>
+        </div>
+
+        <!-- Visual Style Cards -->
+        <p class="section-label">Visual Style — Select Your Vibe</p>
+        <div class="style-grid">
+          <div class="style-card" data-style="Professional" onclick="toggleStyleCard(this)">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=75&auto=format&fit=crop" alt="Professional" loading="lazy" />
+            <div class="style-card-label">Professional</div>
+            <div class="style-check">&#10003;</div>
+          </div>
+          <div class="style-card" data-style="Modern" onclick="toggleStyleCard(this)">
+            <img src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=400&q=75&auto=format&fit=crop" alt="Modern" loading="lazy" />
+            <div class="style-card-label">Modern</div>
+            <div class="style-check">&#10003;</div>
+          </div>
+          <div class="style-card" data-style="Traditional" onclick="toggleStyleCard(this)">
+            <img src="https://images.unsplash.com/photo-1505577058444-a3dab90d4253?w=400&q=75&auto=format&fit=crop" alt="Traditional" loading="lazy" />
+            <div class="style-card-label">Traditional</div>
+            <div class="style-check">&#10003;</div>
+          </div>
+          <div class="style-card" data-style="Playful" onclick="toggleStyleCard(this)">
+            <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=400&q=75&auto=format&fit=crop" alt="Playful" loading="lazy" />
+            <div class="style-card-label">Playful</div>
+            <div class="style-check">&#10003;</div>
+          </div>
+          <div class="style-card" data-style="Luxury" onclick="toggleStyleCard(this)">
+            <img src="https://images.unsplash.com/photo-1613777548195-9de8c0aee2b1?w=400&q=75&auto=format&fit=crop" alt="Luxury" loading="lazy" />
+            <div class="style-card-label">Luxury</div>
+            <div class="style-check">&#10003;</div>
+          </div>
+          <div class="style-card" data-style="Minimalist" onclick="toggleStyleCard(this)">
+            <img src="https://images.unsplash.com/photo-1464618663641-bbdd760ae84a?w=400&q=75&auto=format&fit=crop" alt="Minimalist" loading="lazy" />
+            <div class="style-card-label">Minimalist</div>
+            <div class="style-check">&#10003;</div>
+          </div>
+        </div>
+        <input type="hidden" id="selectedStyles" name="visualStyles" />
+
+        <!-- Color Palette -->
+        <p class="section-label mt-32">Color Palette — Choose Up to 2</p>
+        <div class="color-grid">
+          <div class="color-swatch" data-color="Warm" onclick="toggleColorSwatch(this)">
+            <span class="swatch-grad" style="background: linear-gradient(135deg, #e8c59a 0%, #d4845a 50%, #b85c38 100%);"></span>
+            <div class="swatch-check">&#10003;</div>
+            <div class="swatch-name">Warm</div>
+          </div>
+          <div class="color-swatch" data-color="Cool" onclick="toggleColorSwatch(this)">
+            <span class="swatch-grad" style="background: linear-gradient(135deg, #a8c4d4 0%, #5b8fa8 50%, #2e5f7a 100%);"></span>
+            <div class="swatch-check">&#10003;</div>
+            <div class="swatch-name">Cool</div>
+          </div>
+          <div class="color-swatch" data-color="Earthy" onclick="toggleColorSwatch(this)">
+            <span class="swatch-grad" style="background: linear-gradient(135deg, #c5b49a 0%, #8a7060 50%, #5c4a35 100%);"></span>
+            <div class="swatch-check">&#10003;</div>
+            <div class="swatch-name">Earthy</div>
+          </div>
+          <div class="color-swatch" data-color="Bold" onclick="toggleColorSwatch(this)">
+            <span class="swatch-grad" style="background: linear-gradient(135deg, #f7c948 0%, #e83e3e 50%, #7b2ff7 100%);"></span>
+            <div class="swatch-check">&#10003;</div>
+            <div class="swatch-name">Bold</div>
+          </div>
+          <div class="color-swatch" data-color="Muted" onclick="toggleColorSwatch(this)">
+            <span class="swatch-grad" style="background: linear-gradient(135deg, #d8d0c8 0%, #b0a898 50%, #8a8078 100%);"></span>
+            <div class="swatch-check">&#10003;</div>
+            <div class="swatch-name">Muted</div>
+          </div>
+          <div class="color-swatch" data-color="Dark" onclick="toggleColorSwatch(this)">
+            <span class="swatch-grad" style="background: linear-gradient(135deg, #4a4040 0%, #282020 50%, #0d0a0a 100%);"></span>
+            <div class="swatch-check">&#10003;</div>
+            <div class="swatch-name">Dark</div>
+          </div>
+        </div>
+        <input type="hidden" id="selectedColors" name="colorPalette" />
+
+        <!-- Website Inspiration -->
+        <p class="section-label mt-32">Website Inspiration</p>
+        <div class="inspiration-box">
+          <div class="inspiration-box-title">Sites You Love</div>
+          <div id="url-list"></div>
+          <button type="button" class="btn-add-url" onclick="addUrlEntry()">+ Add a Website</button>
+        </div>
+
+        <!-- Screenshot Upload -->
+        <p class="section-label mt-32">Screenshots / Visual References</p>
+        <div class="upload-area" onclick="document.getElementById('screenshotInput').click()">
+          <input type="file" id="screenshotInput" name="screenshots" multiple accept="image/*" onchange="handleScreenshots(this)" />
+          <span class="upload-label">Drop images here or click to browse</span>
+          <span class="upload-sub">JPG, PNG, GIF — up to 10 files</span>
+          <div class="upload-thumbs" id="uploadThumbs"></div>
+        </div>
+
+        <!-- Avoid textarea -->
+        <div class="field mt-24">
+          <label for="avoidNotes">Anything to Avoid in Design?</label>
+          <textarea id="avoidNotes" name="avoidNotes" placeholder="Colors, styles, or trends you dislike..."></textarea>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-prev" onclick="goToStep(2)">&larr; Previous</button>
+          <button type="button" class="btn-primary" onclick="goToStep(4)">Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 4: ASSETS ── -->
+      <div class="step-panel" id="step-4">
+        <div class="step-header">
+          <span class="step-eyebrow">Step 04 / 05</span>
+          <h2 class="step-title">Your Assets</h2>
+          <div class="step-rule"></div>
+        </div>
+
+        <!-- Photos -->
+        <p class="section-label">Do You Have Professional Photos?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="hasPhotos" value="yes" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">Yes — I have professional photos ready</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="hasPhotos" value="some" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">I have some, but may need more</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="hasPhotos" value="no" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">No — I'll need photography or stock images</span>
+          </label>
+        </div>
+
+        <!-- Photo Upload -->
+        <div class="field mt-24">
+          <label>Upload Your Photos (optional)</label>
+          <p class="field-note">Drag and drop or tap to select — JPG, PNG, WebP, up to 10 files</p>
+          <div class="upload-area" id="photo-upload-area" onclick="document.getElementById('photo-file-input').click()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,106,0.5)" stroke-width="1.4" style="margin-bottom:10px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p class="upload-placeholder">Tap to upload business photos</p>
+            <div class="upload-preview" id="photo-preview"></div>
+          </div>
+          <input type="file" id="photo-file-input" accept="image/*" multiple style="display:none" />
+        </div>
+
+        <!-- Logo -->
+        <p class="section-label mt-24">Do You Have a Logo?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="hasLogo" value="yes" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">Yes — I have a logo file (vector preferred)</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="hasLogo" value="partial" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">I have something, but it may need a refresh</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="hasLogo" value="no" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">No — I'll need a logo designed</span>
+          </label>
+        </div>
+
+        <!-- Logo Upload -->
+        <div class="field mt-16" id="logo-upload-wrap">
+          <label>Upload Your Logo File (optional)</label>
+          <p class="field-note">PNG, SVG, PDF, AI, or EPS preferred — any file you have works</p>
+          <div class="upload-area upload-area--sm" id="logo-upload-area" onclick="document.getElementById('logo-file-input').click()">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,106,0.5)" stroke-width="1.4" style="margin-bottom:8px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p class="upload-placeholder" id="logo-placeholder">Tap to upload your logo</p>
+            <div class="upload-preview" id="logo-preview"></div>
+          </div>
+          <input type="file" id="logo-file-input" accept="image/*,.svg,.pdf,.ai,.eps,.zip" style="display:none" />
+        </div>
+
+        <!-- Drive Link -->
+        <div class="field mt-24">
+          <label for="driveLink">Google Drive / Dropbox Link (optional)</label>
+          <input type="url" id="driveLink" name="driveLink" placeholder="https://drive.google.com/..." />
+        </div>
+
+        <!-- Services List -->
+        <p class="section-label mt-24">Which Services Are You Interested In?</p>
+        <div class="services-grid">
+          <label class="check-item">
+            <input type="checkbox" name="services" value="website-design" />
+            <span class="custom-check"></span>
+            <span class="check-text">Website Design</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services" value="website-redesign" />
+            <span class="custom-check"></span>
+            <span class="check-text">Website Redesign</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services" value="branding" />
+            <span class="custom-check"></span>
+            <span class="check-text">Branding &amp; Identity</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services" value="logo-design" />
+            <span class="custom-check"></span>
+            <span class="check-text">Logo Design</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services" value="copywriting" />
+            <span class="custom-check"></span>
+            <span class="check-text">Copywriting</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services" value="seo" />
+            <span class="custom-check"></span>
+            <span class="check-text">SEO Strategy</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services" value="social-media" />
+            <span class="custom-check"></span>
+            <span class="check-text">Social Media Graphics</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services" value="maintenance" />
+            <span class="custom-check"></span>
+            <span class="check-text">Ongoing Maintenance</span>
+          </label>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="field mt-24">
+          <label for="testimonials">Do You Have Testimonials or Reviews?</label>
+          <textarea id="testimonials" name="testimonials" placeholder="Paste your best 1–3 testimonials here, or note where we can find them..."></textarea>
+        </div>
+
+        <!-- Content Readiness -->
+        <p class="section-label mt-24">How Ready Is Your Content?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="contentReadiness" value="ready" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">Ready — I have copy, images, and materials prepared</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="contentReadiness" value="partial" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">Partially ready — I'll need some help pulling it together</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="contentReadiness" value="not-ready" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">Not ready — I'll need full content support</span>
+          </label>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-prev" onclick="goToStep(3)">&larr; Previous</button>
+          <button type="button" class="btn-primary" onclick="goToStep(5)">Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 5: GOING FORWARD ── -->
+      <div class="step-panel" id="step-5">
+        <div class="step-header">
+          <span class="step-eyebrow">Step 05 / 05</span>
+          <h2 class="step-title">Going Forward</h2>
+          <div class="step-rule"></div>
+        </div>
+
+        <!-- Who Updates Site -->
+        <p class="section-label">Who Will Update the Website?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="whoUpdates" value="self" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">I will update it myself</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="whoUpdates" value="team" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">A team member or VA will manage it</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="whoUpdates" value="studio" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">I'd like Forever Still Studio to handle updates</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="whoUpdates" value="unsure" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">Not sure yet</span>
+          </label>
+        </div>
+
+        <!-- Maintenance Plan -->
+        <p class="section-label mt-24">Are You Interested in a Maintenance Plan?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="maintenancePlan" value="yes" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">Yes — I'd like ongoing support after launch</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="maintenancePlan" value="maybe" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">Maybe — tell me more about what's included</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="maintenancePlan" value="no" />
+            <span class="custom-radio"></span>
+            <span class="radio-text">No — I'll handle things on my own after launch</span>
+          </label>
+        </div>
+
+        <!-- Feature Checkboxes -->
+        <p class="section-label mt-24">Features You'd Like on Your Site</p>
+        <div class="services-grid">
+          <label class="check-item">
+            <input type="checkbox" name="features" value="contact-form" />
+            <span class="custom-check"></span>
+            <span class="check-text">Contact Form</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="features" value="booking" />
+            <span class="custom-check"></span>
+            <span class="check-text">Booking / Scheduling</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="features" value="blog" />
+            <span class="custom-check"></span>
+            <span class="check-text">Blog / Journal</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="features" value="shop" />
+            <span class="custom-check"></span>
+            <span class="check-text">Online Shop</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="features" value="portfolio" />
+            <span class="custom-check"></span>
+            <span class="check-text">Portfolio / Gallery</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="features" value="email-capture" />
+            <span class="custom-check"></span>
+            <span class="check-text">Email List / Newsletter</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="features" value="faq" />
+            <span class="custom-check"></span>
+            <span class="check-text">FAQ Section</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="features" value="client-portal" />
+            <span class="custom-check"></span>
+            <span class="check-text">Client Portal / Login Area</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="features" value="video" />
+            <span class="custom-check"></span>
+            <span class="check-text">Video / Background Video</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="features" value="analytics" />
+            <span class="custom-check"></span>
+            <span class="check-text">Analytics Integration</span>
+          </label>
+        </div>
+
+        <!-- Additional Notes -->
+        <div class="field mt-24">
+          <label for="additionalNotes">Anything Else You'd Like Us to Know?</label>
+          <textarea id="additionalNotes" name="additionalNotes" rows="5" placeholder="Share anything that didn't fit elsewhere — context, concerns, dreams for this project..."></textarea>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-prev" onclick="goToStep(4)">&larr; Previous</button>
+          <button type="submit" class="btn-primary">Submit &rarr;</button>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- SUCCESS SCREEN -->
+    <div class="success-screen" id="success-screen">
+      <span class="success-eyebrow">Forever Still Studio</span>
+      <div class="divider" style="max-width:260px;margin:0 auto 20px;">
+        <hr /><div class="divider-diamond"></div><hr />
+      </div>
+      <p class="success-script">You're all set.</p>
+      <p class="success-sub">Something beautiful is about to begin.</p>
+      <p class="success-note">Thank you for filling this out. Chrissy will review your intake and be in touch within 1–2 business days to schedule your discovery call.</p>
+      <a href="index.html" class="btn-primary" style="display:inline-block;line-height:48px;text-decoration:none;padding:0 32px;">Return to Home</a>
+    </div>
+  </div>
+
+  <!-- LOADING OVERLAY -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="gold-spinner"></div>
+    <span class="loading-text">Sending your intake…</span>
+  </div>
+
+  <!-- FOOTER -->
   <footer>
-    &copy; <span id="year"></span> Forever Still Studio. All rights reserved.
+    <p>&copy; <span id="year"></span> Forever Still Studio. All rights reserved.</p>
   </footer>
 
-  <!-- Feature Tag Selection Dropdown -->
-  <div class="feature-dropdown" id="feature-dropdown">
-    <div class="feature-dropdown-item" data-value="layout">Layout/Structure</div>
-    <div class="feature-dropdown-item" data-value="colors">Colors/Theme</div>
-    <div class="feature-dropdown-item" data-value="fonts">Typography/Fonts</div>
-    <div class="feature-dropdown-item" data-value="images">Images/Photos</div>
-    <div class="feature-dropdown-item" data-value="navigation">Navigation/Menu</div>
-    <div class="feature-dropdown-item" data-value="overall">Overall Look</div>
-  </div>
-
-  <!-- Loading Overlay -->
-  <div class="loading-overlay" id="loading-overlay">
-    <div class="loading-spinner"></div>
-    <div class="loading-text">Submitting your information...</div>
-  </div>
-
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Set current year in footer
-      document.getElementById('year').textContent = new Date().getFullYear();
+    // ── YEAR ──────────────────────────────────────────
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-      // Navigation between steps
-      const form = document.getElementById('client-intake-form');
-      const steps = document.querySelectorAll('.form-step');
-      const progressSteps = document.querySelectorAll('.progress-step');
-      const nextButtons = document.querySelectorAll('.btn-next');
-      const prevButtons = document.querySelectorAll('.btn-prev');
-      
-      // Style card selection
-      const styleCards = document.querySelectorAll('.style-card');
-      styleCards.forEach(card => {
-        card.addEventListener('click', function() {
-          this.classList.toggle('selected');
-          
-          // Update hidden input with selected values
-          const selectedCards = document.querySelectorAll('.style-card.selected');
-          const selectedValues = Array.from(selectedCards).map(card => card.dataset.value);
-          document.getElementById('design-vibe').value = selectedValues.join(', ');
-        });
-      });
-      
-      // Color card selection (limit to 2)
-      const colorCards = document.querySelectorAll('.color-card');
-      colorCards.forEach(card => {
-        card.addEventListener('click', function() {
-          const selectedCards = document.querySelectorAll('.color-card.selected');
-          
-          if (this.classList.contains('selected')) {
-            this.classList.remove('selected');
-          } else if (selectedCards.length < 2) {
-            this.classList.add('selected');
-          }
-          
-          // Update hidden input
-          const selectedValues = Array.from(document.querySelectorAll('.color-card.selected')).map(card => card.dataset.value);
-          document.getElementById('color-feel').value = selectedValues.join(', ');
-        });
-      });
-      
-      // Website URL handling
-      const websiteUrlContainer = document.getElementById('website-url-container');
-      const urlsData = document.getElementById('website-urls-data');
-      const featuresData = document.getElementById('website-features-data');
-      let urlCount = 1;
-      
-      // Add URL handler
-      document.addEventListener('click', function(e) {
-        // Add new URL row
-        if (e.target.classList.contains('add-url-btn')) {
-          urlCount++;
-          const newRow = document.createElement('div');
-          newRow.className = 'website-url-row';
-          newRow.innerHTML = `
-            <input type="text" class="website-url-input" placeholder="e.g. www.example.com" data-index="${urlCount - 1}">
-            <div class="tags-container" data-index="${urlCount - 1}"></div>
-            <button type="button" class="add-feature-btn" data-index="${urlCount - 1}" title="Add what you like about this site">+</button>
-            <button type="button" class="remove-url-btn" title="Remove this website">-</button>
-          `;
-          websiteUrlContainer.appendChild(newRow);
-        }
-        
-        // Remove URL row
-        if (e.target.classList.contains('remove-url-btn')) {
-          const row = e.target.closest('.website-url-row');
-          row.remove();
-          updateWebsiteData();
-        }
-        
-        // Handle feature button click
-        if (e.target.classList.contains('add-feature-btn')) {
-          const dropdown = document.getElementById('feature-dropdown');
-          const index = e.target.dataset.index;
-          
-          // Position the dropdown next to the button
-          dropdown.style.top = `${e.target.offsetTop + e.target.offsetHeight}px`;
-          dropdown.style.left = `${e.target.offsetLeft}px`;
-          dropdown.style.display = 'block';
-          dropdown.dataset.index = index;
-          
-          // Close dropdown if clicking elsewhere
-          document.addEventListener('click', closeDropdownOnClickOutside);
-        }
-        
-        // Handle feature dropdown item click
-        if (e.target.classList.contains('feature-dropdown-item')) {
-          const dropdown = document.getElementById('feature-dropdown');
-          const index = dropdown.dataset.index;
-          const value = e.target.dataset.value;
-          const text = e.target.textContent;
-          const tagsContainer = document.querySelector(`.tags-container[data-index="${index}"]`);
-          
-          // Create tag if it doesn't exist
-          if (!tagsContainer.querySelector(`[data-value="${value}"]`)) {
-            const tag = document.createElement('span');
-            tag.className = 'feature-tag';
-            tag.dataset.value = value;
-            tag.textContent = text;
-            tagsContainer.appendChild(tag);
-          }
-          
-          dropdown.style.display = 'none';
-          updateWebsiteData();
-        }
-        
-        // Handle tag click (remove tag)
-        if (e.target.classList.contains('feature-tag')) {
-          e.target.remove();
-          updateWebsiteData();
-        }
-      });
-      
-      // Close dropdown when clicking outside
-      function closeDropdownOnClickOutside(e) {
-        const dropdown = document.getElementById('feature-dropdown');
-        if (!dropdown.contains(e.target) && !e.target.classList.contains('add-feature-btn')) {
-          dropdown.style.display = 'none';
-          document.removeEventListener('click', closeDropdownOnClickOutside);
-        }
+    // ── STEP NAVIGATION ───────────────────────────────
+    let currentStep = 1;
+
+    function goToStep(n) {
+      const panels = document.querySelectorAll('.step-panel');
+      panels.forEach(p => p.classList.remove('active'));
+      document.getElementById('step-' + n).classList.add('active');
+
+      for (let i = 1; i <= 5; i++) {
+        const ps = document.getElementById('ps-' + i);
+        ps.classList.remove('active', 'completed');
+        if (i < n) ps.classList.add('completed');
+        if (i === n) ps.classList.add('active');
       }
-      
-      // Update hidden fields with website data
-      function updateWebsiteData() {
-        const urls = [];
-        const features = {};
-        
-        document.querySelectorAll('.website-url-input').forEach(input => {
-          if (input.value.trim()) {
-            urls.push(input.value.trim());
-            
-            const index = input.dataset.index;
-            const tagsContainer = document.querySelector(`.tags-container[data-index="${index}"]`);
-            const tags = tagsContainer.querySelectorAll('.feature-tag');
-            
-            features[input.value.trim()] = Array.from(tags).map(tag => tag.textContent);
-          }
-        });
-        
-        urlsData.value = JSON.stringify(urls);
-        featuresData.value = JSON.stringify(features);
+
+      currentStep = n;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── STYLE CARDS ───────────────────────────────────
+    function toggleStyleCard(el) {
+      el.classList.toggle('selected');
+      const selected = Array.from(document.querySelectorAll('.style-card.selected'))
+        .map(c => c.dataset.style);
+      document.getElementById('selectedStyles').value = selected.join(', ');
+    }
+
+    // ── COLOR SWATCHES (max 2) ─────────────────────────
+    function toggleColorSwatch(el) {
+      const selected = document.querySelectorAll('.color-swatch.selected');
+      if (el.classList.contains('selected')) {
+        el.classList.remove('selected');
+      } else {
+        if (selected.length >= 2) return;
+        el.classList.add('selected');
       }
-      
-      // Screenshot upload handling
-      const screenshotUploadArea = document.getElementById('screenshot-upload-area');
-      const screenshotInput = document.getElementById('screenshot-input');
-      const screenshotContainer = document.getElementById('screenshot-container');
-      
-      screenshotUploadArea.addEventListener('click', () => {
-        screenshotInput.click();
+      const vals = Array.from(document.querySelectorAll('.color-swatch.selected'))
+        .map(c => c.dataset.color);
+      document.getElementById('selectedColors').value = vals.join(', ');
+    }
+
+    // ── WEBSITE INSPIRATION ───────────────────────────
+    const FEATURE_OPTIONS = [
+      'Animation', 'Booking / Scheduling', 'Bold Typography', 'Clean Layout',
+      'Dark Mode', 'E-Commerce', 'Full-Width Video', 'Gallery / Portfolio',
+      'Luxury Feel', 'Minimalist', 'Newsletter Popup', 'Parallax Scrolling',
+      'Strong Photography', 'Testimonials', 'Unique Navigation'
+    ];
+
+    let urlCount = 0;
+
+    function addUrlEntry() {
+      urlCount++;
+      const id = 'url-entry-' + urlCount;
+      const div = document.createElement('div');
+      div.className = 'url-entry';
+      div.id = id;
+      div.innerHTML = `
+        <div class="url-row">
+          <input type="url" name="inspirationUrl[]" placeholder="https://example.com" />
+          <button type="button" class="btn-remove-url" onclick="removeUrlEntry('${id}')" title="Remove">&times;</button>
+        </div>
+        <div class="feature-tags-row" id="tags-row-${urlCount}">
+          <div style="position:relative;">
+            <button type="button" class="btn-add-feature" onclick="toggleFeatureDropdown('dd-${urlCount}')" title="Add feature tag">+</button>
+            <div class="feature-dropdown" id="dd-${urlCount}">
+              ${FEATURE_OPTIONS.map(opt =>
+                `<div class="feature-dropdown-item" onclick="addFeatureTag('tags-row-${urlCount}', 'dd-${urlCount}', '${opt}')">${opt}</div>`
+              ).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('url-list').appendChild(div);
+    }
+
+    function removeUrlEntry(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    }
+
+    function toggleFeatureDropdown(ddId) {
+      // close all others first
+      document.querySelectorAll('.feature-dropdown').forEach(d => {
+        if (d.id !== ddId) d.classList.remove('open');
       });
-      
-      screenshotInput.addEventListener('change', () => {
-        if (screenshotInput.files && screenshotInput.files.length > 0) {
-          for (let i = 0; i < screenshotInput.files.length; i++) {
-            const file = screenshotInput.files[i];
-            
-            // Only process images
-            if (!file.type.match('image.*')) continue;
-            
-            const reader = new FileReader();
-            reader.onload = (function(theFile) {
-              return function(e) {
-                // Create screenshot item
-                const div = document.createElement('div');
-                div.className = 'screenshot-item';
-                div.innerHTML = `
-                  <img src="${e.target.result}" alt="Website Screenshot">
-                  <div class="remove-screenshot">×</div>
-                `;
-                
-                // Add remove functionality
-                div.querySelector('.remove-screenshot').addEventListener('click', function(e) {
-                  e.stopPropagation(); // Prevent triggering upload area click
-                  div.remove();
-                  
-                  if (screenshotContainer.children.length === 0) {
-                    document.querySelector('.website-preview-placeholder').style.display = 'block';
-                  }
-                });
-                
-                screenshotContainer.appendChild(div);
-                document.querySelector('.website-preview-placeholder').style.display = 'none';
-              };
-            })(file);
-            
-            reader.readAsDataURL(file);
-          }
+      document.getElementById(ddId).classList.toggle('open');
+    }
+
+    function addFeatureTag(rowId, ddId, label) {
+      const row = document.getElementById(rowId);
+      // don't add duplicates
+      const existing = Array.from(row.querySelectorAll('.feature-tag'))
+        .map(t => t.dataset.val);
+      if (existing.includes(label)) {
+        document.getElementById(ddId).classList.remove('open');
+        return;
+      }
+      const tag = document.createElement('span');
+      tag.className = 'feature-tag';
+      tag.dataset.val = label;
+      tag.innerHTML = `${label} <span class="tag-x" onclick="removeTag(this.parentElement)">&times;</span>`;
+      // insert before the + button wrapper
+      const btnWrapper = row.querySelector('div[style]') || row.querySelector('.btn-add-feature').parentElement;
+      row.insertBefore(tag, btnWrapper);
+      document.getElementById(ddId).classList.remove('open');
+    }
+
+    function removeTag(tagEl) {
+      tagEl.remove();
+    }
+
+    // close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.btn-add-feature') && !e.target.closest('.feature-dropdown')) {
+        document.querySelectorAll('.feature-dropdown').forEach(d => d.classList.remove('open'));
+      }
+    });
+
+    // add first URL entry on load
+    addUrlEntry();
+
+    // ── SCREENSHOT UPLOAD ─────────────────────────────
+    function handleScreenshots(input) {
+      const thumbs = document.getElementById('uploadThumbs');
+      thumbs.innerHTML = '';
+      const files = Array.from(input.files).slice(0, 10);
+      files.forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.className = 'upload-thumb';
+          img.alt = file.name;
+          thumbs.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // ── PHOTO UPLOAD ────────────────────────────────────
+    const photoFileInput = document.getElementById('photo-file-input');
+    const photoPreview   = document.getElementById('photo-preview');
+    const photoPlaceholder = document.querySelector('#photo-upload-area .upload-placeholder');
+    let photoDataURLs = [];
+
+    photoFileInput.addEventListener('change', function() {
+      const files = Array.from(this.files).slice(0, 10);
+      photoPreview.innerHTML = '';
+      photoDataURLs = [];
+      if (files.length) photoPlaceholder.style.display = 'none';
+      files.forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          photoDataURLs.push(e.target.result);
+          const wrap = document.createElement('div');
+          wrap.className = 'upload-thumb';
+          wrap.innerHTML = `<img src="${e.target.result}" alt="${file.name}" />
+            <div class="remove-thumb" title="Remove">×</div>`;
+          wrap.querySelector('.remove-thumb').addEventListener('click', ev => {
+            ev.stopPropagation();
+            const idx = Array.from(photoPreview.children).indexOf(wrap);
+            photoDataURLs.splice(idx, 1);
+            wrap.remove();
+            if (!photoPreview.children.length) photoPlaceholder.style.display = '';
+          });
+          photoPreview.appendChild(wrap);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    // ── LOGO UPLOAD ──────────────────────────────────────
+    const logoFileInput   = document.getElementById('logo-file-input');
+    const logoPreview     = document.getElementById('logo-preview');
+    const logoPlaceholder = document.getElementById('logo-placeholder');
+    let logoDataURL = null;
+
+    logoFileInput.addEventListener('change', function() {
+      if (!this.files.length) return;
+      const file = this.files[0];
+      logoPreview.innerHTML = '';
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          logoDataURL = e.target.result;
+          const wrap = document.createElement('div');
+          wrap.className = 'upload-thumb';
+          wrap.innerHTML = `<img src="${e.target.result}" alt="Logo" style="object-fit:contain;background:#1a1714;" />
+            <div class="remove-thumb" title="Remove">×</div>`;
+          wrap.querySelector('.remove-thumb').addEventListener('click', ev => {
+            ev.stopPropagation();
+            logoDataURL = null;
+            logoPreview.innerHTML = '';
+            logoPlaceholder.style.display = '';
+          });
+          logoPreview.appendChild(wrap);
+          logoPlaceholder.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // Non-image (SVG, PDF, AI etc.) — just show filename
+        logoDataURL = null;
+        logoPlaceholder.style.display = 'none';
+        const fn = document.createElement('p');
+        fn.className = 'upload-filename';
+        fn.textContent = `✓  ${file.name}`;
+        logoPreview.appendChild(fn);
+      }
+    });
+
+    // ── FORM SUBMISSION ───────────────────────────────
+    document.getElementById('intake-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const businessName = document.getElementById('bizName').value.trim() || 'New Client';
+      const overlay = document.getElementById('loading-overlay');
+      overlay.classList.add('active');
+
+      // Collect all form data
+      const fd = new FormData(this);
+
+      // Collect inspiration URLs and their feature tags
+      const urlEntries = document.querySelectorAll('.url-entry');
+      const inspirationData = [];
+      urlEntries.forEach(entry => {
+        const urlInput = entry.querySelector('input[type="url"]');
+        const tags = Array.from(entry.querySelectorAll('.feature-tag')).map(t => t.dataset.val);
+        if (urlInput && urlInput.value.trim()) {
+          inspirationData.push({ url: urlInput.value.trim(), features: tags });
         }
       });
-      
-      // Next button functionality
-      nextButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          // Basic validation for required fields before proceeding
-          const currentStep = this.closest('.form-step');
-          const currentStepNum = parseInt(currentStep.dataset.step);
-          const requiredFields = currentStep.querySelectorAll('[required]');
-          let isValid = true;
-          
-          requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-              field.classList.add('invalid');
-              isValid = false;
-            } else {
-              field.classList.remove('invalid');
-            }
-          });
-          
-          if (!isValid) {
-            alert('Please fill in all required fields before proceeding.');
-            return;
-          }
-          
-          // Update website data if on step 3
-          if (currentStepNum === 3) {
-            updateWebsiteData();
-          }
-          
-          // If valid, move to next step
-          const nextStepNum = parseInt(this.dataset.next);
-          
-          // Update progress bar
-          progressSteps.forEach(step => {
-            if (parseInt(step.dataset.step) < nextStepNum) {
-              step.classList.add('completed');
-            }
-            if (parseInt(step.dataset.step) === nextStepNum) {
-              step.classList.add('active');
-            } else {
-              step.classList.remove('active');
-            }
-          });
-          
-          // Show next step
-          steps.forEach(step => {
-            if (parseInt(step.dataset.step) === nextStepNum) {
-              step.classList.add('active');
-            } else {
-              step.classList.remove('active');
-            }
-          });
-          
-          // Scroll to top of form
-          window.scrollTo({
-            top: document.querySelector('.form-container').offsetTop - 20,
-            behavior: 'smooth'
-          });
-        });
-      });
-      
-      // Previous button functionality
-      prevButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const prevStepNum = parseInt(this.dataset.prev);
-          
-          // Update progress bar
-          progressSteps.forEach(step => {
-            if (parseInt(step.dataset.step) === prevStepNum) {
-              step.classList.add('active');
-            } else {
-              step.classList.remove('active');
-            }
-          });
-          
-          // Show previous step
-          steps.forEach(step => {
-            if (parseInt(step.dataset.step) === prevStepNum) {
-              step.classList.add('active');
-            } else {
-              step.classList.remove('active');
-            }
-          });
-          
-          // Scroll to top of form
-          window.scrollTo({
-            top: document.querySelector('.form-container').offsetTop - 20,
-            behavior: 'smooth'
-          });
-        });
-      });
-      
-      // Form submission
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Final update of website data
-        updateWebsiteData();
-        
-        // Gather checkbox data before submitting
-        const featureCheckboxes = document.querySelectorAll('input[name="features"]:checked');
-        const selectedFeatures = Array.from(featureCheckboxes).map(cb => cb.value);
-        document.getElementById('selected-features').value = selectedFeatures.join(', ');
-        
-        // Show loading overlay
-        document.getElementById('loading-overlay').style.display = 'flex';
-        
-        // Create form data object
-        const formData = new FormData(form);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
-        
-        // Get screenshot data as base64 if any
-        const screenshots = [];
-        document.querySelectorAll('.screenshot-item img').forEach(img => {
-          screenshots.push(img.src);
-        });
-        
-        data.screenshots = screenshots;
-        
-        // Send form data to server
-        fetch('https://subsector-botanist-karate.ngrok-free.dev/gates/push', {
+
+      // Build JSON payload
+      const payload = {
+        _subject: `New Client Intake: ${businessName}`,
+        businessName: fd.get('businessName') || '',
+        ownerName: fd.get('ownerName') || '',
+        phone: fd.get('phone') || '',
+        email: fd.get('email') || '',
+        industry: fd.get('industry') || '',
+        address: fd.get('address') || '',
+        referral: fd.get('referral') || '',
+        biggestProblem: fd.get('biggestProblem') || '',
+        goal: fd.get('goal') || '',
+        budget: fd.get('budget') || '',
+        timeline: fd.get('timeline') || '',
+        visualStyles: fd.get('visualStyles') || '',
+        colorPalette: fd.get('colorPalette') || '',
+        inspiration: inspirationData,
+        avoidNotes: fd.get('avoidNotes') || '',
+        hasPhotos: fd.get('hasPhotos') || '',
+        uploadedPhotos: photoDataURLs,
+        hasLogo: fd.get('hasLogo') || '',
+        uploadedLogo: logoDataURL || (logoFileInput.files[0] ? logoFileInput.files[0].name : null),
+        driveLink: fd.get('driveLink') || '',
+        services: fd.getAll('services'),
+        testimonials: fd.get('testimonials') || '',
+        contentReadiness: fd.get('contentReadiness') || '',
+        whoUpdates: fd.get('whoUpdates') || '',
+        maintenancePlan: fd.get('maintenancePlan') || '',
+        features: fd.getAll('features'),
+        additionalNotes: fd.get('additionalNotes') || ''
+      };
+
+      try {
+        const res = await fetch('https://subsector-botanist-karate.ngrok-free.app/gates/push', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'X-Fortress-Token': 'fss-forever-still-xK9mQpRt2026'
           },
-          body: JSON.stringify(data)
-        })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          }
-          throw new Error('Network response was not ok');
-        })
-        .then(data => {
-          // Hide form and show success screen
-          form.style.display = 'none';
-          document.getElementById('success-screen').style.display = 'block';
-          
-          // Hide progress steps
-          document.querySelector('.progress-container').style.display = 'none';
-          
-          // Hide loading overlay
-          document.getElementById('loading-overlay').style.display = 'none';
-        })
-        .catch(error => {
-          console.error('Error submitting form:', error);
-          alert('There was a problem submitting your form. Please try again or contact me directly.');
-          document.getElementById('loading-overlay').style.display = 'none';
+          body: JSON.stringify(payload)
         });
-      });
-      
-      // Make radio buttons and checkboxes more tappable
-      const checkboxLabels = document.querySelectorAll('.checkbox-item label');
-      checkboxLabels.forEach(label => {
-        label.addEventListener('click', function() {
-          const input = document.getElementById(this.getAttribute('for'));
-          if (input.type === 'checkbox') {
-            input.checked = !input.checked;
-          } else if (input.type === 'radio') {
-            input.checked = true;
-          }
-        });
-      });
+
+        overlay.classList.remove('active');
+
+        if (res.ok) {
+          document.getElementById('intake-form').style.display = 'none';
+          document.getElementById('success-screen').classList.add('active');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          alert('Something went wrong. Please try again or email us directly.');
+        }
+      } catch (err) {
+        overlay.classList.remove('active');
+        alert('Unable to submit. Please check your connection and try again.');
+      }
     });
   </script>
 </body>
