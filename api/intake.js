@@ -36,6 +36,7 @@ module.exports = async function handler(req, res) {
     'Visual Styles':      { rich_text: [{ text: { content: Array.isArray(d.visualStyles) ? d.visualStyles.join(', ') : (d.visualStyles || '') } }] },
     'Color Palette':      { rich_text: [{ text: { content: Array.isArray(d.colorPalette) ? d.colorPalette.join(', ') : (d.colorPalette || '') } }] },
     'Avoid Notes':        { rich_text: [{ text: { content: d.avoidNotes || '' } }] },
+    'Tagline':            { rich_text: [{ text: { content: d.tagline || '' } }] },
     'Services Requested': { rich_text: [{ text: { content: Array.isArray(d.services) ? d.services.join(', ') : (d.services || '') } }] },
     'Testimonials':       { rich_text: [{ text: { content: d.testimonials || '' } }] },
     'Status':             { select: { name: 'New' } },
@@ -107,6 +108,7 @@ module.exports = async function handler(req, res) {
               <tr><td style="padding:8px 0;color:#9c8c82;">Biggest Problem</td><td style="padding:8px 0;color:#f0ebe4;">${d.biggestProblem || '—'}</td></tr>
               <tr><td style="padding:8px 0;color:#9c8c82;">Goal</td><td style="padding:8px 0;color:#f0ebe4;">${d.goal || '—'}</td></tr>
               <tr><td style="padding:8px 0;color:#9c8c82;">Referral</td><td style="padding:8px 0;color:#f0ebe4;">${d.referral || '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#9c8c82;">Tagline</td><td style="padding:8px 0;color:#f0ebe4;">${d.tagline || '—'}</td></tr>
             </table>
 
             <hr style="border:none;border-top:1px solid rgba(200,169,106,0.2);margin:24px 0;">

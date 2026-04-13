@@ -1112,6 +1112,12 @@
           <textarea id="avoidNotes" name="avoidNotes" placeholder="Colors, styles, or trends you dislike..."></textarea>
         </div>
 
+        <!-- Tagline / Catchphrase -->
+        <div class="field mt-24">
+          <label for="tagline">Do You Have a Tagline or Catchphrase?</label>
+          <textarea id="tagline" name="tagline" rows="2" placeholder="e.g. 'Life's Too Short for Boring Cake' — leave blank if you don't have one yet, we can work on it together."></textarea>
+        </div>
+
         <div class="btn-row">
           <button type="button" class="btn-prev" onclick="goToStep(2)">&larr; Previous</button>
           <button type="button" class="btn-primary" onclick="goToStep(4)">Continue &rarr;</button>
@@ -1678,6 +1684,7 @@
         colorPalette: fd.get('colorPalette') || '',
         inspiration: inspirationData,
         avoidNotes: fd.get('avoidNotes') || '',
+        tagline: fd.get('tagline') || '',
         hasPhotos: fd.get('hasPhotos') || '',
         uploadedPhotoCount: photoDataURLs ? photoDataURLs.length : 0,
         hasLogo: fd.get('hasLogo') || '',
