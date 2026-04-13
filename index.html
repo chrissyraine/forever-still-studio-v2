@@ -721,6 +721,29 @@
       btn.textContent = 'Send Message';
       btn.disabled = false;
     });
+
+    // Scroll reveal — same treatment as beauty & music sites
+    const reveals = document.querySelectorAll(
+      '.hero__content, .about__photo, .about__text, .services__header, .service-card, .portfolio__header, .portfolio-card, .pricing__header, .pricing-card, .process__header, .process-step, .faq__header, .faq-item, .contact__header, .contact-form__wrap, .contact__info'
+    );
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = `opacity 0.72s ease, transform 0.72s ease`;
+      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+      io.observe(el);
+    });
   </script>
 
 </body>
