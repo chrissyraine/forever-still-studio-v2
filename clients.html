@@ -1571,11 +1571,12 @@
     let photoDataURLs = [];
 
     photoFileInput.addEventListener('change', function() {
-      const files = Array.from(this.files).slice(0, 10);
-      photoPreview.innerHTML = '';
-      photoDataURLs = [];
-      if (files.length) photoPlaceholder.style.display = 'none';
-      files.forEach(file => {
+      const files = Array.from(this.files);
+      const remaining = 10 - photoPreview.children.length;
+      if (remaining <= 0) return;
+      const toAdd = files.slice(0, remaining);
+      if (toAdd.length) photoPlaceholder.style.display = 'none';
+      toAdd.forEach(file => {
         if (!file.type.startsWith('image/')) return;
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -1595,6 +1596,7 @@
         };
         reader.readAsDataURL(file);
       });
+      this.value = ''; // reset so same file can be re-added if needed
     });
 
     // ── LOGO UPLOAD ──────────────────────────────────────
