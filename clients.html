@@ -1691,12 +1691,9 @@
       };
 
       try {
-        const res = await fetch('https://subsector-botanist-karate.ngrok-free.app/gates/push', {
+        const res = await fetch('/api/intake', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Fortress-Token': 'fss-forever-still-xK9mQpRt2026'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
 
