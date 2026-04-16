@@ -765,7 +765,11 @@
       cursor: pointer;
       transition: border-color 0.2s;
       margin-top: 8px;
+      position: relative;
     }
+    .upload-area .upload-preview { pointer-events: none; }
+    .upload-area .upload-preview .upload-thumb { pointer-events: auto; }
+    .upload-area .upload-preview .remove-thumb { pointer-events: auto; }
     .upload-area--sm { padding: 18px 20px; }
     .upload-area:hover { border-color: rgba(200,169,106,0.6); }
     .upload-placeholder {
@@ -1637,7 +1641,7 @@
           logoDataURL = e.target.result;
           const wrap = document.createElement('div');
           wrap.className = 'upload-thumb';
-          wrap.innerHTML = `<img src="${e.target.result}" alt="Logo" style="object-fit:contain;background:#1a1714;" />
+          wrap.innerHTML = `<img src="${e.target.result}" alt="Logo" style="object-fit:contain;background:#faf2ec;" />
             <div class="remove-thumb" title="Remove">×</div>`;
           wrap.querySelector('.remove-thumb').addEventListener('click', ev => {
             ev.stopPropagation();
