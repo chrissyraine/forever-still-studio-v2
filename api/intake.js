@@ -8,6 +8,9 @@ module.exports = async function handler(req, res) {
 
   const d = req.body;
 
+  // Notion rich_text fields max 2000 chars
+  const t = (str) => (str || '').slice(0, 1990);
+
   const budgetMap = {
     'under-500':  'Under 500',
     '500-1000':   '500 to 1000',
@@ -26,24 +29,24 @@ module.exports = async function handler(req, res) {
   const contentMap = { 'ready': 'Ready', 'partial': 'Partial', 'not-ready': 'Not ready' };
 
   const props = {
-    'Business Name':      { title: [{ text: { content: d.businessName || 'Unnamed' } }] },
-    'Owner Name':         { rich_text: [{ text: { content: d.ownerName || '' } }] },
-    'Industry':           { rich_text: [{ text: { content: d.industry || '' } }] },
-    'Location':           { rich_text: [{ text: { content: d.address || '' } }] },
-    'Referral':           { rich_text: [{ text: { content: d.referral || '' } }] },
-    'Elevator Pitch':     { rich_text: [{ text: { content: d.elevator || '' } }] },
-    'What They Love':     { rich_text: [{ text: { content: d.love || '' } }] },
-    'Customers':          { rich_text: [{ text: { content: d.customers || '' } }] },
-    'Why Now':            { rich_text: [{ text: { content: d.whyNow || '' } }] },
-    'Desired Action':     { rich_text: [{ text: { content: d.cta || '' } }] },
-    'Biggest Problem':    { rich_text: [{ text: { content: d.biggestProblem || '' } }] },
-    'Goal':               { rich_text: [{ text: { content: d.goal || '' } }] },
-    'Visual Styles':      { rich_text: [{ text: { content: Array.isArray(d.visualStyles) ? d.visualStyles.join(', ') : (d.visualStyles || '') } }] },
-    'Color Palette':      { rich_text: [{ text: { content: Array.isArray(d.colorPalette) ? d.colorPalette.join(', ') : (d.colorPalette || '') } }] },
-    'Avoid Notes':        { rich_text: [{ text: { content: d.avoidNotes || '' } }] },
-    'Tagline':            { rich_text: [{ text: { content: d.tagline || '' } }] },
-    'Services Requested': { rich_text: [{ text: { content: Array.isArray(d.services) ? d.services.join(', ') : (d.services || '') } }] },
-    'Testimonials':       { rich_text: [{ text: { content: d.testimonials || '' } }] },
+    'Business Name':      { title: [{ text: { content: t(d.businessName || 'Unnamed') } }] },
+    'Owner Name':         { rich_text: [{ text: { content: t(d.ownerName) } }] },
+    'Industry':           { rich_text: [{ text: { content: t(d.industry) } }] },
+    'Location':           { rich_text: [{ text: { content: t(d.address) } }] },
+    'Referral':           { rich_text: [{ text: { content: t(d.referral) } }] },
+    'Elevator Pitch':     { rich_text: [{ text: { content: t(d.elevator) } }] },
+    'What They Love':     { rich_text: [{ text: { content: t(d.love) } }] },
+    'Customers':          { rich_text: [{ text: { content: t(d.customers) } }] },
+    'Why Now':            { rich_text: [{ text: { content: t(d.whyNow) } }] },
+    'Desired Action':     { rich_text: [{ text: { content: t(d.cta) } }] },
+    'Biggest Problem':    { rich_text: [{ text: { content: t(d.biggestProblem) } }] },
+    'Goal':               { rich_text: [{ text: { content: t(d.goal) } }] },
+    'Visual Styles':      { rich_text: [{ text: { content: t(Array.isArray(d.visualStyles) ? d.visualStyles.join(', ') : (d.visualStyles || '')) } }] },
+    'Color Palette':      { rich_text: [{ text: { content: t(Array.isArray(d.colorPalette) ? d.colorPalette.join(', ') : (d.colorPalette || '')) } }] },
+    'Avoid Notes':        { rich_text: [{ text: { content: t(d.avoidNotes) } }] },
+    'Tagline':            { rich_text: [{ text: { content: t(d.tagline) } }] },
+    'Services Requested': { rich_text: [{ text: { content: t(Array.isArray(d.services) ? d.services.join(', ') : (d.services || '')) } }] },
+    'Testimonials':       { rich_text: [{ text: { content: t(d.testimonials) } }] },
     'Status':             { select: { name: 'New' } },
   };
 
