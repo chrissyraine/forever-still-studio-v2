@@ -1490,86 +1490,7 @@
       document.getElementById('selectedColors').value = vals.join(', ');
     }
 
-    // ── WEBSITE INSPIRATION ───────────────────────────
-    const FEATURE_OPTIONS = [
-      'Animation', 'Booking / Scheduling', 'Bold Typography', 'Clean Layout',
-      'Dark Mode', 'E-Commerce', 'Full-Width Video', 'Gallery / Portfolio',
-      'Luxury Feel', 'Minimalist', 'Newsletter Popup', 'Parallax Scrolling',
-      'Strong Photography', 'Testimonials', 'Unique Navigation'
-    ];
-
-    let urlCount = 0;
-
-    function addUrlEntry() {
-      urlCount++;
-      const id = 'url-entry-' + urlCount;
-      const div = document.createElement('div');
-      div.className = 'url-entry';
-      div.id = id;
-      div.innerHTML = `
-        <div class="url-row">
-          <input type="url" name="inspirationUrl[]" placeholder="https://example.com" />
-          <button type="button" class="btn-remove-url" onclick="removeUrlEntry('${id}')" title="Remove">&times;</button>
-        </div>
-        <div class="feature-tags-row" id="tags-row-${urlCount}">
-          <div style="position:relative;">
-            <button type="button" class="btn-add-feature" onclick="toggleFeatureDropdown('dd-${urlCount}')" title="Add feature tag">+</button>
-            <div class="feature-dropdown" id="dd-${urlCount}">
-              ${FEATURE_OPTIONS.map(opt =>
-                `<div class="feature-dropdown-item" onclick="addFeatureTag('tags-row-${urlCount}', 'dd-${urlCount}', '${opt}')">${opt}</div>`
-              ).join('')}
-            </div>
-          </div>
-        </div>
-      `;
-      document.getElementById('url-list').appendChild(div);
-    }
-
-    function removeUrlEntry(id) {
-      const el = document.getElementById(id);
-      if (el) el.remove();
-    }
-
-    function toggleFeatureDropdown(ddId) {
-      // close all others first
-      document.querySelectorAll('.feature-dropdown').forEach(d => {
-        if (d.id !== ddId) d.classList.remove('open');
-      });
-      document.getElementById(ddId).classList.toggle('open');
-    }
-
-    function addFeatureTag(rowId, ddId, label) {
-      const row = document.getElementById(rowId);
-      // don't add duplicates
-      const existing = Array.from(row.querySelectorAll('.feature-tag'))
-        .map(t => t.dataset.val);
-      if (existing.includes(label)) {
-        document.getElementById(ddId).classList.remove('open');
-        return;
-      }
-      const tag = document.createElement('span');
-      tag.className = 'feature-tag';
-      tag.dataset.val = label;
-      tag.innerHTML = `${label} <span class="tag-x" onclick="removeTag(this.parentElement)">&times;</span>`;
-      // insert before the + button wrapper
-      const btnWrapper = row.querySelector('div[style]') || row.querySelector('.btn-add-feature').parentElement;
-      row.insertBefore(tag, btnWrapper);
-      document.getElementById(ddId).classList.remove('open');
-    }
-
-    function removeTag(tagEl) {
-      tagEl.remove();
-    }
-
-    // close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.btn-add-feature') && !e.target.closest('.feature-dropdown')) {
-        document.querySelectorAll('.feature-dropdown').forEach(d => d.classList.remove('open'));
-      }
-    });
-
-    // add first URL entry on load
-    addUrlEntry();
+    // (Website inspiration section removed — competitor research is our job)
 
     // ── SCREENSHOT UPLOAD ─────────────────────────────
     function handleScreenshots(input) {
@@ -1675,17 +1596,6 @@
       // Collect all form data
       const fd = new FormData(this);
 
-      // Collect inspiration URLs and their feature tags
-      const urlEntries = document.querySelectorAll('.url-entry');
-      const inspirationData = [];
-      urlEntries.forEach(entry => {
-        const urlInput = entry.querySelector('input[type="url"]');
-        const tags = Array.from(entry.querySelectorAll('.feature-tag')).map(t => t.dataset.val);
-        if (urlInput && urlInput.value.trim()) {
-          inspirationData.push({ url: urlInput.value.trim(), features: tags });
-        }
-      });
-
       // Build JSON payload
       const payload = {
         _subject: `New Client Intake: ${businessName}`,
@@ -1707,7 +1617,7 @@
         timeline: fd.get('timeline') || '',
         visualStyles: fd.get('visualStyles') || '',
         colorPalette: fd.get('colorPalette') || '',
-        inspiration: inspirationData,
+        inspiration: [],
         avoidNotes: fd.get('avoidNotes') || '',
         tagline: fd.get('tagline') || '',
         hasPhotos: fd.get('hasPhotos') || '',
