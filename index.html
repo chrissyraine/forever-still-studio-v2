@@ -197,6 +197,14 @@
     .service-card h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--text); margin-bottom: 0.75rem; }
     .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.85; margin: 0; }
 
+    /* ── Testimonials ── */
+    .testimonials { padding: 6rem 0; }
+    .testimonials__header { text-align: center; margin-bottom: 3rem; }
+    .testimonials__header h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--text); }
+    .testimonial-card { background: var(--bg-warm); border: 1px solid var(--rule); padding: 2.5rem; margin-bottom: 1.5rem; }
+    .testimonial-card p { font-family: var(--font-display); font-size: 1.15rem; font-style: italic; line-height: 1.7; color: var(--text); margin-bottom: 1rem; }
+    .testimonial-card cite { font-size: 11px; font-style: normal; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+
     /* ── Portfolio ── */
     .portfolio { background: var(--bg-warm); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
     .portfolio__header { text-align: center; margin-bottom: 4rem; }
@@ -513,6 +521,29 @@
             </div>
             <div class="portfolio-card__arrow">↗</div>
           </a>
+          <a href="https://dirty-dozens.vercel.app/#about" target="_blank" rel="noopener" class="portfolio-card">
+            <img src="images/dirty_dozens.jpg" alt="Dirty Dozens Bakery">
+            <div class="portfolio-card__overlay">
+              <div class="portfolio-card__tag">Bakery · Local Business</div>
+              <div class="portfolio-card__name">Dirty Dozens</div>
+              <div class="portfolio-card__desc">Local bakery in Titusville — warm, inviting site built from her own photos turned into professional brand assets.</div>
+            </div>
+            <div class="portfolio-card__arrow">↗</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="testimonials__header">
+          <p class="eyebrow">What They Say</p>
+          <div class="rule"></div>
+          <h2>Real Words from <em style="color:var(--blush)">Real Clients</em></h2>
+        </div>
+        <div class="testimonial-card">
+          <p>"Chrissy didn't just build me a website; she captured the heart of my business. She took my everyday photos and turned them into professional brand assets, giving me a digital storefront I'm finally proud to share. Fast, professional, and she truly listens."</p>
+          <cite>— Dirty Dozens Bakery, Titusville PA</cite>
         </div>
       </div>
     </section>
