@@ -785,10 +785,21 @@
 
   </main>
 
+  <!-- Also from Forever Still -->
+  <section style="background:#2C2218;border-top:1px solid rgba(200,169,106,0.2);border-bottom:1px solid rgba(200,169,106,0.2);padding:28px 40px;text-align:center;">
+    <p style="font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:#C8A96A;margin-bottom:14px;">Also from Forever Still</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
+      <a href="https://www.foreverstillmusic.com" target="_blank" rel="noopener" style="font-family:Georgia,serif;font-size:20px;font-weight:400;color:#FAF7F4;text-decoration:none;">Forever Still <span style="color:#C8A96A;">Music</span></a>
+      <span style="color:rgba(200,169,106,0.3);font-size:10px;">◆</span>
+      <a href="https://www.foreverstillbeauty.com" target="_blank" rel="noopener" style="font-family:Georgia,serif;font-size:20px;font-weight:400;color:#FAF7F4;text-decoration:none;">Forever Still <span style="color:#C8A96A;">Beauty</span></a>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <p class="footer__brand">Forever Still <span>Studio</span></p>
       <p>Web design for local businesses in Titusville, PA and surrounding areas.</p>
+      <p style="margin-top:8px;font-size:12px;"><a href="mailto:chrissy@foreverstillbeauty.com" style="color:var(--gold);text-decoration:none;">chrissy@foreverstillbeauty.com</a></p>
     </div>
   </footer>
 
@@ -831,11 +842,11 @@
       };
 
       try {
-        const res = await fetch('https://subsector-botanist-karate.ngrok-free.app/contact', {
+        const res = await fetch('https://formspree.io/f/maqlvedv', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-Fortress-Token': 'fss-forever-still-xK9mQpRt2026'
+            'Accept': 'application/json'
           },
           body: JSON.stringify(data)
         });
