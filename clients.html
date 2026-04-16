@@ -11,14 +11,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #fff8f4;
-      --card:     #ffffff;
-      --elevated: #faf2ec;
-      --gold:     #C8A96A;
+      --bg:       #faf2ec;
+      --card:     #fff8f4;
+      --elevated: #f3e9df;
+      --gold:     #9a7d4e;
+      --gold-bright: #C8A96A;
       --text:     #1e1b18;
-      --muted:    rgba(30,27,24,0.45);
-      --border:   rgba(200,169,106,0.25);
-      --border-focus: #C8A96A;
+      --muted:    rgba(30,27,24,0.55);
+      --border:   rgba(118,89,51,0.22);
+      --border-focus: #9a7d4e;
     }
 
     html { scroll-behavior: smooth; }
@@ -38,7 +39,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,248,244,0.97);
+      background: rgba(243,233,223,0.97);
+      box-shadow: 0 1px 8px rgba(30,27,24,0.06);
       border-bottom: 1px solid rgba(200,169,106,0.2);
       display: flex;
       align-items: center;
@@ -856,7 +858,7 @@
 
   <!-- NAV -->
   <nav class="site-nav">
-    <img src="logo.png" alt="Forever Still Studio" class="logo" />
+    <img src="images/logo.png" alt="Forever Still Studio" class="logo" />
     <span class="nav-portal-label">Client Portal</span>
   </nav>
 
