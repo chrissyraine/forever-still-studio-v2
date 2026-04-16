@@ -1645,6 +1645,8 @@
 
         if (res.ok) {
           document.getElementById('intake-form').style.display = 'none';
+          document.querySelector('.hero').style.display = 'none';
+          document.querySelector('.progress-wrap').style.display = 'none';
           document.getElementById('success-screen').classList.add('active');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
