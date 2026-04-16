@@ -6,18 +6,18 @@
   <title>Client Intake — Forever Still Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&family=Allura&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #0d0b0b;
-      --card:     #141210;
-      --elevated: #1a1714;
+      --bg:       #fff8f4;
+      --card:     #ffffff;
+      --elevated: #faf2ec;
       --gold:     #C8A96A;
-      --text:     #f0ebe4;
-      --muted:    rgba(240,235,228,0.45);
-      --border:   rgba(200,169,106,0.18);
+      --text:     #1e1b18;
+      --muted:    rgba(30,27,24,0.45);
+      --border:   rgba(200,169,106,0.25);
       --border-focus: #C8A96A;
     }
 
@@ -26,7 +26,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Manrope', sans-serif;
       font-weight: 400;
       font-size: 15px;
       line-height: 1.6;
@@ -38,8 +38,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(13,11,11,0.97);
-      border-bottom: 1px solid rgba(200,169,106,0.12);
+      background: rgba(255,248,244,0.97);
+      border-bottom: 1px solid rgba(200,169,106,0.2);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -57,7 +57,7 @@
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(200,169,106,0.55);
+      color: rgba(118,89,51,0.7);
     }
 
     /* ── HERO ────────────────────────────────────────── */
@@ -107,7 +107,7 @@
       font-style: italic;
       font-size: 20px;
       font-weight: 300;
-      color: rgba(240,235,228,0.7);
+      color: rgba(30,27,24,0.5);
       margin-bottom: 10px;
     }
     .hero-note {
@@ -166,13 +166,13 @@
     .progress-step.active .step-circle {
       background: var(--gold);
       border-color: var(--gold);
-      color: #0d0b0b;
+      color: #fff8f4;
       font-weight: 600;
     }
     .progress-step.completed .step-circle {
       background: var(--gold);
       border-color: var(--gold);
-      color: #0d0b0b;
+      color: #fff8f4;
     }
     .step-label {
       font-family: 'Inter', sans-serif;
@@ -267,7 +267,7 @@
     }
     .field input::placeholder,
     .field textarea::placeholder {
-      color: rgba(240,235,228,0.2);
+      color: rgba(30,27,24,0.25);
     }
     .field textarea { resize: vertical; min-height: 100px; }
 
@@ -285,7 +285,7 @@
       background: var(--gold);
       clip-path: polygon(0 0, 100% 0, 50% 100%);
     }
-    .select-wrap select option { background: #1a1714; color: var(--text); }
+    .select-wrap select option { background: #faf2ec; color: var(--text); }
 
     /* ── STYLE CARDS ─────────────────────────────────── */
     .section-label {
@@ -342,7 +342,7 @@
       align-items: center;
       justify-content: center;
       font-size: 13px;
-      color: #0d0b0b;
+      color: #fff8f4;
       font-weight: 700;
     }
     .style-card.selected .style-check { display: flex; }
@@ -423,7 +423,7 @@
       transition: border-color 0.2s;
     }
     .url-row input:focus { border-color: var(--gold); }
-    .url-row input::placeholder { color: rgba(240,235,228,0.2); }
+    .url-row input::placeholder { color: rgba(30,27,24,0.25); }
     .btn-remove-url {
       background: transparent;
       border: 1px solid rgba(200,169,106,0.3);
@@ -450,7 +450,7 @@
     }
     .feature-tag {
       background: var(--gold);
-      color: #0d0b0b;
+      color: #fff8f4;
       font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 500;
@@ -469,7 +469,7 @@
     }
     .btn-add-feature {
       background: var(--gold);
-      color: #0d0b0b;
+      color: #fff8f4;
       border: none;
       font-family: 'Inter', sans-serif;
       font-size: 18px;
@@ -509,7 +509,7 @@
 
     .btn-add-url {
       background: var(--gold);
-      color: #0d0b0b;
+      color: #fff8f4;
       border: none;
       font-family: 'Inter', sans-serif;
       font-size: 11px;
@@ -548,7 +548,7 @@
     .upload-sub {
       font-family: 'Inter', sans-serif;
       font-size: 11px;
-      color: rgba(240,235,228,0.25);
+      color: rgba(30,27,24,0.25);
     }
     .upload-thumbs {
       display: flex;
@@ -604,14 +604,14 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #0d0b0b;
+      background: #fff8f4;
     }
     .check-item input[type="checkbox"]:checked + .custom-check::after {
       content: '';
       display: block;
       width: 5px;
       height: 9px;
-      border: 2px solid #0d0b0b;
+      border: 2px solid var(--gold);
       border-top: none;
       border-left: none;
       transform: rotate(45deg) translateY(-1px);
@@ -643,7 +643,7 @@
 
     .btn-primary {
       background: var(--gold);
-      color: #0d0b0b;
+      color: #fff8f4;
       border: none;
       font-family: 'Inter', sans-serif;
       font-weight: 600;
@@ -680,7 +680,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(13,11,11,0.9);
+      background: rgba(255,248,244,0.95);
       z-index: 200;
       flex-direction: column;
       align-items: center;
@@ -734,7 +734,7 @@
       font-style: italic;
       font-size: 20px;
       font-weight: 300;
-      color: rgba(240,235,228,0.7);
+      color: rgba(30,27,24,0.5);
       margin-bottom: 14px;
     }
     .success-note {
@@ -867,8 +867,8 @@
       <hr /><div class="divider-diamond"></div><hr />
     </div>
     <h1 class="hero-script">Client Portal</h1>
-    <p class="hero-sub">Let's build something that works.</p>
-    <p class="hero-note">Take your time — there are no wrong answers.</p>
+    <p class="hero-sub">Let's build something beautiful for your business.</p>
+    <p class="hero-note">Take your time — there are no wrong answers. This helps me understand you and your business so I can build exactly what you need.</p>
   </section>
 
   <!-- PROGRESS BAR -->
@@ -936,6 +936,14 @@
             <input type="text" id="address" name="address" placeholder="City, State or full address" />
           </div>
           <div class="field span-2">
+            <label for="elevator">In a sentence or two, what does your business do?</label>
+            <textarea id="elevator" name="elevator" rows="2" placeholder="Just tell me in your own words — like you're explaining it to a friend."></textarea>
+          </div>
+          <div class="field span-2">
+            <label for="love">What do you love most about your business?</label>
+            <textarea id="love" name="love" rows="2" placeholder="This helps me capture your voice and energy when I write your website."></textarea>
+          </div>
+          <div class="field span-2">
             <label for="referral">How Did You Hear About Us?</label>
             <div class="select-wrap">
               <select id="referral" name="referral">
@@ -967,24 +975,36 @@
 
         <div class="form-grid">
           <div class="field span-2">
-            <label for="biggestProblem">What Is Your Biggest Problem Right Now?</label>
-            <textarea id="biggestProblem" name="biggestProblem" placeholder="Describe the challenge you're trying to solve..."></textarea>
+            <label for="customers">Who walks through your door? Who are your customers?</label>
+            <textarea id="customers" name="customers" rows="2" placeholder="e.g. Moms looking for birthday cakes, local families, young professionals..."></textarea>
           </div>
           <div class="field span-2">
-            <label for="goal">What Does Success Look Like for This Project?</label>
-            <textarea id="goal" name="goal" placeholder="More leads, better branding, increased sales — what matters most?"></textarea>
+            <label for="whyNow">Why do you need a website right now?</label>
+            <textarea id="whyNow" name="whyNow" rows="2" placeholder="What changed? What's the reason you're ready to do this now?"></textarea>
+          </div>
+          <div class="field span-2">
+            <label for="biggestProblem">What's the biggest problem you're dealing with online?</label>
+            <textarea id="biggestProblem" name="biggestProblem" placeholder="e.g. Nobody can find me, my Instagram is my only thing, I'm embarrassed to share my current site..."></textarea>
+          </div>
+          <div class="field span-2">
+            <label for="cta">When someone finds you online, what do you want them to do?</label>
+            <textarea id="cta" name="cta" rows="2" placeholder="e.g. Call me, place an order, book an appointment, come visit the shop..."></textarea>
+          </div>
+          <div class="field span-2">
+            <label for="goal">If this website launched tomorrow, what would make it worth it?</label>
+            <textarea id="goal" name="goal" placeholder="More calls, more orders, people actually finding you — what matters most?"></textarea>
           </div>
           <div class="field">
             <label for="budget">Budget Range</label>
             <div class="select-wrap">
               <select id="budget" name="budget">
                 <option value="" disabled selected>Select a range</option>
-                <option value="under-1k">Under $1,000</option>
-                <option value="1k-2.5k">$1,000 – $2,500</option>
-                <option value="2.5k-5k">$2,500 – $5,000</option>
-                <option value="5k-10k">$5,000 – $10,000</option>
-                <option value="10k-plus">$10,000+</option>
-                <option value="unsure">Not Sure Yet</option>
+                <option value="under-500">Under $500</option>
+                <option value="500-1k">$500 – $1,000</option>
+                <option value="1k-3k">$1,000 – $3,000</option>
+                <option value="3k-5k">$3,000 – $5,000</option>
+                <option value="5k-plus">$5,000+</option>
+                <option value="unsure">Not sure yet — let's talk</option>
               </select>
             </div>
           </div>
@@ -1089,16 +1109,9 @@
         </div>
         <input type="hidden" id="selectedColors" name="colorPalette" />
 
-        <!-- Website Inspiration -->
-        <p class="section-label mt-32">Website Inspiration</p>
-        <div class="inspiration-box">
-          <div class="inspiration-box-title">Sites You Love</div>
-          <div id="url-list"></div>
-          <button type="button" class="btn-add-url" onclick="addUrlEntry()">+ Add a Website</button>
-        </div>
-
         <!-- Screenshot Upload -->
-        <p class="section-label mt-32">Screenshots / Visual References</p>
+        <p class="section-label mt-32">Screenshots / Visual References (Optional)</p>
+        <p style="font-size:13px; color:var(--muted); margin-bottom:12px;">If you've seen a website you like the look of, drop a screenshot here. No pressure — we'll figure out the perfect look together.</p>
         <div class="upload-area" onclick="document.getElementById('screenshotInput').click()">
           <input type="file" id="screenshotInput" name="screenshots" multiple accept="image/*" onchange="handleScreenshots(this)" />
           <span class="upload-label">Drop images here or click to browse</span>
