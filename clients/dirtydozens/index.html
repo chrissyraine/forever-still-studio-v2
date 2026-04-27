@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO META DATA -->
+  <title>Dirty Dozens Sweets and Treats | Oil City, PA</title>
+  <meta name="description" content="Handcrafted cupcakes and custom cakes in Oil City, PA. Made from scratch by a self-taught mom of 5. Order your next celebration cake today!">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap');
+
+    :root {
+      /* ─── Brand Palette from Logo ─── */
+      --black: #1A1A1E;
+      --dark-charcoal: #222226;
+      --hot-pink: #F24B8E;
+      --soft-pink: #F78DB4;
+      --sky-blue: #52C8E8;
+      --light-blue: #7DD8F0;
+      --purple-accent: #9B5FC0;
+      --soft-purple: #B87FD8;
+      --white: #FFFFFF;
+      --off-white: #F8F9FB;
+      --light-gray: #E8EAF0;
+      --text-light: #B0B3C0;
+      --text-on-dark: #D8DAE5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.7;
+    }
+
+    /* ─── HEADER / NAV ─── */
+    header {
+      background: transparent;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+    header.scrolled {
+      background: rgba(26,26,30,0.4);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--sky-blue);
+    }
+    header .logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--sky-blue);
+    }
+    header nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--sky-blue);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s, text-shadow 0.2s;
+      text-shadow: 0 0 10px rgba(82,200,232,0.4);
+    }
+    header nav a:hover { color: var(--hot-pink); text-shadow: 0 0 12px rgba(242,75,142,0.5); }
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+      background:
+        linear-gradient(to bottom, rgba(26,26,30,0.55) 0%, rgba(26,26,30,0.7) 100%),
+        url('hero.jpg') center center / cover no-repeat;
+      background-attachment: fixed;
+      color: var(--white);
+      text-align: center;
+      padding: 16rem 2rem 8rem;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: block;
+      border: 3px solid var(--sky-blue);
+      box-shadow: 0 0 30px rgba(82,200,232,0.3), 0 0 60px rgba(242,75,142,0.15);
+    }
+    .hero h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      color: var(--sky-blue);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 0 40px rgba(82,200,232,0.4);
+    }
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 620px;
+      margin: 0 auto 2rem;
+      color: var(--sky-blue);
+      text-shadow: 0 0 16px rgba(82,200,232,0.4);
+    }
+    .hero .cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(242,75,142,0.3); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--hot-pink), var(--purple-accent));
+      color: var(--white);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--hot-pink);
+      border: 2px solid var(--hot-pink);
+      text-shadow: 0 0 10px rgba(242,75,142,0.4);
+    }
+    .btn-outline:hover { background: rgba(242,75,142,0.1); box-shadow: 0 0 16px rgba(242,75,142,0.4); }
+
+    /* ─── SECTIONS ─── */
+    section {
+      width: 100%;
+      padding: 4rem 3rem;
+    }
+    .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: var(--sky-blue);
+      text-shadow: 0 0 20px rgba(82,200,232,0.5);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    section p {
+      font-size: 1.05rem;
+      color: var(--text-on-dark);
+      margin-bottom: 1rem;
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background: var(--dark-charcoal);
+      border-top: 1px solid rgba(82,200,232,0.15);
+      border-bottom: 1px solid rgba(82,200,232,0.15);
+    }
+
+    /* ─── MENU HIGHLIGHTS ─── */
+    .menu-highlights { background: var(--black); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .menu-card {
+      background: var(--dark-charcoal);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(242,75,142,0.2);
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+    .menu-card:hover {
+      box-shadow: 0 8px 30px rgba(242,75,142,0.15), 0 0 20px rgba(82,200,232,0.08);
+      border-color: rgba(242,75,142,0.4);
+    }
+    .menu-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .menu-card h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: var(--hot-pink);
+      margin-bottom: 0.75rem;
+    }
+    .menu-card p { font-size: 0.95rem; color: var(--text-light); }
+    .menu-card strong { color: var(--soft-pink); }
+    .menu-card .tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--sky-blue), var(--light-blue));
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--hot-pink) 0%, var(--purple-accent) 50%, var(--sky-blue) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 3.5rem 2rem;
+    }
+    .cta-banner h2 {
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .cta-banner p { color: rgba(255,255,255,0.92); max-width: 550px; margin: 0 auto 2rem; }
+    .cta-banner .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+    .btn-dark:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+
+    /* ─── LOCAL SEO / FOOTER ─── */
+    footer {
+      background: var(--dark-charcoal);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 3px solid var(--sky-blue);
+    }
+    footer p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    footer .location {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: var(--hot-pink);
+      margin-bottom: 1rem;
+    }
+    footer a { color: var(--sky-blue); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--hot-pink); text-decoration: underline; }
+
+    /* ─── PHOTO GALLERY ─── */
+    .gallery { background: var(--dark-charcoal); }
+    /* ── Carousel ── */
+    .carousel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .carousel-track-wrap {
+      overflow: hidden;
+      border-radius: 16px;
+      flex: 1;
+      border: 2px solid rgba(82,200,232,0.2);
+      box-shadow: 0 0 30px rgba(82,200,232,0.15);
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .carousel-slide {
+      min-width: 100%;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 700px;
+      object-fit: contain;
+      background: #1A1A1E;
+      display: block;
+    }
+    .carousel-btn {
+      background: rgba(26,26,30,0.7);
+      border: 2px solid var(--sky-blue);
+      color: var(--sky-blue);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s, box-shadow 0.2s;
+      text-shadow: 0 0 10px rgba(82,200,232,0.6);
+    }
+    .carousel-btn:hover {
+      background: var(--sky-blue);
+      color: var(--black);
+      box-shadow: 0 0 16px rgba(82,200,232,0.5);
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.25rem;
+    }
+    .carousel-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(82,200,232,0.3);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-dots .dot.active {
+      background: var(--hot-pink);
+      transform: scale(1.3);
+      box-shadow: 0 0 8px rgba(242,75,142,0.6);
+    }
+    @media (max-width: 768px) {
+      .carousel-slide img { height: 280px; }
+      .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+    }
+
+    /* ─── MENU CATEGORIES ─── */
+    .menu-category {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(242,75,142,0.15);
+    }
+    .menu-category:first-of-type { margin-top: 2rem; border-top: none; }
+    .category-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--hot-pink);
+      text-align: center;
+      margin-bottom: 0.4rem;
+    }
+    .category-price {
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--sky-blue);
+      margin-bottom: 1.5rem;
+    }
+    .category-subtitle {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+    .menu-item-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .menu-item {
+      background: var(--dark-charcoal);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(82,200,232,0.1);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .menu-item:hover {
+      border-color: rgba(242,75,142,0.3);
+      box-shadow: 0 4px 16px rgba(242,75,142,0.1);
+    }
+    .menu-item h4 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .menu-item p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.25rem;
+      line-height: 1.5;
+    }
+    .menu-item .tag {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--sky-blue), var(--light-blue));
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .wedding-callout {
+      background: rgba(242,75,142,0.05);
+      border: 1px solid rgba(242,75,142,0.2);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      margin-top: 3rem;
+    }
+
+    /* ─── SEO REFERENCE BOX (for client) ─── */
+    .seo-reference {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: var(--off-white);
+      border: 2px dashed #999;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .seo-reference h3 { font-size: 1.1rem; margin-bottom: 1rem; color: #555; }
+    .seo-reference p { color: #444; }
+    .seo-reference strong { color: #333; }
+    .seo-reference code {
+      display: block;
+      background: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      font-family: monospace;
+      font-size: 0.85rem;
+      word-break: break-all;
+      color: #222;
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 3rem 1.25rem; }
+      header { padding: 0.75rem 1.25rem; }
+      header .logo img { height: 70px !important; }
+      header nav a { margin-left: 0.75rem; font-size: 0.85rem; }
+      .hero { padding: 10rem 1.5rem 4rem; }
+      .hero h1 { font-size: 2.8rem; }
+      .hero p { font-size: 1rem; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-item-grid { grid-template-columns: 1fr; }
+      .carousel-slide img { height: 320px; }
+      .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+      .cta-banner { padding: 2.5rem 1.5rem; }
+      .cta-banner h2 { font-size: 1.8rem; }
+      .btn { padding: 0.85rem 1.5rem; font-size: 0.95rem; }
+      footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+      header nav { display: none; }
+      .cta-group { flex-direction: column; align-items: center; }
+      .cta-group .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     HEADER / NAVIGATION
+     ════════════════════════════════════════════════════ -->
+<header>
+  <div class="logo">
+    <img src="logo.png" alt="Dirty Dozens Sweets and Treats" style="height:100px;width:auto;display:block;">
+  </div>
+  <nav>
+    <a href="#about">Our Story</a>
+    <a href="#menu">Menu</a>
+    <a href="#order">Order</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ════════════════════════════════════════════════════
+     HERO SECTION
+     Frameworks: AIDA (Attention + Interest), Friend-Expert
+     ════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Life's Too Short for Boring Cake</h1>
+    <p>Handcrafted cupcakes and custom cakes baked from scratch in Oil City, PA &mdash; because every celebration deserves something made with love (and a little bit of chaos).</p>
+    <div class="cta-group">
+      <a href="#order" class="btn btn-primary">Order for Pickup</a>
+      <a href="#menu" class="btn btn-outline">View Menu</a>
+    </div>
+    <p style="margin-top:1rem;font-size:0.9rem;color:var(--soft-pink);letter-spacing:0.05em;">Limited daily batches — order early</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     ABOUT US
+     Frameworks: Story-Solve-Sell, Friend-Expert
+     ════════════════════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="inner">
+    <h2>A Kitchen, Five Kids, and a Whole Lot of Butter</h2>
+
+    <p>Dirty Dozens Sweets and Treats started the way most great things do &mdash; with a mom who refused to buy a grocery store cake one more time. Amanda Waters taught herself to bake between school pickups, soccer practices, and the beautiful chaos of raising five kids.</p>
+
+    <p>What began as cupcakes for birthday parties turned into a full-blown obsession. Neighbors started asking. Then their neighbors. Then people across Oil City, PA who'd heard about "that mom who makes the cakes." Amanda never went to culinary school. She didn't need to. She had determination, a stand mixer, and the kind of perfectionism that only a mom of five can develop.</p>
+
+    <p>Today, every cupcake, every custom cake, and every last crumb that comes out of Dirty Dozens is still made from scratch &mdash; with real ingredients, real care, and the same passion that started it all. Because around here, we don't cut corners. We frost them.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     FULL BAKERY MENU
+     ════════════════════════════════════════════════════ -->
+<section class="menu-highlights" id="menu">
+  <div class="inner">
+  <h2>Oil City's Favorite Flavors</h2>
+  <p style="text-align:center; max-width:600px; margin:0 auto 1rem;">Every cupcake, every cake, every crumb &mdash; baked fresh to order with real ingredients. No mixes. No shortcuts. Just the good stuff.</p>
+
+  <!-- ── SPECIALTY CUPCAKES ── -->
+  <div class="menu-category">
+    <h3 class="category-title">Filled Cupcakes</h3>
+    <p class="category-price">$24.00 / dozen</p>
+
+    <div class="menu-item-grid">
+
+      <div class="menu-item">
+        <h4>White Almond Raspberry Filled</h4>
+        <p>Raspberry filled white almond cupcake topped with vanilla whipped icing.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Chocolate Peanut Butter</h4>
+        <p>Milk chocolate cupcake filled with creamy peanut butter filling, topped with whipped peanut butter icing.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Almond Joy</h4>
+        <p>Coconut filled chocolate cupcake topped with vanilla whipped icing, sprinkled with crushed almonds.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Strawberry Pretzel Salad</h4>
+        <p>Strawberry cupcake filled with cream cheese filling, topped with vanilla whipped icing, fresh strawberries, and sweet pretzel crunch.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Banana Split</h4>
+        <p>Strawberry filled banana cupcake topped with a light pineapple whipped icing, drizzled with chocolate and cherry on top.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Caramel Cappuccino</h4>
+        <p>Mocha cupcake filled with chocolate ganache, topped with caramel whipped icing sprinkled with chocolate shavings.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Grasshopper</h4>
+        <p>Dark chocolate cupcake filled with chocolate ganache, topped with mint whipped icing &amp; sprinkled with mint chocolate cookie crumbles.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Oreo</h4>
+        <p>Chocolate Oreo cupcake filled with Oreo cream, topped with whipped Oreo icing and mini Oreos.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Lemon Blueberry</h4>
+        <p>Blueberry filled lemon cupcake topped with blueberry whipped icing, blueberries, and lemon zest.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Carrot Cake</h4>
+        <p>Carrot cake cupcake filled with walnut cream cheese filling, topped with cream cheese whipped icing and sprinkled with crushed walnuts.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── UNFILLED CUPCAKES ── -->
+  <div class="menu-category">
+    <h3 class="category-title">Unfilled Cupcakes</h3>
+    <p class="category-price">$20.00 / dozen</p>
+    <p style="text-align:center; color:var(--text-on-dark);">Available in Vanilla, Red Velvet, Chocolate, Strawberry, Banana, Lemon, Carrot, and Coconut.</p>
+  </div>
+
+  <!-- ── GOURMET CUPCAKES ── -->
+  <div class="menu-category">
+    <h3 class="category-title">Gourmet Cupcakes</h3>
+    <p class="category-price">$30.00 / dozen</p>
+    <p style="text-align:center; color:var(--text-on-dark);">Premium flavors with elevated ingredients and artistic designs. Ask about our current gourmet selections.</p>
+  </div>
+
+  <!-- ── CAKES ── -->
+  <div class="menu-category">
+    <h3 class="category-title">Cakes</h3>
+    <p class="category-subtitle">Made to order for every occasion</p>
+
+    <div class="menu-item-grid cakes-grid">
+
+      <div class="menu-item">
+        <h4>Cupcake Cakes</h4>
+        <p>Pull-apart cupcake cakes shaped and decorated for any theme or celebration.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Single Layer Sheet Cakes</h4>
+        <p>Classic sheet cakes perfect for office parties, cookouts, and family gatherings.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Multi Layer Round or Square</h4>
+        <p>Stacked layer cakes in round or square &mdash; the centerpiece your celebration deserves.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Tiered Multi Layer Cakes</h4>
+        <p>Show-stopping tiered cakes in round or square. Perfect for weddings and milestone events.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── SPECIALTY TREATS ── -->
+  <div class="menu-category">
+    <h3 class="category-title">Specialty Treats</h3>
+
+    <div class="menu-item-grid">
+
+      <div class="menu-item">
+        <h4>Cupcake Bouquets</h4>
+        <p>Beautiful edible bouquets available in sizes of 3, 7, 12, or 19. The sweetest arrangement you'll ever give.</p>
+        <span class="tag">Fan Favorite</span>
+      </div>
+
+      <div class="menu-item">
+        <h4>Walking Pretzel Salads</h4>
+        <p>6 oz individual cups with spoons. Multiple Jello flavors available &mdash; perfect for events and parties.</p>
+        <span class="tag">Party Ready</span>
+      </div>
+
+      <div class="menu-item">
+        <h4>Individual Cake Jars</h4>
+        <p>Layers of cake and frosting in a portable jar. A sweet grab-and-go treat.</p>
+      </div>
+
+      <div class="menu-item">
+        <h4>Cookies &amp; More</h4>
+        <p>Ask about our rotating selection of cookies and seasonal specialties.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── WEDDING CAKES ── -->
+  <div class="menu-category wedding-callout">
+    <h3 class="category-title" style="color:var(--soft-pink);">Wedding Cake Consultations &amp; Tastings</h3>
+    <p style="text-align:center; color:var(--text-on-dark); max-width:500px; margin:0 auto;">Planning your big day? We'd love to be part of it. Schedule a personal consultation and tasting to design the wedding cake of your dreams.</p>
+    <div style="text-align:center; margin-top:1.5rem;">
+      <a href="tel:8147582519" class="btn btn-primary" style="font-size:0.95rem;">Call to Schedule: (814) 758-2519</a>
+    </div>
+  </div>
+
+  <!-- ── PRICING NOTE ── -->
+  <p style="text-align:center; margin-top:2rem; font-size:0.95rem; color:var(--text-light);">For pricing and questions, call <a href="tel:8147582519" style="color:var(--sky-blue);">(814) 758-2519</a> or email <a href="mailto:dirtydozens111@gmail.com" style="color:var(--sky-blue);">dirtydozens111@gmail.com</a><br>Follow us on Facebook for seasonal flavors!</p>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     PHOTO GALLERY
+     ════════════════════════════════════════════════════ -->
+<section class="gallery" id="gallery">
+  <div class="inner">
+    <h2>A Peek at Our Creations</h2>
+    <p style="text-align:center; max-width:500px; margin:0 auto 2.5rem;">From cupcake bouquets to tiered wedding cakes &mdash; every order is a labor of love, made right here in Oil City, PA.</p>
+
+    <div class="carousel">
+      <button class="carousel-btn carousel-prev" aria-label="Previous">&#8592;</button>
+      <div class="carousel-track-wrap">
+        <div class="carousel-track">
+          <div class="carousel-slide"><img src="cupcakes_1.jpg" alt="Dirty Dozens cupcakes"></div>
+          <div class="carousel-slide"><img src="cupcake_2.jpg" alt="Dirty Dozens cupcakes"></div>
+          <div class="carousel-slide"><img src="cupcake_3.jpg" alt="Dirty Dozens cupcakes"></div>
+          <div class="carousel-slide"><img src="cupcake_4.jpg" alt="Dirty Dozens cupcakes"></div>
+          <div class="carousel-slide"><img src="cupcake_5.jpg" alt="Dirty Dozens cupcakes"></div>
+          <div class="carousel-slide"><img src="cake_1.jpg" alt="Custom cake by Dirty Dozens"></div>
+          <div class="carousel-slide"><img src="cake_2.jpg" alt="Custom cake by Dirty Dozens"></div>
+          <div class="carousel-slide"><img src="cake_3.jpg" alt="Custom cake by Dirty Dozens"></div>
+          <div class="carousel-slide"><img src="cupcakestand.jpg" alt="Dirty Dozens cupcake display"></div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-next" aria-label="Next">&#8594;</button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     CTA BANNER
+     Framework: AIDA (Desire + Action)
+     ════════════════════════════════════════════════════ -->
+<section class="cta-banner" id="order">
+  <h2>Order Your Cake or Cupcakes Today</h2>
+  <p>Whether it's a dozen cupcakes for the office or a show-stopping custom cake, we've got you. Serving Oil City, PA and the surrounding Venango County area.</p>
+  <div class="cta-group">
+    <a href="https://www.facebook.com/profile.php?id=61557558837804" target="_blank" class="btn btn-dark">Order for Pickup</a>
+    <a href="https://www.facebook.com/profile.php?id=61557558837804" target="_blank" class="btn btn-dark">Request a Custom Cake</a>
+    <a href="#contact" class="btn btn-outline" style="color:var(--white); border-color:var(--white);">Contact Us</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     FOOTER (Local SEO Integration)
+     ════════════════════════════════════════════════════ -->
+<footer id="contact">
+  <p class="location">Proudly Baking in Oil City, Pennsylvania</p>
+  <p>Dirty Dozens Sweets and Treats &mdash; Handcrafted Cupcakes & Custom Cakes</p>
+  <p>Serving Oil City, PA &bull; Venango County &bull; Crawford County &bull; Franklin &bull; Cranberry</p>
+  <p style="margin-top:1.5rem;"><a href="tel:8147582519">(814) 758-2519</a> &bull; <a href="mailto:dirtydozens111@gmail.com">dirtydozens111@gmail.com</a></p>
+  <p style="margin-top:0.5rem;"><a href="https://www.facebook.com/profile.php?id=61557558837804" target="_blank">Find Us on Facebook</a></p>
+  <p style="margin-top:0.5rem;">[Street Address], Oil City, PA [Zip Code]</p>
+  <p style="margin-top:1.5rem; font-size:0.8rem; opacity:0.6;">&copy; 2026 Dirty Dozens Sweets and Treats. All rights reserved.</p>
+  <p style="margin-top:1rem; font-size:0.85rem;"><span style="color:var(--sky-blue);">Site by</span> <span style="color:#FFD700; font-weight:600;">Forever Still Studio</span></p>
+</footer>
+
+
+
+<script>
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ── Carousel ──
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dotsWrap = document.getElementById('carouselDots');
+  let current = 0;
+  let timer;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  function goTo(n) {
+    current = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 4000);
+  }
+
+  document.querySelector('.carousel-prev').addEventListener('click', () => goTo(current - 1));
+  document.querySelector('.carousel-next').addEventListener('click', () => goTo(current + 1));
+
+  resetTimer();
+</script>
+</body>
+</html>
