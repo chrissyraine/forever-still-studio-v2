@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /clients.html
+
+Sitemap: https://www.foreverstillstudio.com/sitemap.xml
